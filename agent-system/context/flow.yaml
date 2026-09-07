@@ -1,0 +1,60 @@
+# Flow Context
+# 작성: flow-designer
+# 네 가지 Flow 를 합치지 않는다.
+
+user_flow:
+  - id: ""             # FL-001
+    title: ""
+    level: ""          # 전체 / 서비스별 / 화면별
+    actor: ""          # UT-01
+    start_when: ""
+    end_when: ""
+    functions: []      # FN 식별자
+    screens: []        # SC 식별자
+    calls: []          # 이 Flow 가 부르는 다른 FL
+    branches:
+      - condition: ""  # 판단 문장
+        outcomes: []   # 각 출구의 조건 값
+    failure_paths: []  # 실패 시 어디로 가는가
+    state: open
+
+business_flow:
+  - id: ""
+    title: ""
+    actor: ""          # 처리 담당자
+    start_when: ""
+    end_when: ""
+    states: []         # 이 Flow 가 지나는 상태값
+    approval: ""       # 승인과 반려가 있으면 조건을 적는다
+    sla: ""            # 처리 제한 시간
+    failure_paths: []
+    state: open
+
+system_flow:
+  - id: ""
+    title: ""
+    trigger: ""        # 무엇이 이 흐름을 시작시키는가
+    sequence: []       # Client → API → Backend → DB → External
+    sync: ""           # 동기 / 비동기
+    timeout: ""
+    on_failure: ""
+    idempotency: ""    # 중복 실행 방지 방법
+    state: open
+
+data_flow:
+  - id: ""
+    title: ""
+    source: ""         # 데이터가 어디서 생기는가
+    validation: ""     # 무엇을 검증하는가
+    transform: ""      # 어떻게 가공하는가
+    store: ""          # 어디에 저장하는가
+    read: ""           # 어디서 조회하는가
+    retention: ""
+    state: open
+
+coverage:
+  # flow-designer 가 매 단계 끝에 채운다
+  functions_without_flow: []
+  screens_without_flow: []
+  flows_without_failure_path: []
+  unresolved_loop_targets: []

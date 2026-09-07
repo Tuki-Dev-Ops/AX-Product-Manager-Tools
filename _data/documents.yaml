@@ -1,0 +1,118 @@
+project:
+  name: 아이오더 F&B 플랫폼
+  department: 기획팀
+  phase: 착수
+  started: 2026-09-03
+documents:
+- id: DOC-01
+  title: 프로젝트 개요
+  file: docs/01_프로젝트개요.md
+  category: 기획
+  status: 확정
+  progress: 100
+  eta: null
+  version: '2.0'
+  updated: 2026-09-04
+  inherits: []
+  defines:
+  - REQ
+- id: DOC-02
+  title: 기획 검토
+  file: docs/02_기획검토.md
+  category: 기획
+  status: 확정
+  progress: 100
+  eta: null
+  version: '2.0'
+  updated: 2026-09-04
+  inherits:
+  - DOC-01
+  defines:
+  - DC
+- id: DOC-03
+  title: 서비스 구조
+  file: docs/03_서비스구조.md
+  category: 설계
+  status: 확정
+  progress: 100
+  eta: null
+  version: '2.0'
+  updated: 2026-09-04
+  inherits:
+  - DOC-01
+  - DOC-02
+  defines:
+  - UT
+  - FN
+- id: DOC-04
+  title: Flow Chart
+  file: docs/04_Flow.md
+  category: 설계
+  status: 확정
+  progress: 100
+  eta: null
+  version: '2.1'
+  updated: 2026-09-04
+  inherits:
+  - DOC-03
+  defines:
+  - FL
+- id: DOC-05
+  title: IA
+  file: docs/05_IA.md
+  category: 설계
+  status: 확정
+  progress: 100
+  eta: null
+  version: '1.1'
+  updated: 2026-09-04
+  inherits:
+  - DOC-03
+  - DOC-04
+  defines:
+  - SC
+- id: DOC-06
+  title: Wireframe
+  file: docs/06_Wireframe.md
+  category: 설계
+  status: 확정
+  progress: 100
+  eta: null
+  version: '1.0'
+  updated: '2026-09-04'
+  inherits:
+  - DOC-05
+  - DOC-04
+  defines: []
+- id: DOC-07
+  title: 기능 명세
+  file: docs/07_기능명세.md
+  category: 명세
+  status: 확정
+  progress: 100
+  eta: null
+  version: '1.0'
+  updated: '2026-09-04'
+  inherits:
+  - DOC-03
+  - DOC-05
+  - DOC-06
+  - DOC-02
+  defines:
+  - FS
+- id: DOC-08
+  title: 검토 결과
+  file: docs/08_검토결과.md
+  category: 검토
+  status: 확정
+  progress: 100
+  eta: null
+  version: '1.0'
+  updated: 2026-09-03
+  inherits:
+  - DOC-04
+  - DOC-05
+  - DOC-06
+  - DOC-07
+  defines:
+  - IS

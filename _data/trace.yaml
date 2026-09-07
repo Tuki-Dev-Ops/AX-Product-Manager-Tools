@@ -1,0 +1,2742 @@
+requirements:
+- id: REQ-001
+  title: 본사 운영자는 행사를 등록하고 행사 기간을 지정한다.
+  area: 기준정보
+  functions:
+  - FN-102
+- id: REQ-002
+  title: 본사 운영자는 행사에 속한 상권을 등록한다.
+  area: 기준정보
+  functions:
+  - FN-103
+- id: REQ-003
+  title: 본사 운영자는 브랜드를 등록하고 브랜드 단위로 메뉴를 관리한다.
+  area: 기준정보
+  functions:
+  - FN-119
+- id: REQ-004
+  title: 본사 운영자는 상권에 매장을 등록하고 브랜드와 지점번호를 지정한다.
+  area: 기준정보
+  functions:
+  - FN-104
+- id: REQ-005
+  title: 본사 운영자는 매장의 영업 상태를 영업, 일시중지, 종료로 관리한다.
+  area: 기준정보
+  functions:
+  - FN-105
+- id: REQ-006
+  title: 가맹 관리자는 브랜드별로 카테고리와 메뉴를 등록한다.
+  area: 메뉴
+  functions:
+  - FN-106
+  - FN-107
+- id: REQ-007
+  title: 가맹 관리자는 메뉴에 옵션 그룹을 연결하고 최소·최대 선택 수를 지정한다.
+  area: 메뉴
+  functions:
+  - FN-108
+- id: REQ-008
+  title: 시스템은 메뉴 등록 시 알레르기 유발물질과 영양성분 입력을 요구한다.
+  area: 메뉴
+  functions:
+  - FN-109
+- id: REQ-009
+  title: 시스템은 표시 대상 품목에 대해 원산지 입력을 요구한다.
+  area: 메뉴
+  functions:
+  - FN-110
+- id: REQ-010
+  title: 가맹 관리자는 매장별 판매 가격을 기준 가격과 다르게 지정한다.
+  area: 메뉴
+  functions:
+  - FN-111
+- id: REQ-013
+  title: 가맹 관리자는 메뉴의 품절 상태를 설정하고 재개 시각을 지정한다.
+  area: 메뉴
+  functions:
+  - FN-206
+- id: REQ-014
+  title: 고객은 회원 가입 없이 웹앱에서 매장 메뉴를 조회하고 주문한다.
+  area: 주문
+  functions:
+  - FN-301
+  - FN-302
+  - FN-303
+  - FN-304
+  - FN-305
+- id: REQ-015
+  title: 고객은 웹앱에서 결제대행사를 통해 결제한다.
+  area: 결제
+  functions:
+  - FN-306
+- id: REQ-016
+  title: 고객은 키오스크에서 메뉴와 옵션을 선택하고 주문한다.
+  area: 주문
+  functions:
+  - FN-401
+  - FN-402
+  - FN-403
+  - FN-404
+- id: REQ-017
+  title: 고객은 키오스크에서 결제 단말로 결제한다.
+  area: 결제
+  functions:
+  - FN-405
+- id: REQ-018
+  title: 시스템은 결제 승인 후 주문번호를 발번하고 매장에 주문 내용을 전달한다.
+  area: 주문
+  functions:
+  - FN-406
+  - FN-209
+  - FN-407
+- id: REQ-019
+  title: 가맹 관리자는 주문을 접수하고 조리 완료와 수령 완료를 처리한다.
+  area: 매장 운영
+  functions:
+  - FN-207
+- id: REQ-020
+  title: 시스템은 매장이 제한 시간 안에 접수하지 않은 주문을 취소한다.
+  area: 매장 운영
+  functions:
+  - FN-207
+- id: REQ-021
+  title: 고객은 주문번호와 휴대폰번호로 주문 상태를 조회하고 상태 변경을 통지받는다.
+  area: 주문
+  functions:
+  - FN-307
+  - FN-308
+  - FN-309
+- id: REQ-022
+  title: 고객은 조리 시작 전까지 주문을 취소한다.
+  area: 주문
+  functions:
+  - FN-310
+- id: REQ-023
+  title: 본사 운영자는 기간, 행사, 상권, 브랜드, 매장, 채널을 조건으로 매출을 조회한다.
+  area: 매출
+  functions:
+  - FN-114
+- id: REQ-024
+  title: 본사 운영자는 행사 간과 상권 간 매출을 같은 기준으로 환산해 비교한다.
+  area: 매출
+  functions:
+  - FN-115
+- id: REQ-025
+  title: 가맹 관리자는 담당 매장 범위의 매출을 조회한다.
+  area: 매출
+  functions:
+  - FN-208
+- id: REQ-026
+  title: 본사 운영자는 계정을 등록하고 권한과 담당 매장 범위를 지정한다.
+  area: 보안
+  functions:
+  - FN-116
+- id: REQ-027
+  title: 시스템은 어드민 접속에 2차 인증을 적용한다.
+  area: 보안
+  functions:
+  - FN-101
+  - FN-201
+- id: REQ-028
+  title: 시스템은 접속기록과 작업 이력을 보관하고 조회할 수 있게 한다.
+  area: 보안
+  functions:
+  - FN-117
+- id: REQ-029
+  title: 본사 운영자는 가맹 계정으로 대행 접속하고 조작자와 대상 계정을 함께 기록한다.
+  area: 보안
+  functions:
+  - FN-118
+- id: REQ-030
+  title: 가맹 관리자는 매점 정보를 조회하고 변경을 요청한다.
+  area: 매장 운영
+  functions:
+  - FN-202
+  - FN-203
+- id: REQ-031
+  title: 가맹 관리자는 매장의 영업 상태를 변경한다.
+  area: 매장 운영
+  functions:
+  - FN-204
+- id: REQ-032
+  title: 가맹 관리자는 매장에 적용된 메뉴와 표시 정보를 조회한다.
+  area: 매장 운영
+  functions:
+  - FN-205
+- id: REQ-033
+  title: 가맹 관리자는 키오스크 관리자 모드에서 거래내역 확인과 환불을 처리한다.
+  area: 매장 운영
+  functions:
+  - FN-408
+- id: REQ-034
+  title: 본사 운영자는 매장 단말의 연결 상태를 확인한다.
+  area: 운영
+  functions:
+  - FN-409
+- id: REQ-036
+  title: 외부 POS는 허용된 범위의 매장 정보와 메뉴 정보를 조회하고 변경 통지를 받는다.
+  area: 외부 연계
+  functions:
+  - FN-501
+  - FN-502
+  - FN-410
+- id: REQ-037
+  title: 본사 운영자는 외부 연동 계정을 발급하고 접근 범위를 지정한다.
+  area: 외부 연계
+  functions:
+  - FN-503
+- id: REQ-038
+  title: 본사 운영자는 결제 원장과 결제대행사 내역을 대조하고 불일치를 처리한다.
+  area: 매출
+  functions:
+  - FN-120
+- id: REQ-039
+  title: 본사 운영자는 배치 실행 결과를 확인하고 실패한 배치를 다시 실행한다.
+  area: 운영
+  functions:
+  - FN-121
+- id: REQ-040
+  title: 시스템은 계정의 권한과 담당 매장 범위 변경을 기록한다.
+  area: 보안
+  functions:
+  - FN-122
+- id: REQ-041
+  title: 시스템은 보유 기간이 지난 개인정보를 파기하고 기록을 남긴다.
+  area: 보안
+  functions:
+  - FN-123
+- id: REQ-042
+  title: 가맹 관리자는 등록된 휴대폰번호로 본인을 확인하고 비밀번호를 재설정한다.
+  area: 보안
+  functions:
+  - FN-210
+- id: REQ-043
+  title: 가맹 관리자는 다른 매장의 메뉴를 가져와 자기 매장 메뉴로 등록한다.
+  area: 메뉴
+  functions:
+  - FN-211
+- id: REQ-044
+  title: 가맹 관리자는 알림 발송 결과를 확인하고 실패한 알림을 다시 보낸다.
+  area: 매장 운영
+  functions:
+  - FN-212
+- id: REQ-046
+  title: 키오스크는 접근성 검증기준을 준수한 단말을 쓰고 위치를 음성으로 안내한다.
+  area: 운영
+  functions:
+  - FN-411
+- id: REQ-047
+  title: 가맹 관리자는 매장에서 쓰는 단말을 등록하고 연결 상태를 확인한다.
+  area: 매장 운영
+  functions:
+  - FN-213
+  - FN-214
+- id: REQ-048
+  title: 시스템은 단말 미연결이 이어지면 매장과 본사에 단계별로 알린다.
+  area: 운영
+  functions:
+  - FN-125
+- id: REQ-049
+  title: 본사 운영자는 업체별 정산 진행 상태와 미정산 금액을 조회한다.
+  area: 매출
+  functions:
+  - FN-126
+- id: REQ-050
+  title: 본사 운영자는 배치와 알림 발송과 외부 연동 오류를 한곳에서 확인한다.
+  area: 운영
+  functions:
+  - FN-127
+- id: REQ-051
+  title: 본사 운영자는 행사별 개시 준비 상태를 한 화면에서 확인하고 미완료 업체에 안내를 보낸다.
+  area: 기준정보
+  functions:
+  - FN-128
+- id: REQ-052
+  title: 본사 운영자는 이전 행사의 상권과 업체 구성을 새 행사로 복제한다.
+  area: 기준정보
+  functions:
+  - FN-129
+- id: REQ-053
+  title: 본사 운영자는 매장을 파일로 한 번에 등록한다.
+  area: 기준정보
+  functions:
+  - FN-130
+decisions:
+- id: DC-001
+  title: 결제·정산 계약 구조
+  status: 미결
+  requirements: []
+- id: DC-002
+  title: 메뉴 마스터의 위치와 충돌 처리
+  status: 미결
+  requirements: []
+- id: DC-003
+  title: 메뉴 변경의 채널 반영 시점
+  status: 미결
+  requirements: []
+- id: DC-004
+  title: 주문 접수 화면의 위치
+  status: 미결
+  requirements: []
+- id: DC-005
+  title: 메뉴 배포 승인 절차를 두지 않는다
+  status: 확정
+  requirements: []
+- id: DC-006
+  title: 알레르기 정보는 메뉴 단위로 등록하고 옵션 영향 시 상품을 복제한다
+  status: 확정
+  requirements: []
+- id: DC-007
+  title: 품절 메뉴의 노출 처리
+  decision: 품절로 설정한 메뉴는 주문 채널 목록에서 제외한다. 표시 후 선택을 막는 방식을 쓰지 않는다.
+  reason: 행사 매장은 회차마다 품절이 잦다. 표시된 메뉴를 선택했다가 막히는 경험이 반복되면 주문 속도가 떨어진다.
+  requirements:
+  - REQ-013
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-008
+  title: 메뉴 관리 주체와 배포 폐지
+  decision: 메뉴, 카테고리, 옵션, 판매가, 표시 정보, 품절을 매장이 직접 관리한다. 본사는 메뉴를 만들지 않으며 배포 절차를 두지 않는다.
+  reason: 매장이 자기 메뉴를 직접 관리하는 편이 운영에 맞다. 본사가 만들지 않으므로 내려보낼 것이 없어 배포가 필요 없다.
+  requirements:
+  - REQ-006
+  - REQ-007
+  - REQ-008
+  - REQ-009
+  - REQ-010
+  - REQ-013
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-009
+  title: 하이브리드 웹앱의 매장 진입
+  decision: QR에 담긴 매장으로 바로 진입한다. 매장 선택 화면을 두지 않는다.
+  reason: 매장을 고르는 절차가 없으면 잘못된 매장에 주문하는 일이 생기지 않는다.
+  requirements:
+  - REQ-014
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-010
+  title: 매장 수명주기
+  decision: 매장을 삭제하지 않는다. 상태를 영업, 일시중지, 종료, 폐점 네 단계로 나누고 매장 코드를 재사용하지 않는다.
+  reason: 조사한 8개 제품 중 삭제가 가능한 것은 하나뿐이고 법령이 거래 기록을 5년 보존하도록 요구한다.
+  requirements:
+  - REQ-005
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-011
+  title: 매출의 소속 귀속
+  decision: 주문에 발생 시점의 행사와 상권과 브랜드를 값으로 저장한다. 매장 소속이 바뀌어도 과거 주문의 귀속을 바꾸지 않는다. 현재 소속 기준 재집계는 선택 항목으로 제공한다.
+  reason: 소급하면 종료된 행사의 실적이 사후에 바뀐다. 비교 목적의 재집계 요구는 회계기준이 인정하므로 선택으로 둔다.
+  requirements:
+  - REQ-023
+  - REQ-024
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-012
+  title: 조리 중 전환 방식
+  decision: 접수 완료 후 1분이 지나면 시스템이 자동으로 조리 중으로 바꾼다. 매장이 조작하지 않는다.
+  reason: 매장 조작에 맡기면 전환 시점이 매장마다 달라지고 취소 가능 구간도 함께 달라진다. 시간 기준으로 고정한다.
+  requirements:
+  - REQ-029
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-013
+  title: 조리 시작 이후 환불
+  decision: 조리 중부터는 주문 취소 기능을 제공하지 않는다. 환불 여부는 매장이 현장에서 판단한다. 플랫폼은 환불 요청 화면과 승인 절차를 두지 않는다.
+  reason: 조리가 시작되면 원재료 손실이 확정된다. 환불 판단은 매장의 손익 문제이므로 플랫폼이 대신 정하지 않는다.
+  requirements:
+  - REQ-029
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-014
+  title: 본사의 단말 조작 범위
+  decision: 본사는 전체 조회와 사용 중지, 사용 재개까지 한다. 등록과 수정, 삭제는 매장이 한다. 중지한 쪽이 재개한다.
+  reason: 오작동 단말이 주문을 계속 받으면 결제가 쌓인 채 처리되지 않는다. 매장에 연락이 닿지 않는 시간대가 있으므로 본사가 직접 멈출 수 있어야 한다.
+  requirements:
+  - REQ-034
+  - REQ-047
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-015
+  title: 이상 알림 발송 범위
+  decision: 단말 미연결만 보낸다. 30분에 매장, 60분에 본사로 나눈다. 나머지 이상 유형은 화면에만 둔다.
+  reason: 받는 사람이 취할 구체적 조치가 있는 건만 보낸다. EEMUA 191은 운영자 1명당 10분에 1건을 넘지 않도록 권고한다.
+  requirements:
+  - REQ-048
+  decided_by: 기획 담당
+  date: '2026-09-04'
+- id: DC-016
+  title: 표시 정보 검수 폐지
+  decision: 본사 검수 절차를 두지 않는다. 매장이 입력하고 시스템이 필수 항목 누락만 막는다. 표시 내용의 정확성은 매장 책임이다.
+  reason: 개시 직전 수백 건이 몰리고 본사가 원산지의 사실 여부를 확인할 방법이 없다. 확인하지 못한 것을 확인한 것처럼 기록하면 책임 소재만 흐려진다.
+  requirements: []
+  decided_by: 기획 담당
+  date: '2026-09-07'
+users:
+- id: UT-01
+  title: 본사 운영자
+- id: UT-02
+  title: 가맹 관리자
+- id: UT-03
+  title: 고객
+functions:
+- id: FN-101
+  title: 관리자 로그인
+  users:
+  - UT-01
+  requirements:
+  - REQ-027
+- id: FN-102
+  title: 행사 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-001
+- id: FN-103
+  title: 상권 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-002
+- id: FN-104
+  title: 매장 등록
+  users:
+  - UT-01
+  requirements:
+  - REQ-004
+- id: FN-105
+  title: 매장 상태 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-005
+- id: FN-106
+  title: 카테고리 관리
+  users:
+  - UT-02
+  requirements:
+  - REQ-006
+- id: FN-107
+  title: 메뉴 등록
+  users:
+  - UT-02
+  requirements:
+  - REQ-006
+- id: FN-108
+  title: 옵션 관리
+  users:
+  - UT-02
+  requirements:
+  - REQ-007
+- id: FN-109
+  title: 알레르기·영양성분 등록
+  users:
+  - UT-02
+  requirements:
+  - REQ-008
+- id: FN-110
+  title: 원산지 등록
+  users:
+  - UT-02
+  requirements:
+  - REQ-009
+- id: FN-111
+  title: 매장별 가격 설정
+  users:
+  - UT-02
+  requirements:
+  - REQ-010
+- id: FN-114
+  title: 매출 조회
+  users:
+  - UT-01
+  requirements:
+  - REQ-023
+- id: FN-115
+  title: 행사·상권 매출 비교
+  users:
+  - UT-01
+  requirements:
+  - REQ-024
+- id: FN-116
+  title: 계정·권한 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-026
+- id: FN-117
+  title: 접속기록 조회
+  users:
+  - UT-01
+  requirements:
+  - REQ-028
+- id: FN-118
+  title: 대행 접속
+  users:
+  - UT-01
+  requirements:
+  - REQ-029
+- id: FN-119
+  title: 브랜드 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-003
+- id: FN-201
+  title: 가맹 관리자 로그인
+  users:
+  - UT-02
+  requirements:
+  - REQ-027
+- id: FN-202
+  title: 매점 정보 조회
+  users:
+  - UT-02
+  requirements:
+  - REQ-030
+- id: FN-203
+  title: 매점 정보 변경 요청
+  users:
+  - UT-02
+  requirements:
+  - REQ-030
+- id: FN-204
+  title: 영업 상태 관리
+  users:
+  - UT-02
+  requirements:
+  - REQ-031
+- id: FN-205
+  title: 매점 메뉴 조회
+  users:
+  - UT-02
+  requirements:
+  - REQ-032
+- id: FN-206
+  title: 품절 설정
+  users:
+  - UT-02
+  requirements:
+  - REQ-013
+- id: FN-207
+  title: 주문 접수 관리
+  users:
+  - UT-02
+  requirements:
+  - REQ-019
+  - REQ-020
+- id: FN-208
+  title: 매점 매출 조회
+  users:
+  - UT-02
+  requirements:
+  - REQ-025
+- id: FN-209
+  title: 주문서 출력
+  users:
+  - UT-02
+  requirements:
+  - REQ-018
+- id: FN-301
+  title: 매장 진입
+  users:
+  - UT-03
+  requirements:
+  - REQ-014
+- id: FN-302
+  title: 메뉴 조회
+  users:
+  - UT-03
+  requirements:
+  - REQ-014
+- id: FN-303
+  title: 옵션 선택
+  users:
+  - UT-03
+  requirements:
+  - REQ-014
+- id: FN-304
+  title: 장바구니
+  users:
+  - UT-03
+  requirements:
+  - REQ-014
+- id: FN-305
+  title: 주문서 작성
+  users:
+  - UT-03
+  requirements:
+  - REQ-014
+- id: FN-306
+  title: PG 결제
+  users:
+  - UT-03
+  requirements:
+  - REQ-015
+- id: FN-307
+  title: 주문 상태 확인
+  users:
+  - UT-03
+  requirements:
+  - REQ-021
+- id: FN-308
+  title: 주문 알림
+  users:
+  - UT-03
+  requirements:
+  - REQ-021
+- id: FN-309
+  title: 주문 내역 조회
+  users:
+  - UT-03
+  requirements:
+  - REQ-021
+- id: FN-310
+  title: 주문 취소
+  users:
+  - UT-03
+  requirements:
+  - REQ-022
+- id: FN-401
+  title: 대기화면
+  users:
+  - UT-03
+  requirements:
+  - REQ-016
+- id: FN-402
+  title: 취식유형 선택
+  users:
+  - UT-03
+  requirements:
+  - REQ-016
+- id: FN-403
+  title: 메뉴·옵션 선택
+  users:
+  - UT-03
+  requirements:
+  - REQ-016
+- id: FN-404
+  title: 장바구니
+  users:
+  - UT-03
+  requirements:
+  - REQ-016
+- id: FN-405
+  title: VAN 결제
+  users:
+  - UT-03
+  requirements:
+  - REQ-017
+- id: FN-406
+  title: 주문번호 발행
+  users:
+  - UT-03
+  requirements:
+  - REQ-018
+- id: FN-407
+  title: 고객 호출
+  users:
+  - UT-03
+  requirements:
+  - REQ-018
+- id: FN-408
+  title: 키오스크 메뉴 갱신
+  users:
+  - UT-02
+  requirements:
+  - REQ-033
+  description: ERP의 최신 메뉴를 단말로 받아온다. 마지막 갱신 시각 이후 변경분만 받는다
+- id: FN-409
+  title: 단말 상태 감시
+  users:
+  - UT-01
+  requirements:
+  - REQ-034
+  description: 전체 매장의 단말 연결 상태를 가맹 어드민의 단말기 화면에서 확인하고, 장애 단말을 사용 중지하거나 재개한다
+- id: FN-410
+  title: 메뉴 수신
+  users:
+  - UT-03
+  requirements:
+  - REQ-036
+- id: FN-501
+  title: 매장·메뉴 제공
+  users:
+  - UT-01
+  requirements:
+  - REQ-036
+- id: FN-502
+  title: 변경 통지
+  users:
+  - UT-01
+  requirements:
+  - REQ-036
+- id: FN-503
+  title: 연동 계정 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-037
+- id: FN-120
+  title: 정산 대사
+  users:
+  - UT-01
+  requirements:
+  - REQ-038
+  description: 거래, 정산, 입금 세 단계로 대사하고 불일치를 처리한다
+- id: FN-121
+  title: 배치 실행 관리
+  users:
+  - UT-01
+  requirements:
+  - REQ-039
+  description: 집계와 파기 배치의 실행 결과를 확인하고 다시 실행한다
+- id: FN-122
+  title: 계정 변경 이력
+  users:
+  - UT-01
+  requirements:
+  - REQ-040
+  description: 권한과 담당 매장 범위의 변경 전후 값을 기록하고 조회한다
+- id: FN-123
+  title: 개인정보 파기
+  users:
+  - UT-01
+  requirements:
+  - REQ-041
+  description: 보유 기간이 지난 개인정보를 파기하고 기록을 남긴다
+- id: FN-210
+  title: 비밀번호 재설정
+  users:
+  - UT-02
+  requirements:
+  - REQ-042
+  description: 등록된 휴대폰번호로 본인을 확인하고 비밀번호를 재설정한다
+- id: FN-211
+  title: 메뉴 가져오기
+  users:
+  - UT-02
+  requirements:
+  - REQ-043
+  description: 이전 매장이나 같은 브랜드 매장의 메뉴를 복사해 온다
+- id: FN-212
+  title: 알림 발송 이력
+  users:
+  - UT-02
+  requirements:
+  - REQ-044
+  description: 발송 결과를 확인하고 실패 건을 다시 보낸다
+- id: FN-411
+  title: 키오스크 접근성 지원
+  users:
+  - UT-03
+  requirements:
+  - REQ-046
+  description: 검증기준을 준수한 단말을 쓰고 위치를 음성으로 안내한다
+- id: FN-213
+  title: 단말기 등록
+  users:
+  - UT-02
+  requirements:
+  - REQ-047
+  description: 매장에서 쓰는 키오스크, 카드 단말, 주문서 프린터를 등록하고 연결한다
+- id: FN-214
+  title: 단말기 상태 확인
+  users:
+  - UT-02
+  requirements:
+  - REQ-047
+  description: 등록한 단말의 연결 상태와 마지막 통신 시각을 확인한다
+- id: FN-412
+  title: 판매 메뉴 설정
+  users:
+  - UT-02
+  requirements:
+  - REQ-033
+  description: 그날 판매할 메뉴를 단말에서 열고 닫는다. 매장별 메뉴 설정의 노출 여부를 바꿔 다른 채널에도 함께 적용한다
+- id: FN-125
+  title: 이상 알림 발송
+  users:
+  - UT-01
+  - UT-02
+  requirements:
+  - REQ-048
+  description: 단말 미연결이 30분을 넘기면 매장에, 60분을 넘기면 본사에 알린다
+- id: FN-126
+  title: 업체별 정산 조회
+  users:
+  - UT-01
+  requirements:
+  - REQ-049
+  description: 결제대행사 지급 내역을 업체 단위로 조회한다. 플랫폼이 정산금액을 계산하지 않는다
+- id: FN-127
+  title: 오류 로그 조회
+  users:
+  - UT-01
+  requirements:
+  - REQ-050
+  description: 배치와 알림 발송과 외부 연동 오류를 한곳에서 조회하고 확인 처리한다
+- id: FN-128
+  title: 행사 준비 현황
+  users:
+  - UT-01
+  requirements:
+  - REQ-051
+  description: 행사에 속한 상권과 업체, 개시 준비 상태를 한 화면에서 확인하고 미완료 업체에 안내를 보낸다
+- id: FN-129
+  title: 행사 복제
+  users:
+  - UT-01
+  requirements:
+  - REQ-052
+  description: 이전 행사의 상권과 업체 구성을 새 행사로 복사한다
+- id: FN-130
+  title: 매장 일괄 등록
+  users:
+  - UT-01
+  requirements:
+  - REQ-053
+  description: 파일로 매장을 한 번에 등록한다. 검증에 실패한 행은 빼고 처리한다
+flows:
+- id: FL-001
+  title: 서비스 전체 흐름
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-002
+  title: 주문 처리 전체 흐름
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-003
+  title: 메뉴 마스터 배포 전체 흐름
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-004
+  title: 결제·정산 전체 흐름
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-005
+  title: 매출 집계·통계 전체 흐름
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-101
+  title: 매장 개설
+  users:
+  - UT-01
+  functions:
+  - FN-102
+  - FN-103
+  - FN-104
+  - FN-106
+  - FN-107
+  - FN-108
+  - FN-109
+  - FN-110
+  - FN-111
+  - FN-119
+  screens:
+  - ADM-AUTH-LOGIN
+  - ADM-AUTH-OTP
+  - ADM-EVNT-LIST
+  - ADM-EVNT-FORM
+  - ADM-ZONE-LIST
+  - ADM-ZONE-FORM
+  - ADM-BRND-LIST
+  - ADM-BRND-FORM
+  - ADM-STOR-FORM
+  - STR-CATG-LIST
+  - STR-CATG-FORM
+  - STR-MENU-FORM
+  - STR-MENU-ORIG
+  - STR-PRIC-FORM
+  - STR-OPTG-LIST
+  - STR-OPTG-FORM
+- id: FL-103
+  title: 매출 통계 조회
+  users:
+  - UT-01
+  functions:
+  - FN-114
+  - FN-115
+  screens:
+  - ADM-HOME-MAIN
+  - ADM-SALE-LIST
+  - ADM-SALE-DETAIL
+  - ADM-SALE-COMP
+- id: FL-104
+  title: 계정·권한 운영
+  users:
+  - UT-01
+  functions:
+  - FN-116
+  - FN-117
+  - FN-118
+  screens:
+  - ADM-USER-LIST
+  - ADM-USER-FORM
+  - ADM-USER-PROXY
+  - ADM-ALOG-LIST
+- id: FL-105
+  title: 매장 상태 전환
+  users:
+  - UT-01
+  functions:
+  - FN-105
+  screens:
+  - ADM-STOR-LIST
+  - ADM-STOR-DETAIL
+  - ADM-STOR-STATE
+- id: FL-110
+  title: 로그인
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-AUTH-LOGIN
+- id: FL-111
+  title: 2차 인증
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-AUTH-OTP
+- id: FL-112
+  title: 대시보드
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-HOME-MAIN
+- id: FL-113
+  title: 행사 목록·등록
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-EVNT-LIST
+  - ADM-EVNT-FORM
+- id: FL-114
+  title: 상권 목록·등록
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-ZONE-LIST
+  - ADM-ZONE-FORM
+- id: FL-115
+  title: 브랜드 목록·등록
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-BRND-LIST
+  - ADM-BRND-FORM
+- id: FL-116
+  title: 매장 목록
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-STOR-LIST
+- id: FL-117
+  title: 매장 등록·수정
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-STOR-FORM
+- id: FL-118
+  title: 매장 상세
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-STOR-DETAIL
+- id: FL-119
+  title: 매장 상태 전환
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-STOR-STATE
+- id: FL-133
+  title: 매출 조회
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-SALE-LIST
+- id: FL-134
+  title: 매출 상세
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-SALE-DETAIL
+- id: FL-135
+  title: 행사·상권 비교
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-SALE-COMP
+- id: FL-136
+  title: 계정 목록·등록
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-USER-LIST
+  - ADM-USER-FORM
+- id: FL-137
+  title: 대행 접속
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-USER-PROXY
+- id: FL-138
+  title: 접속기록 조회
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-ALOG-LIST
+- id: FL-140
+  title: 연동 계정
+  users:
+  - UT-01
+  functions: []
+  screens:
+  - ADM-APIK-LIST
+  - ADM-APIK-FORM
+- id: FL-141
+  title: 정산 대사
+  users:
+  - UT-01
+  functions:
+  - FN-120
+  screens:
+  - ADM-RECN-LIST
+- id: FL-142
+  title: 대사 불일치
+  users:
+  - UT-01
+  functions:
+  - FN-120
+  screens:
+  - ADM-RECN-DIFF
+- id: FL-143
+  title: 배치 실행 이력
+  users:
+  - UT-01
+  functions:
+  - FN-121
+  screens:
+  - ADM-BATC-LIST
+- id: FL-144
+  title: 계정 변경 이력
+  users:
+  - UT-01
+  functions:
+  - FN-122
+  screens:
+  - ADM-ULOG-LIST
+- id: FL-145
+  title: 개인정보 파기 이력
+  users:
+  - UT-01
+  functions:
+  - FN-123
+  screens:
+  - ADM-PRIV-LIST
+- id: FL-201
+  title: 매점 운영
+  users:
+  - UT-02
+  functions:
+  - FN-201
+  - FN-202
+  - FN-203
+  - FN-204
+  - FN-208
+  screens:
+  - STR-AUTH-LOGIN
+  - STR-AUTH-OTP
+  - STR-STOR-PICK
+  - STR-HOME-MAIN
+  - STR-INFO-DETAIL
+  - STR-INFO-FORM
+  - STR-OPEN-STATE
+  - STR-SALE-LIST
+- id: FL-202
+  title: 품절 처리
+  users:
+  - UT-02
+  functions:
+  - FN-206
+  - FN-205
+  screens:
+  - STR-MENU-LIST
+  - STR-SOUT-FORM
+- id: FL-203
+  title: 주문 접수
+  users:
+  - UT-02
+  functions:
+  - FN-207
+  - FN-209
+  screens:
+  - STR-ORDR-LIST
+  - STR-ORDR-DETAIL
+  - STR-ORDR-PRNT
+- id: FL-204
+  title: 알레르기 정보 등록
+  users:
+  - UT-02
+  functions:
+  - FN-107
+  - FN-109
+  screens:
+  - STR-MENU-FORM
+  - STR-MENU-ALGN
+  - STR-MENU-COPY
+- id: FL-210
+  title: 로그인
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-AUTH-LOGIN
+- id: FL-211
+  title: 2차 인증·매장 선택
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-AUTH-OTP
+  - STR-STOR-PICK
+- id: FL-212
+  title: 매점 홈
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-HOME-MAIN
+- id: FL-213
+  title: 주문 접수 목록
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-ORDR-LIST
+- id: FL-214
+  title: 주문 상세
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-ORDR-DETAIL
+- id: FL-215
+  title: 주문서 재출력
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-ORDR-PRNT
+- id: FL-216
+  title: 매점 정보
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-INFO-DETAIL
+- id: FL-217
+  title: 매점 정보 변경 요청
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-INFO-FORM
+- id: FL-218
+  title: 영업 상태 변경
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-OPEN-STATE
+- id: FL-219
+  title: 메뉴 목록
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-MENU-LIST
+- id: FL-220
+  title: 품절 설정
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-SOUT-FORM
+- id: FL-221
+  title: 매출 조회
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-SALE-LIST
+- id: FL-222
+  title: 카테고리 목록·등록
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-CATG-LIST
+  - STR-CATG-FORM
+- id: FL-223
+  title: 메뉴 등록·수정
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-MENU-FORM
+- id: FL-224
+  title: 알레르기·영양성분 입력
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-MENU-ALGN
+- id: FL-225
+  title: 원산지 입력
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-MENU-ORIG
+- id: FL-226
+  title: 상품 복제
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-MENU-COPY
+- id: FL-227
+  title: 옵션 그룹
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-OPTG-LIST
+  - STR-OPTG-FORM
+- id: FL-228
+  title: 매장별 가격
+  users:
+  - UT-02
+  functions: []
+  screens:
+  - STR-PRIC-FORM
+- id: FL-229
+  title: 비밀번호 재설정
+  users:
+  - UT-02
+  functions:
+  - FN-210
+  screens:
+  - STR-AUTH-RESET
+- id: FL-230
+  title: 메뉴 가져오기
+  users:
+  - UT-02
+  functions:
+  - FN-211
+  screens:
+  - STR-MENU-IMPT
+- id: FL-231
+  title: 알림 발송 이력
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-212
+  screens:
+  - STR-NOTI-LIST
+- id: FL-301
+  title: 웹앱 주문·결제
+  users:
+  - UT-03
+  functions:
+  - FN-301
+  - FN-302
+  - FN-303
+  - FN-304
+  - FN-305
+  - FN-306
+  screens:
+  - WEB-STOR-ENTRY
+  - WEB-STOR-BLOCK
+  - WEB-ORDR-TYPE
+  - WEB-MENU-LIST
+  - WEB-MENU-DETAIL
+  - WEB-CART-LIST
+  - WEB-ORDR-FORM
+  - WEB-PAY-WAIT
+  - WEB-ORDR-DONE
+- id: FL-302
+  title: 주문 상태 확인·픽업
+  users:
+  - UT-03
+  functions:
+  - FN-307
+  - FN-308
+  screens:
+  - WEB-ORDR-FIND
+  - WEB-ORDR-STAT
+- id: FL-303
+  title: 주문 취소
+  users:
+  - UT-03
+  functions:
+  - FN-309
+  - FN-310
+  screens:
+  - WEB-ORDR-FIND
+  - WEB-ORDR-STAT
+  - WEB-ORDR-CNCL
+- id: FL-310
+  title: 매장 진입
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-STOR-ENTRY
+- id: FL-312
+  title: 주문 불가 안내
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-STOR-BLOCK
+- id: FL-313
+  title: 수령 방식 선택
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-TYPE
+- id: FL-314
+  title: 메뉴 목록
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-MENU-LIST
+- id: FL-315
+  title: 메뉴 상세·옵션 선택
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-MENU-DETAIL
+- id: FL-316
+  title: 장바구니
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-CART-LIST
+- id: FL-317
+  title: 결제 상세
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-FORM
+- id: FL-318
+  title: 결제 진행
+  users:
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-319
+  title: 결제 완료
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-DONE
+- id: FL-320
+  title: 주문 조회
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-FIND
+- id: FL-321
+  title: 주문 상태
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-STAT
+- id: FL-322
+  title: 주문 취소
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - WEB-ORDR-CNCL
+- id: FL-401
+  title: 키오스크 주문·결제
+  users:
+  - UT-03
+  functions:
+  - FN-401
+  - FN-402
+  - FN-403
+  - FN-404
+  - FN-405
+  - FN-406
+  - FN-407
+  screens:
+  - KSK-IDLE-MAIN
+  - KSK-ORDR-TYPE
+  - KSK-MENU-LIST
+  - KSK-MENU-OPTN
+  - KSK-CART-LIST
+  - KSK-PAY-TYPE
+  - KSK-PAY-PROC
+  - KSK-CALL-FORM
+  - KSK-ORDR-DONE
+- id: FL-402
+  title: 메뉴 마스터 수신
+  users:
+  - UT-03
+  functions:
+  - FN-410
+  screens:
+  - KSK-IDLE-MAIN
+- id: FL-403
+  title: 키오스크 관리자 처리
+  users:
+  - UT-02
+  functions:
+  - FN-408
+  screens:
+  - KSK-ADMN-AUTH
+  - KSK-ADMN-MAIN
+  - KSK-ADMN-SOUT
+  - KSK-ADMN-DEVC
+- id: FL-410
+  title: 대기화면
+  users:
+  - UT-03
+  functions:
+  - FN-411
+  screens:
+  - KSK-IDLE-ACCS
+  - KSK-IDLE-MAIN
+- id: FL-411
+  title: 취식유형 선택
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ORDR-TYPE
+- id: FL-412
+  title: 메뉴 선택
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-MENU-LIST
+- id: FL-413
+  title: 옵션 선택
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-MENU-OPTN
+- id: FL-414
+  title: 주문 내역 확인
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-CART-LIST
+- id: FL-415
+  title: 결제수단 선택
+  users:
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-417
+  title: 결제 진행
+  users:
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-418
+  title: 고객 호출 정보 입력
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-CALL-FORM
+- id: FL-419
+  title: 주문 완료
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ORDR-DONE
+- id: FL-420
+  title: 관리자 인증
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ADMN-AUTH
+- id: FL-421
+  title: 관리자 메뉴
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ADMN-MAIN
+- id: FL-423
+  title: 품절 설정
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ADMN-SOUT
+- id: FL-424
+  title: 단말 상태 확인
+  users:
+  - UT-03
+  functions: []
+  screens:
+  - KSK-ADMN-DEVC
+- id: FL-501
+  title: 메뉴 정보 제공
+  users:
+  - UT-01
+  functions:
+  - FN-501
+  - FN-502
+  - FN-503
+  screens:
+  - ADM-APIK-LIST
+  - ADM-APIK-FORM
+- id: FL-901
+  title: 결제 결과 유실
+  users:
+  - UT-03
+  functions:
+  - FN-306
+  screens:
+  - WEB-PAY-WAIT
+  - WEB-ORDR-DONE
+- id: FL-902
+  title: 금액 검증 실패
+  users:
+  - UT-03
+  functions:
+  - FN-306
+  screens:
+  - WEB-PAY-WAIT
+- id: FL-903
+  title: 매장 미접수
+  users:
+  - UT-02
+  functions:
+  - FN-207
+  - FN-310
+  screens:
+  - STR-ORDR-DETAIL
+  - WEB-ORDR-STAT
+- id: FL-904
+  title: VAN 망취소
+  users:
+  - UT-03
+  functions:
+  - FN-405
+  screens:
+  - KSK-PAY-PROC
+- id: FL-905
+  title: 키오스크 네트워크 단절
+  users:
+  - UT-03
+  functions:
+  - FN-405
+  - FN-406
+  - FN-409
+  screens:
+  - KSK-PAY-PROC
+  - KSK-ORDR-DONE
+- id: FL-908
+  title: 로그인 실패
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-101
+  - FN-201
+  screens:
+  - ADM-AUTH-LOGIN
+  - STR-AUTH-LOGIN
+- id: FL-232
+  title: 단말기 목록
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-214
+  - FN-409
+  screens:
+  - STR-DEVC-LIST
+- id: FL-233
+  title: 단말기 연결
+  users:
+  - UT-02
+  functions:
+  - FN-213
+  screens:
+  - STR-DEVC-FORM
+  - STR-DEVC-PAIR
+- id: FL-425
+  title: 메뉴 갱신
+  users:
+  - UT-02
+  functions:
+  - FN-408
+  screens:
+  - KSK-ADMN-SYNC
+- id: FL-426
+  title: 판매 메뉴 설정
+  users:
+  - UT-02
+  functions:
+  - FN-412
+  screens:
+  - KSK-ADMN-OPEN
+- id: FL-147
+  title: 이상 알림 발송
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-125
+  screens:
+  - STR-NOTI-LIST
+  - ADM-USER-FORM
+- id: FL-148
+  title: 업체별 정산
+  users:
+  - UT-01
+  functions:
+  - FN-126
+  screens:
+  - ADM-RECN-STOR
+- id: FL-149
+  title: 오류 로그
+  users:
+  - UT-01
+  functions:
+  - FN-127
+  screens:
+  - ADM-ERRL-LIST
+- id: FL-150
+  title: 행사 상세
+  users:
+  - UT-01
+  functions:
+  - FN-128
+  screens:
+  - ADM-EVNT-DETAIL
+- id: FL-151
+  title: 행사 복제
+  users:
+  - UT-01
+  functions:
+  - FN-129
+  screens:
+  - ADM-EVNT-COPY
+- id: FL-152
+  title: 매장 일괄 등록
+  users:
+  - UT-01
+  functions:
+  - FN-130
+  screens:
+  - ADM-STOR-BULK
+screens:
+- id: ADM-AUTH-LOGIN
+  title: 로그인
+  type: 페이지
+  functions:
+  - FN-101
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-AUTH-OTP
+  title: 2차 인증
+  type: 페이지
+  functions:
+  - FN-101
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-HOME-MAIN
+  title: 대시보드
+  type: 페이지
+  functions:
+  - FN-114
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-EVNT-LIST
+  title: 행사 목록
+  type: 페이지
+  functions:
+  - FN-102
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-EVNT-FORM
+  title: 행사 등록·수정
+  type: 페이지
+  functions:
+  - FN-102
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-ZONE-LIST
+  title: 상권 목록
+  type: 페이지
+  functions:
+  - FN-103
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-ZONE-FORM
+  title: 상권 등록·수정
+  type: 페이지
+  functions:
+  - FN-103
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-BRND-LIST
+  title: 브랜드 목록
+  type: 페이지
+  functions:
+  - FN-119
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-BRND-FORM
+  title: 브랜드 등록·수정
+  type: 페이지
+  functions:
+  - FN-119
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-STOR-LIST
+  title: 매장 목록
+  type: 페이지
+  functions:
+  - FN-104
+  - FN-105
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-STOR-FORM
+  title: 매장 등록·수정
+  type: 페이지
+  functions:
+  - FN-104
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-STOR-DETAIL
+  title: 매장 상세
+  type: 페이지
+  functions:
+  - FN-104
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-STOR-STATE
+  title: 매장 상태 전환
+  type: 레이어팝업
+  functions:
+  - FN-105
+  users:
+  - UT-01
+  wireframe: 작성
+- id: STR-CATG-LIST
+  title: 카테고리 목록
+  type: 페이지
+  functions:
+  - FN-106
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-CATG-FORM
+  title: 카테고리 등록·수정
+  type: 레이어팝업
+  functions:
+  - FN-106
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-MENU-LIST
+  title: 메뉴 목록
+  type: 페이지
+  functions:
+  - FN-107
+  - FN-205
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-MENU-FORM
+  title: 메뉴 등록·수정
+  type: 페이지
+  functions:
+  - FN-107
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-MENU-ALGN
+  title: 알레르기·영양성분 입력
+  type: 레이어팝업
+  functions:
+  - FN-109
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-MENU-ORIG
+  title: 원산지 입력
+  type: 레이어팝업
+  functions:
+  - FN-110
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-MENU-COPY
+  title: 상품 복제
+  type: 레이어팝업
+  functions:
+  - FN-109
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-OPTG-LIST
+  title: 옵션 그룹 목록
+  type: 페이지
+  functions:
+  - FN-108
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-OPTG-FORM
+  title: 옵션 그룹 등록·수정
+  type: 페이지
+  functions:
+  - FN-108
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-PRIC-FORM
+  title: 매장별 가격
+  type: 페이지
+  functions:
+  - FN-111
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-SOUT-FORM
+  title: 품절 관리
+  type: 페이지
+  functions:
+  - FN-206
+  users:
+  - UT-02
+  wireframe: 작성
+- id: ADM-SALE-LIST
+  title: 매출 조회
+  type: 페이지
+  functions:
+  - FN-114
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-SALE-DETAIL
+  title: 매출 상세
+  type: 페이지
+  functions:
+  - FN-114
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-SALE-COMP
+  title: 행사·상권 비교
+  type: 페이지
+  functions:
+  - FN-115
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-USER-LIST
+  title: 계정 목록
+  type: 페이지
+  functions:
+  - FN-116
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-USER-FORM
+  title: 계정 등록·수정
+  type: 페이지
+  functions:
+  - FN-116
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-USER-PROXY
+  title: 대행 접속
+  type: 레이어팝업
+  functions:
+  - FN-118
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-ALOG-LIST
+  title: 접속기록 조회
+  type: 페이지
+  functions:
+  - FN-117
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-APIK-LIST
+  title: 연동 계정 목록
+  type: 페이지
+  functions:
+  - FN-503
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-APIK-FORM
+  title: 연동 계정 등록
+  type: 페이지
+  functions:
+  - FN-503
+  - FN-501
+  - FN-502
+  users:
+  - UT-01
+  wireframe: 작성
+- id: STR-AUTH-LOGIN
+  title: 가맹 로그인
+  type: 페이지
+  functions:
+  - FN-201
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-AUTH-OTP
+  title: 가맹 2차 인증
+  type: 페이지
+  functions:
+  - FN-201
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-STOR-PICK
+  title: 매장 선택
+  type: 페이지
+  functions:
+  - FN-201
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-HOME-MAIN
+  title: 매점 홈
+  type: 페이지
+  functions:
+  - FN-202
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-ORDR-LIST
+  title: 주문 접수 목록
+  type: 페이지
+  functions:
+  - FN-207
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-ORDR-DETAIL
+  title: 주문 상세
+  type: 페이지
+  functions:
+  - FN-207
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-ORDR-PRNT
+  title: 주문서 재출력
+  type: 레이어팝업
+  functions:
+  - FN-209
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-INFO-DETAIL
+  title: 매점 정보
+  type: 페이지
+  functions:
+  - FN-202
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-INFO-FORM
+  title: 매점 정보 변경 요청
+  type: 페이지
+  functions:
+  - FN-203
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-OPEN-STATE
+  title: 영업 상태 변경
+  type: 레이어팝업
+  functions:
+  - FN-204
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-SALE-LIST
+  title: 매점 매출 조회
+  type: 페이지
+  functions:
+  - FN-208
+  users:
+  - UT-02
+  wireframe: 작성
+- id: WEB-STOR-ENTRY
+  title: 매장 진입
+  type: 페이지
+  functions:
+  - FN-301
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-STOR-BLOCK
+  title: 주문 불가 안내
+  type: 페이지
+  functions:
+  - FN-301
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-TYPE
+  title: 수령 방식 선택
+  type: 페이지
+  functions:
+  - FN-302
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-MENU-LIST
+  title: 메뉴 목록
+  type: 페이지
+  functions:
+  - FN-302
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-MENU-DETAIL
+  title: 메뉴 상세·옵션 선택
+  type: 페이지
+  functions:
+  - FN-303
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-CART-LIST
+  title: 장바구니
+  type: 페이지
+  functions:
+  - FN-304
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-FORM
+  title: 결제 상세
+  type: 페이지
+  functions:
+  - FN-305
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-PAY-WAIT
+  title: 결제 진행
+  type: 페이지
+  functions:
+  - FN-306
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-DONE
+  title: 결제 완료
+  type: 페이지
+  functions:
+  - FN-306
+  - FN-308
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-FIND
+  title: 주문 조회
+  type: 페이지
+  functions:
+  - FN-309
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-STAT
+  title: 주문 상태
+  type: 페이지
+  functions:
+  - FN-307
+  users:
+  - UT-03
+  wireframe: 작성
+- id: WEB-ORDR-CNCL
+  title: 주문 취소
+  type: 레이어팝업
+  functions:
+  - FN-310
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-IDLE-MAIN
+  title: 대기화면
+  type: 전체화면
+  functions:
+  - FN-401
+  - FN-410
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-ORDR-TYPE
+  title: 취식유형 선택
+  type: 전체화면
+  functions:
+  - FN-402
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-MENU-LIST
+  title: 메뉴 선택
+  type: 전체화면
+  functions:
+  - FN-403
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-MENU-OPTN
+  title: 옵션 선택
+  type: 레이어팝업
+  functions:
+  - FN-403
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-CART-LIST
+  title: 주문 내역 확인
+  type: 전체화면
+  functions:
+  - FN-404
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-PAY-TYPE
+  title: 결제수단 선택
+  type: 전체화면
+  functions:
+  - FN-405
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-PAY-PROC
+  title: 결제 진행
+  type: 전체화면
+  functions:
+  - FN-405
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-CALL-FORM
+  title: 고객 호출 정보 입력
+  type: 전체화면
+  functions:
+  - FN-407
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-ORDR-DONE
+  title: 주문 완료
+  type: 전체화면
+  functions:
+  - FN-406
+  users:
+  - UT-03
+  wireframe: 작성
+- id: KSK-ADMN-AUTH
+  title: 관리자 인증
+  type: 전체화면
+  functions:
+  - FN-408
+  users:
+  - UT-02
+  wireframe: 작성
+- id: KSK-ADMN-MAIN
+  title: 관리자 메뉴
+  type: 전체화면
+  functions:
+  - FN-408
+  users:
+  - UT-02
+  wireframe: 작성
+- id: KSK-ADMN-SOUT
+  title: 키오스크 품절 설정
+  type: 전체화면
+  functions:
+  - FN-408
+  users:
+  - UT-02
+  wireframe: 작성
+- id: KSK-ADMN-DEVC
+  title: 단말 상태 확인
+  type: 전체화면
+  functions:
+  - FN-408
+  - FN-409
+  users:
+  - UT-02
+  wireframe: 작성
+- id: ADM-RECN-LIST
+  title: 정산 대사
+  users:
+  - UT-01
+  functions:
+  - FN-120
+  wireframe: 작성
+- id: ADM-RECN-DIFF
+  title: 대사 불일치
+  users:
+  - UT-01
+  functions:
+  - FN-120
+  wireframe: 작성
+- id: ADM-BATC-LIST
+  title: 배치 실행 이력
+  users:
+  - UT-01
+  functions:
+  - FN-121
+  wireframe: 작성
+- id: ADM-ULOG-LIST
+  title: 계정 변경 이력
+  users:
+  - UT-01
+  functions:
+  - FN-122
+  wireframe: 작성
+- id: ADM-PRIV-LIST
+  title: 개인정보 파기 이력
+  users:
+  - UT-01
+  functions:
+  - FN-123
+  wireframe: 작성
+- id: STR-AUTH-RESET
+  title: 비밀번호 재설정
+  users:
+  - UT-02
+  functions:
+  - FN-210
+  wireframe: 작성
+- id: STR-MENU-IMPT
+  title: 메뉴 가져오기
+  users:
+  - UT-02
+  functions:
+  - FN-211
+  wireframe: 작성
+- id: STR-NOTI-LIST
+  title: 알림 발송 이력
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-212
+  wireframe: 작성
+- id: KSK-IDLE-ACCS
+  title: 접근성 안내
+  users:
+  - UT-03
+  functions:
+  - FN-411
+  wireframe: 작성
+- id: STR-DEVC-LIST
+  title: 단말기 목록
+  users:
+  - UT-01
+  - UT-02
+  functions:
+  - FN-214
+  - FN-409
+  wireframe: 작성
+- id: STR-DEVC-FORM
+  title: 단말기 등록·수정
+  users:
+  - UT-02
+  functions:
+  - FN-213
+  wireframe: 작성
+- id: STR-DEVC-PAIR
+  title: 단말기 연결
+  users:
+  - UT-02
+  functions:
+  - FN-213
+  wireframe: 작성
+- id: KSK-ADMN-SYNC
+  title: 메뉴 갱신
+  users:
+  - UT-02
+  functions:
+  - FN-408
+  wireframe: 작성
+- id: KSK-ADMN-OPEN
+  title: 판매 메뉴 설정
+  users:
+  - UT-02
+  functions:
+  - FN-412
+  wireframe: 작성
+- id: ADM-RECN-STOR
+  title: 업체별 정산
+  users:
+  - UT-01
+  functions:
+  - FN-126
+  wireframe: 작성
+- id: ADM-ERRL-LIST
+  title: 오류 로그
+  users:
+  - UT-01
+  functions:
+  - FN-127
+  wireframe: 작성
+- id: ADM-EVNT-DETAIL
+  title: 행사 상세
+  users:
+  - UT-01
+  functions:
+  - FN-128
+  wireframe: 작성
+- id: ADM-EVNT-COPY
+  title: 행사 복제
+  users:
+  - UT-01
+  functions:
+  - FN-129
+  wireframe: 작성
+- id: ADM-STOR-BULK
+  title: 매장 일괄 등록
+  users:
+  - UT-01
+  functions:
+  - FN-130
+  wireframe: 작성
+specs:
+- id: FS-001
+  screen: ADM-AUTH-LOGIN
+  title: 로그인
+  status: 작성
+- id: FS-002
+  screen: ADM-AUTH-OTP
+  title: 2차 인증
+  status: 작성
+- id: FS-003
+  screen: ADM-HOME-MAIN
+  title: 대시보드
+  status: 작성
+- id: FS-004
+  screen: ADM-EVNT-LIST
+  title: 행사 목록
+  status: 작성
+- id: FS-005
+  screen: ADM-EVNT-FORM
+  title: 행사 등록·수정
+  status: 작성
+- id: FS-006
+  screen: ADM-ZONE-LIST
+  title: 상권 목록
+  status: 작성
+- id: FS-007
+  screen: ADM-ZONE-FORM
+  title: 상권 등록·수정
+  status: 작성
+- id: FS-008
+  screen: ADM-BRND-LIST
+  title: 브랜드 목록
+  status: 작성
+- id: FS-009
+  screen: ADM-BRND-FORM
+  title: 브랜드 등록·수정
+  status: 작성
+- id: FS-010
+  screen: ADM-STOR-LIST
+  title: 매장 목록
+  status: 작성
+- id: FS-011
+  screen: ADM-STOR-FORM
+  title: 매장 등록·수정
+  status: 작성
+- id: FS-012
+  screen: ADM-STOR-DETAIL
+  title: 매장 상세
+  status: 작성
+- id: FS-013
+  screen: ADM-STOR-STATE
+  title: 매장 상태 전환
+  status: 작성
+- id: FS-014
+  screen: STR-CATG-LIST
+  title: 카테고리 목록
+  status: 작성
+- id: FS-015
+  screen: STR-CATG-FORM
+  title: 카테고리 등록·수정
+  status: 작성
+- id: FS-016
+  screen: STR-MENU-LIST
+  title: 메뉴 목록
+  status: 작성
+- id: FS-017
+  screen: STR-MENU-FORM
+  title: 메뉴 등록·수정
+  status: 작성
+- id: FS-018
+  screen: STR-MENU-ALGN
+  title: 알레르기·영양성분 입력
+  status: 작성
+- id: FS-019
+  screen: STR-MENU-ORIG
+  title: 원산지 입력
+  status: 작성
+- id: FS-020
+  screen: STR-MENU-COPY
+  title: 상품 복제
+  status: 작성
+- id: FS-021
+  screen: STR-OPTG-LIST
+  title: 옵션 그룹 목록
+  status: 작성
+- id: FS-022
+  screen: STR-OPTG-FORM
+  title: 옵션 그룹 등록·수정
+  status: 작성
+- id: FS-023
+  screen: STR-PRIC-FORM
+  title: 매장별 가격
+  status: 작성
+- id: FS-024
+  screen: STR-SOUT-FORM
+  title: 품절 관리
+  status: 작성
+- id: FS-025
+  screen: ADM-SALE-LIST
+  title: 매출 조회
+  status: 작성
+- id: FS-026
+  screen: ADM-SALE-DETAIL
+  title: 매출 상세
+  status: 작성
+- id: FS-027
+  screen: ADM-SALE-COMP
+  title: 행사·상권 비교
+  status: 작성
+- id: FS-028
+  screen: ADM-USER-LIST
+  title: 계정 목록
+  status: 작성
+- id: FS-029
+  screen: ADM-USER-FORM
+  title: 계정 등록·수정
+  status: 작성
+- id: FS-030
+  screen: ADM-USER-PROXY
+  title: 대행 접속
+  status: 작성
+- id: FS-031
+  screen: ADM-ALOG-LIST
+  title: 접속기록 조회
+  status: 작성
+- id: FS-032
+  screen: ADM-APIK-LIST
+  title: 연동 계정 목록
+  status: 작성
+- id: FS-033
+  screen: ADM-APIK-FORM
+  title: 연동 계정 등록
+  status: 작성
+- id: FS-034
+  screen: STR-AUTH-LOGIN
+  title: 가맹 로그인
+  status: 작성
+- id: FS-035
+  screen: STR-AUTH-OTP
+  title: 가맹 2차 인증
+  status: 작성
+- id: FS-036
+  screen: STR-STOR-PICK
+  title: 매장 선택
+  status: 작성
+- id: FS-037
+  screen: STR-HOME-MAIN
+  title: 매점 홈
+  status: 작성
+- id: FS-038
+  screen: STR-ORDR-LIST
+  title: 주문 접수 목록
+  status: 작성
+- id: FS-039
+  screen: STR-ORDR-DETAIL
+  title: 주문 상세
+  status: 작성
+- id: FS-040
+  screen: STR-ORDR-PRNT
+  title: 주문서 재출력
+  status: 작성
+- id: FS-041
+  screen: STR-INFO-DETAIL
+  title: 매점 정보
+  status: 작성
+- id: FS-042
+  screen: STR-INFO-FORM
+  title: 매점 정보 변경 요청
+  status: 작성
+- id: FS-043
+  screen: STR-OPEN-STATE
+  title: 영업 상태 변경
+  status: 작성
+- id: FS-044
+  screen: STR-SALE-LIST
+  title: 매점 매출 조회
+  status: 작성
+- id: FS-045
+  screen: WEB-STOR-ENTRY
+  title: 매장 진입
+  status: 작성
+- id: FS-046
+  screen: WEB-STOR-BLOCK
+  title: 주문 불가 안내
+  status: 작성
+- id: FS-047
+  screen: WEB-ORDR-TYPE
+  title: 수령 방식 선택
+  status: 작성
+- id: FS-048
+  screen: WEB-MENU-LIST
+  title: 메뉴 목록
+  status: 작성
+- id: FS-049
+  screen: WEB-MENU-DETAIL
+  title: 메뉴 상세·옵션 선택
+  status: 작성
+- id: FS-050
+  screen: WEB-CART-LIST
+  title: 장바구니
+  status: 작성
+- id: FS-051
+  screen: WEB-ORDR-FORM
+  title: 결제 상세
+  status: 작성
+- id: FS-052
+  screen: WEB-PAY-WAIT
+  title: 결제 진행
+  status: 작성
+- id: FS-053
+  screen: WEB-ORDR-DONE
+  title: 결제 완료
+  status: 작성
+- id: FS-054
+  screen: WEB-ORDR-FIND
+  title: 주문 조회
+  status: 작성
+- id: FS-055
+  screen: WEB-ORDR-STAT
+  title: 주문 상태
+  status: 작성
+- id: FS-056
+  screen: WEB-ORDR-CNCL
+  title: 주문 취소
+  status: 작성
+- id: FS-057
+  screen: KSK-IDLE-MAIN
+  title: 대기화면
+  status: 작성
+- id: FS-058
+  screen: KSK-ORDR-TYPE
+  title: 취식유형 선택
+  status: 작성
+- id: FS-059
+  screen: KSK-MENU-LIST
+  title: 메뉴 선택
+  status: 작성
+- id: FS-060
+  screen: KSK-MENU-OPTN
+  title: 옵션 선택
+  status: 작성
+- id: FS-061
+  screen: KSK-CART-LIST
+  title: 주문 내역 확인
+  status: 작성
+- id: FS-062
+  screen: KSK-PAY-TYPE
+  title: 결제수단 선택
+  status: 작성
+- id: FS-063
+  screen: KSK-PAY-PROC
+  title: 결제 진행
+  status: 작성
+- id: FS-064
+  screen: KSK-CALL-FORM
+  title: 고객 호출 정보 입력
+  status: 작성
+- id: FS-065
+  screen: KSK-ORDR-DONE
+  title: 주문 완료
+  status: 작성
+- id: FS-066
+  screen: KSK-ADMN-AUTH
+  title: 관리자 인증
+  status: 작성
+- id: FS-067
+  screen: KSK-ADMN-MAIN
+  title: 관리자 메뉴
+  status: 작성
+- id: FS-068
+  screen: KSK-ADMN-SOUT
+  title: 키오스크 품절 설정
+  status: 작성
+- id: FS-069
+  screen: KSK-ADMN-DEVC
+  title: 단말 상태 확인
+  status: 작성
+- id: FS-070
+  screen: ADM-RECN-LIST
+  title: 정산 대사
+  status: 작성
+- id: FS-071
+  screen: ADM-RECN-DIFF
+  title: 대사 불일치
+  status: 작성
+- id: FS-072
+  screen: ADM-BATC-LIST
+  title: 배치 실행 이력
+  status: 작성
+- id: FS-073
+  screen: ADM-ULOG-LIST
+  title: 계정 변경 이력
+  status: 작성
+- id: FS-074
+  screen: ADM-PRIV-LIST
+  title: 개인정보 파기 이력
+  status: 작성
+- id: FS-075
+  screen: STR-AUTH-RESET
+  title: 비밀번호 재설정
+  status: 작성
+- id: FS-076
+  screen: STR-MENU-IMPT
+  title: 메뉴 가져오기
+  status: 작성
+- id: FS-077
+  screen: STR-NOTI-LIST
+  title: 알림 발송 이력
+  status: 작성
+- id: FS-078
+  screen: KSK-IDLE-ACCS
+  title: 접근성 안내
+  status: 작성
+- id: FS-079
+  screen: STR-DEVC-LIST
+  title: 단말기 목록
+  status: 작성
+- id: FS-080
+  screen: STR-DEVC-FORM
+  title: 단말기 등록·수정
+  status: 작성
+- id: FS-081
+  screen: STR-DEVC-PAIR
+  title: 단말기 연결
+  status: 작성
+- id: FS-082
+  screen: KSK-ADMN-SYNC
+  title: 메뉴 갱신
+  status: 작성
+- id: FS-083
+  screen: KSK-ADMN-OPEN
+  title: 판매 메뉴 설정
+  status: 작성
+- id: FS-084
+  screen: ADM-RECN-STOR
+  title: 업체별 정산
+  status: 작성
+- id: FS-085
+  screen: ADM-ERRL-LIST
+  title: 오류 로그
+  status: 작성
+- id: FS-086
+  screen: ADM-EVNT-DETAIL
+  title: 행사 상세
+  status: 작성
+- id: FS-087
+  screen: ADM-EVNT-COPY
+  title: 행사 복제
+  status: 작성
+- id: FS-088
+  screen: ADM-STOR-BULK
+  title: 매장 일괄 등록
+  status: 작성

@@ -1,0 +1,62 @@
+# 서비스 Context
+# 작성: service-planner
+
+services:
+  - id: ""             # SV-01
+    name: ""
+    users: []          # UT-01
+    requirements: []   # REQ-001
+    state: open
+
+menus:
+  - channel: ""        # 내부 어드민 / 가맹 어드민 / 웹앱 / 키오스크
+    tree:
+      - depth1: ""
+        depth2: ""
+        depth3: ""
+        screens: []    # SC 식별자
+        users: []      # 접근 가능한 사용자 유형
+
+functions:
+  - id: ""             # FN-001
+    name: ""
+    purpose: ""
+    users: []          # UT-01
+    requirements: []   # REQ-001
+    precondition: ""
+    input: ""
+    process: ""
+    output: ""
+    exception: ""
+    permission: ""
+    status_values: []
+    screens: []        # SC 식별자
+    data: []           # 업무 객체명
+    state: open
+
+user_roles:
+  - id: ""             # UT-01
+    name: ""
+    description: ""
+
+permissions:
+  # 기능과 사용자 유형의 교차. 빈 칸을 두지 않는다.
+  - function: ""       # FN-001
+    matrix:
+      - user: ""       # UT-01
+        allowed: false # true / false
+        condition: ""  # 조건부 허용이면 조건을 적는다
+
+business_rules:
+  - id: ""             # BR-01
+    text: ""           # 조건과 결과가 드러나게 한 문장
+    functions: []
+    state: open
+
+status:
+  - object: ""         # 주문 / 매장 / 배포
+    values:
+      - name: ""
+        enter_when: ""
+        next: []
+        terminal: false

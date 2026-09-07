@@ -1,0 +1,43 @@
+# 결정과 미결 항목
+# 작성: 전원
+# 값을 바꾼 Agent 는 그 자리에서 이유를 적는다.
+
+decisions:
+  - id: ""             # DC-001
+    subject: ""        # 무엇을 정했는가
+    decision: ""       # 어떻게 정했는가
+    reason: ""         # 왜 그렇게 정했는가
+    options_considered: []
+    source: ""         # 누가 정했는가. 사용자 / 조사 / 기존 문서
+    evidence: ""       # 근거 위치
+    date: ""
+    affects: []        # 이 결정이 영향을 주는 문서와 식별자
+    decided_by: ""     # pm-consultant / 사용자
+
+open_issues:
+  - id: ""             # IS-001
+    issue: ""          # 무엇이 정해지지 않았는가
+    severity: ""       # CRITICAL / MAJOR / MINOR / CONFIRM
+    reason: ""         # 왜 지금 정할 수 없는가
+    required_decision: ""  # 무엇을 정하면 풀리는가
+    options: []        # 선택지
+    impact: ""         # 정해지지 않으면 무엇이 막히는가
+    blocked_items: []  # 이 항목 때문에 멈춘 작업
+    raised_by: ""      # 어느 Agent 가 올렸는가
+    raised_at: ""
+    status: ""         # 미결 / 해결
+    resolution: ""     # 해결했다면 어떻게 정했는가
+
+conflicts:
+  # 기존 내용과 새 판단이 충돌할 때. 임의로 고치지 않는다.
+  - existing: ""       # 기존 내용
+    conflicting: ""    # 충돌 내용
+    review_needed: ""  # 무엇을 검토해야 하는가
+    location: []       # 양쪽 문서 위치
+    status: ""         # 미결 / 해결
+
+revision_count:
+  # 같은 항목으로 세 번 되돌아가면 의사결정 필요로 올린다.
+  - item: ""           # 식별자
+    count: 0
+    last_stage: ""     # 마지막으로 되돌아간 단계

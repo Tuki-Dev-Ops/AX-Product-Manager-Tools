@@ -1,0 +1,13 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 편집기
+.vscode/
+.idea/
+
+# 파이썬
+__pycache__/
+*.pyc
+.venv/

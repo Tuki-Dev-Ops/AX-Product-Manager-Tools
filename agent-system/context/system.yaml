@@ -1,0 +1,102 @@
+# 시스템 Context
+# 작성: system-planner
+# 기술명을 확정할 수 없으면 role 만 적고 tech 는 비운다.
+
+layers:
+  client:
+    - role: ""         # 하이브리드 웹앱 / 키오스크 / 어드민
+      tech: ""
+      state: open
+  frontend:
+    - role: ""
+      tech: ""
+      state: open
+  backend:
+    - role: ""         # 인증 / 권한 / 업무 처리 / 데이터 처리 / 파일 처리 / 알림
+      tech: ""
+      state: open
+  database:
+    - role: ""
+      tech: ""
+      state: open
+  storage:
+    - role: ""
+      tech: ""
+      state: open
+
+function_mapping:
+  - function: ""       # FN-001
+    screens: []        # SC 식별자
+    apis: []           # API 이름
+    data: []           # 업무 객체명
+    external: []       # 외부 시스템명
+
+apis:
+  - name: ""
+    purpose: ""
+    caller: ""         # 어느 채널이 부르는가
+    input: ""
+    output: ""
+    failure: ""        # 실패 시 무엇을 돌려주는가
+    permission: ""
+    idempotent: false  # 같은 요청이 두 번 와도 되는가
+    state: open
+
+data_objects:
+  - name: ""
+    key: ""            # 식별자
+    attributes: []
+    relations: []      # 매장 1 : 주문 N
+    retention: ""      # 보관 기간
+    personal_data: []  # 개인정보에 해당하는 속성
+    state: open
+
+external_systems:
+  - name: ""
+    purpose: ""
+    direction: ""      # 송신 / 수신 / 양방향
+    method: ""         # 연동 방식
+    auth: ""           # 인증 방식
+    on_failure: ""     # 실패 시 처리
+    retry: ""          # 재시도 정책
+    fallback: ""       # 대체 수단. 없으면 없다고 적는다
+    evidence: ""       # 공식 문서 위치
+    state: open
+
+authentication:
+  method: ""
+  second_factor: ""
+  session: ""
+  state: open
+
+authorization:
+  model: ""            # 권한 부여 방식
+  scope_rule: ""       # 담당 범위 제한 규칙
+  state: open
+
+notification:
+  - channel: ""        # 알림톡 / 문자 / 앱 푸시 / 화면
+    trigger: ""
+    on_failure: ""
+    state: open
+
+batch:
+  - name: ""
+    schedule: ""
+    purpose: ""
+    on_failure: ""
+    rerun: ""          # 재실행 수단
+    state: open
+
+operation:
+  access_log: ""       # 접속 기록 보관 기준
+  audit_log: ""        # 작업 이력 보관 기준
+  backup: ""
+  monitoring: ""
+  state: open
+
+tech_decisions_required:
+  - subject: ""        # 무엇을 정해야 하는가
+    options: []
+    condition: ""      # 어떤 조건이면 어느 쪽인가
+    impact: ""         # 정해지지 않으면 무엇이 막히는가

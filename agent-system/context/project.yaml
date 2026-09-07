@@ -1,0 +1,64 @@
+# 프로젝트 Context
+# 작성: pm-consultant
+# 모든 값은 state 를 가진다. confirmed / assumed / open
+# assumed 와 open 은 _data/issues.yaml 에 등록한다.
+
+project:
+  name: ""
+  department: ""
+  phase: ""            # 착수 / 분석 / 설계 / 구축
+  background:
+    text: ""
+    state: open
+    source: ""         # 근거 자료의 파일명과 위치
+  problem:
+    - text: ""         # 누가 언제 무엇 때문에 무엇이 안 되는가
+      who: ""
+      when: ""
+      current: ""      # 지금은 어떻게 하고 있는가
+      state: open
+      source: ""
+  goal:
+    - id: ""           # GO-01
+      text: ""
+      solves: ""       # 위 problem 중 무엇을 푸는가
+      measure: ""      # 달성 여부를 어떻게 판단하는가
+      state: open
+
+target_users:
+  - id: ""             # UT-01
+    name: ""
+    role: ""
+    scope: ""          # 접근 범위
+    channel: ""        # 접근 수단
+    state: open
+
+stakeholders:
+  - name: ""
+    interest: ""       # 이 프로젝트에서 무엇을 얻는가
+    state: open
+
+scope:
+  included:
+    - text: ""
+      state: open
+  excluded:
+    - text: ""
+      reason: ""       # 왜 제외하는가
+      state: open
+  interface_only:      # 만들지 않지만 연결은 하는 것
+    - text: ""
+      state: open
+
+requirements:
+  - id: ""             # REQ-001
+    text: ""           # 주어, 대상, 동작이 들어간 한 문장
+    goal: ""           # 어느 목표에 속하는가
+    priority: ""       # 필수 / 선택
+    state: open
+    source: ""
+
+expected_effect:
+  - text: ""
+    evidence: ""       # 근거가 없으면 수치를 적지 않는다
+    state: open
