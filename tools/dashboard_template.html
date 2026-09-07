@@ -1348,33 +1348,31 @@ function tableCols(items, from) {
 const BTN = ["b", "b2", "bd"];
 const FLD = ["f", "fx", "fe", "fo", "fd", "fq", "sel"];
 const CAP = { fq: 320, f: 220, fx: 220, fe: 220, fo: 220, fd: 200, sel: 200 };
-function wfFit(kind, w, full) {
-  if (BTN.indexOf(kind) >= 0) return Math.min(w, 120);
-  if (!full && FLD.indexOf(kind) >= 0) return Math.min(w, CAP[kind] || 220);
-  return w;
-}
-// 칸을 왼쪽부터 붙이고 끝의 버튼 묶음은 오른쪽 끝에 붙인다
-function wfLay(row, baseX, innerW, full) {
-  const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
-  const avail = innerW - WFCG * (row.length - 1);
-  const wid = row.map(c => {
-    const share = full ? innerW : avail * ((c.wt || 1) / sum);
-    return wfFit(c.kind, share, full);
+// mode 0 어드민 본문, 1 카드·폼, 2 좁은 화면
+// 칸은 왼쪽부터 앞 칸에 붙는다. 여백 칸(sp)이 남는 폭을 가져간다
+// 버튼만 있는 줄은 오른쪽 끝에 붙인다
+function wfLay(row, baseX, innerW, full, mode) {
+  const n = row.length;
+  const wid = new Array(n).fill(0);
+  const flex = [];
+  let fixed = 0, flexSum = 0;
+  row.forEach((c, i) => {
+    const k = c.kind;
+    if (k !== "sp" && !full && mode < 2 && BTN.indexOf(k) >= 0) { wid[i] = 120; fixed += 120; return; }
+    if (k !== "sp" && !full && mode === 0 && FLD.indexOf(k) >= 0) {
+      wid[i] = CAP[k] || 220; fixed += wid[i]; return;
+    }
+    flex.push(i); flexSum += (c.wt || 1);
   });
-  let tail = row.length;
-  while (tail > 0 && BTN.indexOf(row[tail - 1].kind) >= 0) tail--;
-  const pos = [];
+  const gap = WFCG * (n - 1);
+  const rest = Math.max(0, innerW - fixed - gap);
+  if (flexSum > 0) flex.forEach(i => { wid[i] = rest * ((row[i].wt || 1) / flexSum); });
   let x = baseX;
-  for (let i = 0; i < tail; i++) {
-    if (row[i].kind === "sp") { pos.push(null); continue; }
-    pos.push(x);
+  if (!flex.length && !full) x += innerW - fixed - gap;
+  const pos = new Array(n).fill(null);
+  for (let i = 0; i < n; i++) {
+    if (row[i].kind !== "sp") pos[i] = x;
     x += wid[i] + WFCG;
-  }
-  let rx = baseX + innerW;
-  for (let i = row.length - 1; i >= tail; i--) {
-    rx -= wid[i];
-    pos[i] = rx;
-    rx -= WFCG;
   }
   return { pos: pos, wid: wid };
 }
@@ -1390,7 +1388,7 @@ function drawWFRows(ctx, items, heights, X, Y, W) {
     const full = row.length === 1;
     const avail = innerW - WFCG * (row.length - 1);
     const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
-    const lay = wfLay(row, X + WFPAD, innerW, full);
+    const lay = wfLay(row, X + WFPAD, innerW, full, 1);
     row.forEach((c, i) => {
       if (lay.pos[i] === null) return;
       const wide = (c.kind === "top" || c.kind === "hr") && full;
@@ -1517,7 +1515,7 @@ function drawWFScreen(ctx, sc) {
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;
-    const lay = wfLay(row, baseX, innerW, full);
+    const lay = wfLay(row, baseX, innerW, full, useCol ? 1 : (sc.w < 1400 ? 2 : 0));
     row.forEach((c, i) => {
       if (lay.pos[i] === null) return;
       const wide = (c.kind === "top" || c.kind === "hr") && full;

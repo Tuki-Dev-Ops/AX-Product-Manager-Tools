@@ -1607,3 +1607,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-169
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 조회와 초기화 버튼을 검색어 칸 오른쪽에 붙인다. 등록 버튼만 줄 오른쪽 끝에 둔다. 조회 화면 24개에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
