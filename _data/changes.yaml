@@ -1652,3 +1652,48 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-174
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 조회 결과 없음 화면을 목록 영역 전체를 쓰는 빈 상태로 바꾼다. 아이콘과 문구, 다음 행동 안내를 가운데 정렬한다. 25개 화면에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-175
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 등록·수정 모달 뒤에 목록 화면을 그린다. 어느 목록에서 열었는지 보이게 한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-176
+    date: 2026-09-07
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-06
+    summary: 행사 등록·수정에서 화면 제목과 겹치는 구역 제목 '기본 정보'를 뺀다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-177
+    date: 2026-09-07
+    type: 추가
+    source: 사용자 요청
+    document: DOC-06
+    summary: 장소를 주소 검색으로 입력한다. 주소 검색 화면(ADM-ADDR-FIND)을 추가하고 05, 07, FL-113에 반영한다
+    affects: [DOC-04, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-178
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 행사 등록·수정의 비고 입력 칸에 '관리자 메모' 라벨과 안내 문구를 붙인다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

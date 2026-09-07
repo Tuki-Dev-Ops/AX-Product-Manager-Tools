@@ -1229,7 +1229,7 @@ function parseCell(c) {
 const WFH = {
   top: 56, h: 52, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
   err: 30, chk: 30, rad: 30,
-  tx: 26, cnt: 40, note: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
+  tx: 26, cnt: 40, note: 40, empty: 230, fs: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
 };
 function wfCellH(c) {
@@ -1237,7 +1237,8 @@ function wfCellH(c) {
       ["f", "fd", "fq", "sel", "fx", "fe", "fo"].indexOf(c.kind) >= 0) return 68;
   if (c.kind === "img" || c.kind === "box") {
     const n = parseInt(c.text, 10);
-    return isNaN(n) ? WFH[c.kind] : n;
+    const bh0 = isNaN(n) ? WFH[c.kind] : n;
+    return c.text.indexOf("//") >= 0 ? bh0 + 24 : bh0;
   }
   if (c.kind === "lines") return (parseInt(c.text, 10) || 4) * 13 + 4;
   return WFH[c.kind] || 26;
@@ -1261,10 +1262,10 @@ function drawWFCanvas(canvas, model, scale) {
   ctx.font = FC.fontSm;
   S.forEach(wfMeasure);
   // 덮개 화면은 바로 앞의 일반 화면을 바탕으로 쓴다
-  let base = null;
+  let base = null, near = null;
   S.forEach(sc => {
-    if (sc.ov) { sc.back = base; }
-    else if (!sc.pane) { base = sc; }
+    if (sc.ov) { sc.back = base || near; }
+    else if (!sc.pane) { near = sc; if (sc.name.indexOf("·") < 0) base = sc; }
   });
 
   // 같은 화면의 상태를 한 줄에 모으고 화면이 바뀌면 구분선을 넣는다
@@ -1604,7 +1605,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     wfText(ctx, s, x + 12, y + h / 2, w - 16, FS, "#3D4954");
     return;
   }
-  if (["f", "sel", "fd", "fq", "fx", "fe", "fo"].indexOf(k) >= 0 && s.indexOf("//") >= 0) {
+  if (["f", "sel", "fd", "fq", "fs", "fx", "fe", "fo"].indexOf(k) >= 0 && s.indexOf("//") >= 0) {
     const lp = s.split("//").map(v => v.trim());
     let head = lp[0] || "";
     if (c.req) head += " *";
@@ -1635,10 +1636,15 @@ function drawWFCell(ctx, c, x, y, w, h) {
       ctx.arc(x + 17, fy + fh / 2 - 1, 5, 0, Math.PI * 2);
       ctx.moveTo(x + 21, fy + fh / 2 + 3); ctx.lineTo(x + 25, fy + fh / 2 + 7);
       ctx.stroke();
+    } else if (k === "fs") {
+      ctx.beginPath();
+      ctx.arc(x + w - 21, fy + fh / 2 - 2, 5, 0, Math.PI * 2);
+      ctx.moveTo(x + w - 17, fy + fh / 2 + 2); ctx.lineTo(x + w - 13, fy + fh / 2 + 6);
+      ctx.stroke();
     }
     return;
   }
-  if (k === "f" || k === "sel" || k === "fd" || k === "fq") {
+  if (k === "f" || k === "sel" || k === "fd" || k === "fq" || k === "fs") {
     const pf = s.split("~").map(v => v.trim());
     ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
     roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
@@ -1667,6 +1673,11 @@ function drawWFCell(ctx, c, x, y, w, h) {
       ctx.arc(x + 17, cy - 1, 5, 0, Math.PI * 2);
       ctx.moveTo(x + 21, cy + 3); ctx.lineTo(x + 25, cy + 7);
       ctx.stroke();
+    } else if (k === "fs") {
+      ctx.beginPath();
+      ctx.arc(x + w - 21, cy - 2, 5, 0, Math.PI * 2);
+      ctx.moveTo(x + w - 17, cy + 2); ctx.lineTo(x + w - 13, cy + 6);
+      ctx.stroke();
     }
     return;
   }
@@ -1684,6 +1695,20 @@ function drawWFCell(ctx, c, x, y, w, h) {
     if (k === "chk") { roundRect(ctx, x, cy - box / 2, box, box, 2); ctx.fill(); ctx.stroke(); }
     else { ctx.beginPath(); ctx.arc(x + box / 2, cy, box / 2, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
     wfText(ctx, s, x + box + 8, cy, w - box - 12, F, WFC.ink);
+    return;
+  }
+  if (k === "empty") {
+    const ep = s.split("//").map(v => v.trim());
+    const ex = x + w / 2, ey = y + h / 2 - 26;
+    ctx.strokeStyle = WFC.soft; ctx.lineWidth = 2; ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.arc(ex - 5, ey - 5, 19, 0, Math.PI * 2);
+    ctx.moveTo(ex + 8, ey + 8); ctx.lineTo(ex + 21, ey + 21);
+    ctx.stroke();
+    ctx.lineCap = "butt"; ctx.lineWidth = 1;
+    wfText(ctx, ep[0] || "", ex, y + h / 2 + 34, w - 40,
+           '600 13px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.mut, "center");
+    if (ep[1]) wfText(ctx, ep[1], ex, y + h / 2 + 58, w - 40, FS, WFC.soft, "center");
     return;
   }
   if (k === "tx") { wfText(ctx, s, x, y + h / 2, w, F, WFC.mut); return; }
@@ -1705,25 +1730,21 @@ function drawWFCell(ctx, c, x, y, w, h) {
     return;
   }
   if (k === "img" || k === "box") {
-    ctx.fillStyle = k === "img" ? WFC.bg : WFC.fill;
-    ctx.strokeStyle = WFC.line; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.rect(x, y, w, h); ctx.fill(); ctx.stroke();
-    if (k === "img") {
-      ctx.strokeStyle = WFC.soft;
-      ctx.beginPath();
-      ctx.moveTo(x, y); ctx.lineTo(x + w, y + h);
-      ctx.moveTo(x + w, y); ctx.lineTo(x, y + h);
-      ctx.stroke();
-      const lbl = s.replace(/^\d+\s*/, "") || "Image";
-      ctx.font = FS;
-      const tw = ctx.measureText(lbl).width;
-      ctx.fillStyle = WFC.bg;
-      ctx.fillRect(x + w / 2 - tw / 2 - 5, y + h / 2 - 8, tw + 10, 16);
-      wfText(ctx, lbl, x + w / 2, y + h / 2, w, FS, WFC.mut, "center");
-    } else {
-      const lbl = s.replace(/^\d+\s*/, "");
-      if (lbl) wfText(ctx, lbl, x + w / 2, y + h / 2, w - 16, FS, WFC.mut, "center");
+    const bm = s.match(/^(\d+)\s*(.*)$/);
+    let lb = bm ? bm[2] : s;
+    let bx = x, bw = w, by = y, bh = h;
+    if (lb.indexOf("//") >= 0) {
+      const bp = lb.split("//").map(v => v.trim());
+      let head = bp[0] || "";
+      if (c.req) head += " *";
+      wfText(ctx, head, x, y + 11, w, '600 12px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.ink);
+      by = y + 24; bh = h - 24; lb = bp[1] || "";
     }
+    ctx.fillStyle = k === "box" ? WFC.fill : WFC.bg;
+    ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
+    roundRect(ctx, bx, by, bw, bh, 2); ctx.fill(); ctx.stroke();
+    wfText(ctx, lb || (k === "img" ? "Image" : ""), bx + (k === "box" ? 11 : bw / 2),
+           by + bh / 2, bw - 24, F, WFC.mut, k === "box" ? "left" : "center");
     return;
   }
   if (k === "stat") {
