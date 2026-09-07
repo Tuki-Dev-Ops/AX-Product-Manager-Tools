@@ -1580,4 +1580,13 @@ changes:
     affects: [DOC-01, DOC-03, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-166
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 검색 칸을 절반 폭으로 줄여 왼쪽에 두고 조회와 초기화 버튼을 오른쪽 끝으로 보낸다. 24개 조회 화면에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
 
