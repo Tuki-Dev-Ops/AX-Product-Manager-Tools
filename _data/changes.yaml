@@ -1589,4 +1589,13 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-167
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 등록 버튼을 제목 옆에서 조회 조건 첫 줄 오른쪽 끝으로 옮김. 오른쪽 끝을 동작 자리로 통일한다. 목록 화면 16개에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
 
