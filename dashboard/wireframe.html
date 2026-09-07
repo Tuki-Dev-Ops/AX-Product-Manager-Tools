@@ -11,7 +11,7 @@
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--ink);
   font:14px/1.6 "IBM Plex Sans KR","Malgun Gothic",system-ui,sans-serif; }
-.app { display:grid; grid-template-columns:248px 360px 1fr; height:100vh; }
+.app { display:grid; grid-template-columns:264px 1fr; height:100vh; }
 .col { min-width:0; display:flex; flex-direction:column; }
 .pane { border-right:1px solid var(--line); background:var(--surface); }
 .hd { padding:12px 16px; border-bottom:1px solid var(--line); display:flex;
@@ -29,8 +29,6 @@ body { margin:0; background:var(--bg); color:var(--ink);
   color:var(--accent-ink); font-weight:600; }
 .item i { display:block; font-family:var(--mono); font-size:10px; color:var(--muted);
   font-style:normal; }
-#src { flex:1; width:100%; border:0; padding:13px 16px; resize:none; outline:none;
-  font-family:var(--mono); font-size:12.5px; line-height:1.75; background:var(--surface); }
 .btn { appearance:none; font:inherit; font-size:12px; padding:5px 10px; border-radius:5px;
   border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer; }
 .btn:hover { border-color:var(--accent); color:var(--accent-ink); }
@@ -39,10 +37,6 @@ body { margin:0; background:var(--bg); color:var(--ink);
 .holder { transform-origin:0 0; }
 #code { flex:1; overflow:auto; margin:0; padding:16px 18px; background:#1E2733; color:#D8E0E8;
   font-family:var(--mono); font-size:12px; line-height:1.7; white-space:pre; }
-.hint { padding:9px 16px; border-top:1px solid var(--line); font-size:11.5px; color:var(--muted);
-  background:var(--raise); flex:none; }
-.hint code { font-family:var(--mono); font-size:11px; color:var(--ink); }
-.err { padding:8px 16px; background:#F3EDED; color:#7A4A46; font-size:12px; display:none; }
 @media (max-width:1080px) { .app { grid-template-columns:1fr; height:auto; } }
 
 /* ── 화면 스타일 (생성물에도 그대로 들어간다) */
@@ -178,18 +172,6 @@ body { margin:0; background:var(--bg); color:var(--ink);
   <div class="col pane">
     <div class="hd"><b>화면</b><em class="sp" id="cnt"></em></div>
     <div class="scroll" id="list"></div>
-  </div>
-  <div class="col pane">
-    <div class="hd"><b>정의</b>
-      <button class="btn sp" id="reset" type="button">되돌리기</button>
-    </div>
-    <div class="err" id="err"></div>
-    <textarea id="src" spellcheck="false"></textarea>
-    <div class="hint">
-      <code>@ admin</code> 틀 · <code>h 제목 ~ 버튼</code> · <code>f 라벨 // 안내</code> ·
-      <code>sel</code> <code>fd</code> <code>fq</code> · <code>b</code> 버튼 ·
-      <code>t</code> <code>td</code> 표 · <code>|</code> 분할 · <code>:2</code> 비중
-    </div>
   </div>
   <div class="col">
     <div class="hd">
@@ -451,10 +433,8 @@ function frameHTML(sc) {
 }
 
 const list = document.getElementById("list");
-const srcEl = document.getElementById("src");
 const holder = document.getElementById("holder");
 const codeEl = document.getElementById("code");
-const errEl = document.getElementById("err");
 let at = 0, zoom = 0.6, view = "view", lastHTML = "";
 document.getElementById("cnt").textContent = DATA.length;
 
@@ -476,24 +456,17 @@ DATA.forEach(function (d, i) {
 });
 
 function draw() {
-  errEl.style.display = "none";
-  try {
-    const sc = parse(srcEl.value)[0];
-    if (!sc) throw new Error("화면 정의가 없습니다");
-    lastHTML = frameHTML(sc);
-    holder.innerHTML = lastHTML;
-    holder.style.transform = "scale(" + zoom + ")";
-    holder.style.width = sc.w + "px";
-    document.getElementById("dim").textContent = sc.w + " x " + sc.h;
-    codeEl.textContent = lastHTML;
-  } catch (e) {
-    errEl.textContent = "작도 실패: " + e.message;
-    errEl.style.display = "block";
-  }
+  const sc = parse(DATA[at].src)[0];
+  if (!sc) return;
+  lastHTML = frameHTML(sc);
+  holder.innerHTML = lastHTML;
+  holder.style.transform = "scale(" + zoom + ")";
+  holder.style.width = sc.w + "px";
+  document.getElementById("dim").textContent = sc.w + " x " + sc.h;
+  codeEl.textContent = lastHTML;
 }
 function pick(i) {
   at = i;
-  srcEl.value = DATA[i].src;
   document.getElementById("ttl").textContent = DATA[i].name || DATA[i].id;
   list.querySelectorAll(".item").forEach(function (b) {
     if (String(b.dataset.i) === String(i)) b.setAttribute("aria-current", "true");
@@ -505,7 +478,6 @@ list.addEventListener("click", function (e) {
   const b = e.target.closest(".item");
   if (b) pick(+b.dataset.i);
 });
-srcEl.addEventListener("input", draw);
 document.querySelectorAll("[data-z]").forEach(function (b) {
   b.addEventListener("click", function () {
     zoom = +b.dataset.z;
@@ -521,7 +493,6 @@ document.querySelectorAll("[data-v]").forEach(function (b) {
     codeEl.hidden = view !== "code";
   });
 });
-document.getElementById("reset").addEventListener("click", function () { pick(at); });
 document.getElementById("copy").addEventListener("click", function () {
   const full = "<style>\n" + WFCSS + "</style>\n" + lastHTML;
   navigator.clipboard.writeText(full).catch(function () {});

@@ -1643,3 +1643,12 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-173
+    date: 2026-09-07
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-06
+    summary: 화면 코드 뷰어에서 정의 편집 패널을 제거한다. 화면 목록과 미리보기 두 단으로 구성한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
