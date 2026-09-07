@@ -1625,3 +1625,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-171
+    date: 2026-09-07
+    type: 추가
+    source: 사용자 요청
+    document: README
+    summary: README를 배경·목적·실행 방법·구조 4개 절로 재구성하고 영어·중국어·일본어 번역본을 추가한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
