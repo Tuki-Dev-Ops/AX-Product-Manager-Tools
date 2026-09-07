@@ -1150,6 +1150,7 @@ const WFPRESET = {
   admin:  [1920, 1030, 0, 0],
   center: [1920, 1030, 520, 0],
   popup:  [1920, 1030, 640, 1],
+  popup2: [1920, 1030, 640, 2],
   wpopup: [1920, 1030, 1000, 1],
   mobile: [390, 844, 0, 0],
   mpopup: [390, 844, 330, 1],
@@ -1262,10 +1263,13 @@ function drawWFCanvas(canvas, model, scale) {
   ctx.font = FC.fontSm;
   S.forEach(wfMeasure);
   // 덮개 화면은 바로 앞의 일반 화면을 바탕으로 쓴다
-  let base = null, near = null;
+  let plain = null, plainAny = null, modal = null;
   S.forEach(sc => {
-    if (sc.ov) { sc.back = base || near; }
-    else if (!sc.pane) { near = sc; if (sc.name.indexOf("·") < 0) base = sc; }
+    if (sc.pane) return;
+    if (sc.ov === 2) sc.back = modal;
+    else if (sc.ov) sc.back = plain || plainAny;
+    if (sc.ov) { if (sc.name.indexOf(" · ") < 0) modal = sc; }
+    else { plainAny = sc; if (sc.name.indexOf(" · ") < 0) plain = sc; }
   });
 
   // 같은 화면의 상태를 한 줄에 모으고 화면이 바뀌면 구분선을 넣는다
@@ -1500,7 +1504,22 @@ function drawWFScreen(ctx, sc) {
     if (sc.ov) {
       ctx.save();
       roundRect(ctx, FX, FY, sc.w, sc.fh, 3); ctx.clip();
-      if (sc.back) drawWFRows(ctx, sc.back.items, sc.back.heights, SX, SY, SW);
+      const chain = [];
+      for (let b = sc.back; b; b = b.back) chain.unshift(b);
+      chain.forEach(b => {
+        if (b.ov) {
+          ctx.fillStyle = "rgba(36,46,58,0.42)";
+          ctx.fillRect(FX, FY, sc.w, sc.fh);
+          const bw = b.cw, bh = b.rawh + 10;
+          const bx = SX + (SW - bw) / 2;
+          const by = FY + Math.max(WFPAD, (sc.fh - bh) / 2);
+          ctx.fillStyle = "#FFFFFF"; ctx.strokeStyle = WFC.line; ctx.lineWidth = 1;
+          roundRect(ctx, bx, by, bw, bh, 4); ctx.fill(); ctx.stroke();
+          drawWFRows(ctx, b.items, b.heights, bx, by + 5 - WFPAD / 2, bw);
+        } else {
+          drawWFRows(ctx, b.items, b.heights, SX, SY, SW);
+        }
+      });
       ctx.fillStyle = "rgba(36,46,58,0.42)";
       ctx.fillRect(FX, FY, sc.w, sc.fh);
       ctx.restore();
@@ -1740,11 +1759,13 @@ function drawWFCell(ctx, c, x, y, w, h) {
       wfText(ctx, head, x, y + 11, w, '600 12px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.ink);
       by = y + 24; bh = h - 24; lb = bp[1] || "";
     }
-    ctx.fillStyle = k === "box" ? WFC.fill : WFC.bg;
+    const inp = k === "box" && by > y;
+    ctx.fillStyle = inp || k === "img" ? WFC.bg : WFC.fill;
     ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
     roundRect(ctx, bx, by, bw, bh, 2); ctx.fill(); ctx.stroke();
-    wfText(ctx, lb || (k === "img" ? "Image" : ""), bx + (k === "box" ? 11 : bw / 2),
-           by + bh / 2, bw - 24, F, WFC.mut, k === "box" ? "left" : "center");
+    if (inp) wfText(ctx, lb, bx + 11, by + 20, bw - 24, F, WFC.mut);
+    else wfText(ctx, lb || (k === "img" ? "Image" : ""), bx + bw / 2, by + bh / 2,
+                bw - 24, F, WFC.mut, "center");
     return;
   }
   if (k === "stat") {

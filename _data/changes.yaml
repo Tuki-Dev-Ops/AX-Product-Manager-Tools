@@ -1697,3 +1697,21 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-179
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 관리자 메모 입력 칸을 다른 입력 칸과 같은 모양으로 맞춘다. 흰 배경, 같은 테두리, 왼쪽 정렬 안내 문구
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-180
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 주소 검색을 행사 등록 팝업 위에 겹쳐 띄운다. 앞 팝업을 닫지 않는다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
