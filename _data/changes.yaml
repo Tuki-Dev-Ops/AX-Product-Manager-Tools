@@ -1616,3 +1616,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-170
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 초기화 버튼을 조회 조건이 설정된 상태에서만 표시한다. 조회 조건 줄 오른쪽 끝에 전체 건수를 표시한다. 목록 화면 40개에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

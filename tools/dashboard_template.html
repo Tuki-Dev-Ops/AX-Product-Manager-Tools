@@ -1229,7 +1229,7 @@ function parseCell(c) {
 const WFH = {
   top: 56, h: 52, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
   err: 30, chk: 30, rad: 30,
-  tx: 26, note: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
+  tx: 26, cnt: 40, note: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
 };
 function wfCellH(c) {
@@ -1359,6 +1359,7 @@ function wfLay(row, baseX, innerW, full, mode) {
   row.forEach((c, i) => {
     const k = c.kind;
     if (k !== "sp" && !full && mode < 2 && BTN.indexOf(k) >= 0) { wid[i] = 120; fixed += 120; return; }
+    if (k === "cnt" && !full) { wid[i] = 110; fixed += 110; return; }
     if (k !== "sp" && !full && mode === 0 && FLD.indexOf(k) >= 0) {
       wid[i] = CAP[k] || 220; fixed += wid[i]; return;
     }
@@ -1686,6 +1687,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     return;
   }
   if (k === "tx") { wfText(ctx, s, x, y + h / 2, w, F, WFC.mut); return; }
+  if (k === "cnt") { wfText(ctx, s, x + w, y + h / 2, w, F, WFC.mut, "right"); return; }
   if (k === "note") {
     ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
     roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
