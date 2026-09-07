@@ -1227,7 +1227,7 @@ function parseCell(c) {
 }
 
 const WFH = {
-  top: 56, h: 52, sub: 34, f: 44, fx: 44, fe: 44, fo: 44, fd: 44, fq: 44, sel: 44, b: 46, b2: 46, bd: 46,
+  top: 56, h: 52, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
   err: 30, chk: 30, rad: 30,
   tx: 26, note: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
@@ -1243,7 +1243,7 @@ function wfCellH(c) {
   return WFH[c.kind] || 26;
 }
 
-const WFPAD = 18, WFGAP = 9, WFCG = 10, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
+const WFPAD = 18, WFGAP = 10, WFCG = 14, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
 function wfMeasure(sc) {
   sc.heights = sc.items.map(row => Math.max.apply(null, row.map(wfCellH)));
   let hh = WFPAD;
@@ -1345,6 +1345,39 @@ function tableCols(items, from) {
   }
   return { wide: wide, align: align, n: head.length };
 }
+const BTN = ["b", "b2", "bd"];
+const FLD = ["f", "fx", "fe", "fo", "fd", "fq", "sel"];
+const CAP = { fq: 320, f: 220, fx: 220, fe: 220, fo: 220, fd: 200, sel: 200 };
+function wfFit(kind, w, full) {
+  if (BTN.indexOf(kind) >= 0) return Math.min(w, 120);
+  if (!full && FLD.indexOf(kind) >= 0) return Math.min(w, CAP[kind] || 220);
+  return w;
+}
+// 칸을 왼쪽부터 붙이고 끝의 버튼 묶음은 오른쪽 끝에 붙인다
+function wfLay(row, baseX, innerW, full) {
+  const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
+  const avail = innerW - WFCG * (row.length - 1);
+  const wid = row.map(c => {
+    const share = full ? innerW : avail * ((c.wt || 1) / sum);
+    return wfFit(c.kind, share, full);
+  });
+  let tail = row.length;
+  while (tail > 0 && BTN.indexOf(row[tail - 1].kind) >= 0) tail--;
+  const pos = [];
+  let x = baseX;
+  for (let i = 0; i < tail; i++) {
+    if (row[i].kind === "sp") { pos.push(null); continue; }
+    pos.push(x);
+    x += wid[i] + WFCG;
+  }
+  let rx = baseX + innerW;
+  for (let i = row.length - 1; i >= tail; i--) {
+    rx -= wid[i];
+    pos[i] = rx;
+    rx -= WFCG;
+  }
+  return { pos: pos, wid: wid };
+}
 function drawWFRows(ctx, items, heights, X, Y, W) {
   let y = Y + WFPAD;
   const innerW = W - WFPAD * 2;
@@ -1357,14 +1390,13 @@ function drawWFRows(ctx, items, heights, X, Y, W) {
     const full = row.length === 1;
     const avail = innerW - WFCG * (row.length - 1);
     const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
-    let x = X + WFPAD;
-    row.forEach(c => {
-      const share = full ? innerW : avail * ((c.wt || 1) / sum);
+    const lay = wfLay(row, X + WFPAD, innerW, full);
+    row.forEach((c, i) => {
+      if (lay.pos[i] === null) return;
       const wide = (c.kind === "top" || c.kind === "hr") && full;
-      const cw = wide ? W : share;
-      const cx = wide && c.kind === "top" ? X : x;
+      const cw = wide ? W : lay.wid[i];
+      const cx = wide && c.kind === "top" ? X : lay.pos[i];
       drawWFCell(ctx, c, cx, y, cw, rh);
-      x += share + WFCG;
     });
     y += rh + WFGAP;
   });
@@ -1485,16 +1517,13 @@ function drawWFScreen(ctx, sc) {
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;
-    const avail = innerW - WFCG * (row.length - 1);
-    const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
-    let x = baseX;
-    row.forEach(c => {
-      const share = full ? innerW : avail * ((c.wt || 1) / sum);
+    const lay = wfLay(row, baseX, innerW, full);
+    row.forEach((c, i) => {
+      if (lay.pos[i] === null) return;
       const wide = (c.kind === "top" || c.kind === "hr") && full;
-      const cw = wide ? (useCol ? colW : SW) : share;
-      const cx = wide && c.kind === "top" ? (useCol ? colX : SX) : x;
+      const cw = wide ? (useCol ? colW : SW) : lay.wid[i];
+      const cx = wide && c.kind === "top" ? (useCol ? colX : SX) : lay.pos[i];
       drawWFCell(ctx, c, cx, y, cw, rh);
-      x += share + WFCG;
     });
     y += rh + WFGAP;
   });

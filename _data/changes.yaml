@@ -1598,4 +1598,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
-
+  - id: CH-168
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 조회 조건의 입력 칸과 버튼 높이를 40px로 맞추고 폭 상한을 둔다. 날짜와 상태 200px, 검색어 320px, 버튼 120px로 왼쪽부터 붙여 배치한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
