@@ -1634,3 +1634,12 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-172
+    date: 2026-09-07
+    type: 수정
+    source: 결함
+    document: DOC-06
+    summary: 화면 코드 뷰어에 문자 인코딩과 글꼴 선언을 추가한다. 선언이 없어 파일을 직접 열거나 서버로 받을 때 한글이 깨졌다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
