@@ -1266,7 +1266,8 @@ function drawWFCanvas(canvas, model, scale) {
   let plain = null, plainAny = null, modal = null;
   S.forEach(sc => {
     if (sc.pane) return;
-    if (sc.ov === 2) sc.back = modal;
+    // 상태 변형은 같은 화면 위에 겹치지 않는다. 원래 화면의 바탕을 그대로 쓴다
+    if (sc.ov === 2) sc.back = modal && modal.id !== sc.id ? modal : (modal ? modal.back : null);
     else if (sc.ov) sc.back = plain || plainAny;
     if (sc.ov) { if (sc.name.indexOf(" · ") < 0) modal = sc; }
     else { plainAny = sc; if (sc.name.indexOf(" · ") < 0) plain = sc; }
@@ -1805,11 +1806,14 @@ function drawWFCell(ctx, c, x, y, w, h) {
   }
   if (k === "tab") {
     const items = s.split("/").map(v => v.trim());
+    const marked = items.some(v => v.charAt(0) === "*");
     let tx = x;
     ctx.font = FS;
-    items.forEach((it, i) => {
+    items.forEach((it0, i) => {
+      const on = it0.charAt(0) === "*" || (!marked && i === 0);
+      const it = it0.charAt(0) === "*" ? it0.slice(1) : it0;
       const tw2 = ctx.measureText(it).width + 24;
-      ctx.fillStyle = i === 0 ? WFC.deep : WFC.bg;
+      ctx.fillStyle = on ? WFC.deep : WFC.bg;
       ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
       roundRect(ctx, tx, y + 3, tw2, h - 8, 3); ctx.fill(); ctx.stroke();
       wfText(ctx, it, tx + tw2 / 2, y + h / 2, tw2 - 10, FS, WFC.ink, "center");

@@ -1715,3 +1715,30 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-181
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 행사 등록·수정에서 소속 상권 구역 제목을 없애고 정보와 상권을 탭으로 나눈다. 탭 선택 상태를 * 로 지정한다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-182
+    date: 2026-09-07
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 주소 검색 결과 없음이 앞 팝업 위에 다시 겹치지 않게 한다. 상태 변형은 원래 화면의 바탕을 그대로 쓴다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-183
+    date: 2026-09-07
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-05
+    summary: 브랜드 목록, 매장 목록, 행사 상세를 없앤다. 매장 관리를 상권 아래로 옮기고 상권 상세(ADM-ZONE-DETAIL)를 새로 둔다. 브랜드 등록은 매장 등록의 브랜드 선택 칸에서 연다
+    affects: [DOC-02, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

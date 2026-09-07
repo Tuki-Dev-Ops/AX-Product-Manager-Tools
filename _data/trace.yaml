@@ -860,7 +860,6 @@ flows:
   - ADM-EVNT-FORM
   - ADM-ZONE-LIST
   - ADM-ZONE-FORM
-  - ADM-BRND-LIST
   - ADM-BRND-FORM
   - ADM-STOR-FORM
   - STR-CATG-LIST
@@ -902,7 +901,6 @@ flows:
   functions:
   - FN-105
   screens:
-  - ADM-STOR-LIST
   - ADM-STOR-DETAIL
   - ADM-STOR-STATE
 - id: FL-110
@@ -943,21 +941,22 @@ flows:
   screens:
   - ADM-ZONE-LIST
   - ADM-ZONE-FORM
+  - ADM-ZONE-DETAIL
 - id: FL-115
   title: 브랜드 목록·등록
   users:
   - UT-01
   functions: []
   screens:
-  - ADM-BRND-LIST
   - ADM-BRND-FORM
 - id: FL-116
-  title: 매장 목록
+  title: 상권 상세·매장
   users:
   - UT-01
-  functions: []
+  functions:
+  - FN-128
   screens:
-  - ADM-STOR-LIST
+  - ADM-ZONE-DETAIL
 - id: FL-117
   title: 매장 등록·수정
   users:
@@ -1668,14 +1667,6 @@ flows:
   - FN-127
   screens:
   - ADM-ERRL-LIST
-- id: FL-150
-  title: 행사 상세
-  users:
-  - UT-01
-  functions:
-  - FN-128
-  screens:
-  - ADM-EVNT-DETAIL
 - id: FL-151
   title: 행사 복제
   users:
@@ -1714,6 +1705,7 @@ screens:
   type: 페이지
   functions:
   - FN-114
+  - FN-128
   users:
   - UT-01
   wireframe: 작성
@@ -1758,11 +1750,11 @@ screens:
   users:
   - UT-01
   wireframe: 작성
-- id: ADM-BRND-LIST
-  title: 브랜드 목록
+- id: ADM-ZONE-DETAIL
+  title: 상권 상세
   type: 페이지
   functions:
-  - FN-119
+  - FN-103
   users:
   - UT-01
   wireframe: 작성
@@ -1771,15 +1763,6 @@ screens:
   type: 페이지
   functions:
   - FN-119
-  users:
-  - UT-01
-  wireframe: 작성
-- id: ADM-STOR-LIST
-  title: 매장 목록
-  type: 페이지
-  functions:
-  - FN-104
-  - FN-105
   users:
   - UT-01
   wireframe: 작성
@@ -2376,13 +2359,6 @@ screens:
   functions:
   - FN-127
   wireframe: 작성
-- id: ADM-EVNT-DETAIL
-  title: 행사 상세
-  users:
-  - UT-01
-  functions:
-  - FN-128
-  wireframe: 작성
 - id: ADM-EVNT-COPY
   title: 행사 복제
   users:
@@ -2426,21 +2402,17 @@ specs:
   screen: ADM-ZONE-LIST
   title: 상권 목록
   status: 작성
+- id: FS-090
+  screen: ADM-ZONE-DETAIL
+  title: 상권 상세
+  status: 작성
 - id: FS-007
   screen: ADM-ZONE-FORM
   title: 상권 등록·수정
   status: 작성
-- id: FS-008
-  screen: ADM-BRND-LIST
-  title: 브랜드 목록
-  status: 작성
 - id: FS-009
   screen: ADM-BRND-FORM
   title: 브랜드 등록·수정
-  status: 작성
-- id: FS-010
-  screen: ADM-STOR-LIST
-  title: 매장 목록
   status: 작성
 - id: FS-011
   screen: ADM-STOR-FORM
@@ -2741,10 +2713,6 @@ specs:
 - id: FS-085
   screen: ADM-ERRL-LIST
   title: 오류 로그
-  status: 작성
-- id: FS-086
-  screen: ADM-EVNT-DETAIL
-  title: 행사 상세
   status: 작성
 - id: FS-087
   screen: ADM-EVNT-COPY
