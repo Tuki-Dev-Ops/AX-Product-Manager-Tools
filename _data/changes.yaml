@@ -2174,3 +2174,39 @@ changes:
     affects: [DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-232
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 정보 탭에 본사 사업자 정보와 정산계좌를 넣는다. 브랜드가 곧 본사이므로 본사 정보를 여기서 받는다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-233
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 매장 탭을 조회 전용으로 바꾼다. 본사는 매장을 등록하지 않고 조회와 상태 전환만 한다. 지점번호는 자동으로 부여한다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-234
+    date: 2026-09-08
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-01
+    summary: 매장 일괄 등록을 범위에서 뺀다. 요구사항 REQ-053, 기능 FN-130, Flow FL-152, 화면 ADM-STOR-BULK를 함께 삭제한다
+    affects: [DOC-03, DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-235
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 모달의 머리말과 아래 버튼 줄을 고정하고 가운데만 스크롤한다. 내용이 길어도 저장과 취소가 늘 보인다
+    affects: [DOC-06]
+    status: 완료
+    requested_by: 기획 담당
