@@ -1769,3 +1769,12 @@ changes:
     affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-187
+    date: 2026-09-08
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-01
+    summary: 행사 복제를 범위에서 뺀다. 요구사항 REQ-052, 기능 FN-129, Flow FL-151, 화면 ADM-EVNT-COPY와 그 명세를 함께 삭제한다
+    affects: [DOC-03, DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

@@ -251,11 +251,6 @@ requirements:
   area: 기준정보
   functions:
   - FN-128
-- id: REQ-052
-  title: 본사 운영자는 이전 행사의 상권과 업체 구성을 새 행사로 복제한다.
-  area: 기준정보
-  functions:
-  - FN-129
 - id: REQ-053
   title: 본사 운영자는 매장을 파일로 한 번에 등록한다.
   area: 기준정보
@@ -783,13 +778,6 @@ functions:
   requirements:
   - REQ-051
   description: 행사에 속한 상권과 업체, 개시 준비 상태를 한 화면에서 확인하고 미완료 업체에 안내를 보낸다
-- id: FN-129
-  title: 행사 복제
-  users:
-  - UT-01
-  requirements:
-  - REQ-052
-  description: 이전 행사의 상권과 업체 구성을 새 행사로 복사한다
 - id: FN-130
   title: 매장 일괄 등록
   users:
@@ -1667,14 +1655,6 @@ flows:
   - FN-127
   screens:
   - ADM-ERRL-LIST
-- id: FL-151
-  title: 행사 복제
-  users:
-  - UT-01
-  functions:
-  - FN-129
-  screens:
-  - ADM-EVNT-COPY
 - id: FL-152
   title: 매장 일괄 등록
   users:
@@ -2359,13 +2339,6 @@ screens:
   functions:
   - FN-127
   wireframe: 작성
-- id: ADM-EVNT-COPY
-  title: 행사 복제
-  users:
-  - UT-01
-  functions:
-  - FN-129
-  wireframe: 작성
 - id: ADM-STOR-BULK
   title: 매장 일괄 등록
   users:
@@ -2713,10 +2686,6 @@ specs:
 - id: FS-085
   screen: ADM-ERRL-LIST
   title: 오류 로그
-  status: 작성
-- id: FS-087
-  screen: ADM-EVNT-COPY
-  title: 행사 복제
   status: 작성
 - id: FS-088
   screen: ADM-STOR-BULK
