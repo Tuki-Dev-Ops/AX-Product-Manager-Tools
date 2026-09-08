@@ -2138,3 +2138,21 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-228
+    date: 2026-09-08
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-05
+    summary: 매장 상세 화면을 없앤다. 매장 정보와 사업자 정보, 운영 현황, 변경 요청을 상권 등록·수정의 매장 탭에서 함께 다룬다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-229
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-03
+    summary: 상권 하나에 브랜드 하나를 둔다. 브랜드를 상권 정보에서 정하고 매장은 지점번호로만 구분한다
+    affects: [DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

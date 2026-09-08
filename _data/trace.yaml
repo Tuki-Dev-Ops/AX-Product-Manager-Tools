@@ -887,7 +887,6 @@ flows:
   functions:
   - FN-105
   screens:
-  - ADM-STOR-DETAIL
   - ADM-STOR-STATE
 - id: FL-110
   title: 로그인
@@ -933,16 +932,10 @@ flows:
   users:
   - UT-01
   functions:
+  - FN-104
   - FN-128
   screens:
   - ADM-ZONE-FORM
-- id: FL-118
-  title: 매장 상세
-  users:
-  - UT-01
-  functions: []
-  screens:
-  - ADM-STOR-DETAIL
 - id: FL-119
   title: 매장 상태 전환
   users:
@@ -1719,16 +1712,9 @@ screens:
   title: 상권 등록·수정
   type: 페이지
   functions:
+  - FN-104
   - FN-119
   - FN-103
-  users:
-  - UT-01
-  wireframe: 작성
-- id: ADM-STOR-DETAIL
-  title: 매장 상세
-  type: 페이지
-  functions:
-  - FN-104
   users:
   - UT-01
   wireframe: 작성
@@ -2353,10 +2339,6 @@ specs:
 - id: FS-007
   screen: ADM-ZONE-FORM
   title: 상권 등록·수정
-  status: 작성
-- id: FS-012
-  screen: ADM-STOR-DETAIL
-  title: 매장 상세
   status: 작성
 - id: FS-013
   screen: ADM-STOR-STATE
