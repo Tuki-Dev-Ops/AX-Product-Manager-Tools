@@ -2318,3 +2318,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-248
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-06
+    summary: 화면 머리말에 무엇을 하는 화면인지 한 줄로 적는다. 58개 화면에 설명을 넣는다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-249
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-06
+    summary: 탭을 밑줄형으로 바꾸고 구역 제목의 배경을 없앤다. 표 머리글과 행 구분선을 옅게 조정한다. 모달 머리말에 닫기를 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
