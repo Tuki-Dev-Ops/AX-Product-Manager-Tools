@@ -2210,3 +2210,12 @@ changes:
     affects: [DOC-06]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-236
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 펼친 드롭다운과 달력을 칸 아래에 겹쳐 띄운다. 자리를 차지해 아래 내용을 밀어내던 것을 고친다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

@@ -1539,6 +1539,7 @@ function drawWFScreen(ctx, sc) {
   const areaX = useCol ? colX : SX;
   const innerW = useCol ? colW - WFPAD * 2 : SW - WFPAD * 2;
   const baseX = areaX + WFPAD;
+  const over = [];
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;
@@ -1548,9 +1549,19 @@ function drawWFScreen(ctx, sc) {
       const wide = (c.kind === "top" || c.kind === "hr") && full;
       const cw = wide ? (useCol ? colW : SW) : lay.wid[i];
       const cx = wide && c.kind === "top" ? (useCol ? colX : SX) : lay.pos[i];
+      if (c.kind === "menu" || c.kind === "cal") { over.push([c, cx, y, cw]); return; }
       drawWFCell(ctx, c, cx, y, cw, rh);
     });
     y += rh + WFGAP;
+  });
+  // 펼친 목록과 달력은 아래 내용을 밀지 않고 겹쳐 그린다
+  over.forEach(o => {
+    const oh = o[0].kind === "menu" ? o[0].text.split("/").length * 32 + 10 : 272;
+    ctx.save();
+    ctx.shadowColor = "rgba(29,37,47,0.18)";
+    ctx.shadowBlur = 12; ctx.shadowOffsetY = 4;
+    drawWFCell(ctx, o[0], o[1], o[2] - 4, o[3], oh);
+    ctx.restore();
   });
   // 토스트는 화면 아래 가운데에 그린다
   const tc = [];
