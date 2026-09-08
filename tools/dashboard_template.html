@@ -1230,15 +1230,16 @@ function parseCell(c) {
 
 const WFH = {
   top: 56, h: 60, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
-  err: 30, chk: 30, rad: 30,
+  err: 30, chk: 30, rad: 30, seg: 40, sw: 40, swo: 40,
   tx: 26, cnt: 40, pick: 44, note: 40, empty: 230, fs: 40, toast: 0, selx: 40, sele: 40, selo: 40, fsx: 40, fse: 40, fso: 40, fdx: 40, fde: 40, fdo: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
 };
 // 손으로 누르는 화면은 조작 영역을 키운다 (키오스크, 모바일)
-const TOUCH = ["f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "b", "b2", "bd",
+const TOUCH = ["f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "b", "b2", "bd", "seg", "sw", "swo",
                "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo",
                "chk", "rad", "tab", "t", "td"];
 function wfCellH(c, touch) {
+  if (c.kind === "seg" && c.text && c.text.indexOf("//") >= 0) return touch ? 80 : 68;
   if (touch && TOUCH.indexOf(c.kind) >= 0) {
     const base = wfCellH(c, false);
     return Math.max(base, base > 52 ? base + 12 : 52);
@@ -1380,6 +1381,7 @@ function tableCols(items, from) {
   return { wide: wide, align: align, n: head.length };
 }
 const BTN = ["b", "b2", "bd"];
+const SEGK = ["seg", "sw", "swo"];
 const FLD = ["menu", "cal", "f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo"];
 const CAP = { fq: 320, f: 220, fx: 220, fe: 220, fo: 220, fd: 200, sel: 200, fs: 220,
   selx: 200, sele: 200, selo: 200, fsx: 220, fse: 220, fso: 220,
@@ -1948,6 +1950,52 @@ function drawWFCell(ctx, c, x, y, w, h) {
       }
       cx2 += cw;
     });
+    return;
+  }
+  if (k === "seg") {
+    const hasLab = s.indexOf("//") >= 0;
+    const lab2 = hasLab ? s.slice(0, s.indexOf("//")).trim() : "";
+    const body2 = hasLab ? s.slice(s.indexOf("//") + 2).trim() : s;
+    const it = body2.split("/").map(v => v.trim());
+    const marked = it.some(v => v.charAt(0) === "*");
+    ctx.font = FS;
+    const pad = 16;
+    const ws = it.map(v => ctx.measureText(v.replace(/^\*/, "")).width + pad * 2);
+    const tw = ws.reduce((a, b) => a + b, 0) + 6 + (it.length - 1) * 2;
+    let by = y + (h - 40) / 2;
+    if (lab2) {
+      wfText(ctx, lab2, x, y + 9, 240,
+             '600 12px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.ink);
+      by = y + 24;
+    }
+    ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
+    roundRect(ctx, x, by, tw, 40, 6); ctx.fill(); ctx.stroke();
+    let sx = x + 3;
+    it.forEach((v0, i) => {
+      const on = v0.charAt(0) === "*" || (!marked && i === 0);
+      const v = v0.replace(/^\*/, "");
+      if (on) {
+        ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.soft;
+        roundRect(ctx, sx, by + 4, ws[i], 32, 4); ctx.fill(); ctx.stroke();
+      }
+      wfText(ctx, v, sx + ws[i] / 2, by + 20, ws[i] - 6, FS, on ? WFC.ink : WFC.mut, "center");
+      sx += ws[i] + 2;
+    });
+    return;
+  }
+  if (k === "sw" || k === "swo") {
+    const p2 = s.split("~").map(v => v.trim());
+    const on = k === "sw";
+    ctx.font = '600 12px "IBM Plex Sans KR","Malgun Gothic",sans-serif';
+    const lw = ctx.measureText(p2[0]).width;
+    wfText(ctx, p2[0], x, y + h / 2, lw + 4,
+           '600 12px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.ink);
+    const tx2 = x + lw + 12, ty = y + h / 2 - 12;
+    ctx.fillStyle = on ? WFC.pri : WFC.line;
+    roundRect(ctx, tx2, ty, 42, 24, 12); ctx.fill();
+    ctx.fillStyle = WFC.bg;
+    ctx.beginPath(); ctx.arc(tx2 + (on ? 30 : 12), ty + 12, 9, 0, Math.PI * 2); ctx.fill();
+    if (p2[1]) wfText(ctx, p2[1], tx2 + 54, y + h / 2, 200, FS, WFC.mut);
     return;
   }
   if (k === "tab") {

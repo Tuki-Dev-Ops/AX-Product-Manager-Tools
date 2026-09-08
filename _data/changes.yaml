@@ -2579,3 +2579,39 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-277
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-04
+    summary: 화면 조작 Flow 7건을 추가한다. 드롭다운, 달력, 주소 검색, 입력 검증, 처리 확인과 결과 안내, 일괄 처리, 고객 화면 안내
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-278
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 화면별 겹쳐 뜨는 요소를 정리한다. 화면 81건에 드롭다운, 달력, 주소 검색, 확인 팝업, 토스트, 검증 오류를 적는다
+    affects: [DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-279
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 빠져 있던 절 제목 두 개를 넣는다. 가맹 어드민 Flow와 가맹 어드민 화면별 Flow가 내부 어드민 절에 묻혀 있었다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-280
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 라디오 버튼을 토글과 세그먼트로 바꾼다. 켜고 끄는 값은 토글, 값이 둘이나 셋인 배타 선택은 세그먼트로 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

@@ -1593,6 +1593,62 @@ flows:
   - FN-127
   screens:
   - ADM-ERRL-LIST
+- id: FL-601
+  title: 드롭다운 선택
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-602
+  title: 달력 선택
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-603
+  title: 주소 검색
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-604
+  title: 입력 검증
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-605
+  title: 처리 확인과 결과 안내
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-606
+  title: 목록 일괄 처리
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
+- id: FL-607
+  title: 고객 화면 안내
+  users:
+  - UT-01
+  - UT-02
+  - UT-03
+  functions: []
+  screens: []
 screens:
 - id: ADM-AUTH-LOGIN
   title: 로그인
