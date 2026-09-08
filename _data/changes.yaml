@@ -2516,3 +2516,30 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-270
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 드롭다운과 달력이 펼친 칸이 아닌 엉뚱한 자리에 떴다. 펼친 칸의 위치와 너비에 맞춰 겹쳐 띄우도록 고친다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-271
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 행사 등록의 달력을 시작일 바로 아래로 옮기고, 상권 등록의 소속 행사 칸을 펼친 상태로 표시한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-272
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-00
+    summary: 상황판 주소에 문서 안 탭 순번까지 담는다. Flow 번호가 없는 화면 탭도 새로 고치면 그 자리가 열린다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

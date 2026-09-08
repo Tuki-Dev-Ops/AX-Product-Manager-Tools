@@ -1568,6 +1568,8 @@ function drawWFScreen(ctx, sc) {
   const innerW = useCol ? colW - WFPAD * 2 : SW - WFPAD * 2;
   const baseX = areaX + WFPAD;
   const over = [];
+  const OPENK = ["fx", "selx", "fsx", "fdx"];
+  let openAt = null;
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;
@@ -1577,7 +1579,12 @@ function drawWFScreen(ctx, sc) {
       const wide = (c.kind === "top" || c.kind === "hr") && full;
       const cw = wide ? (useCol ? colW : SW) : lay.wid[i];
       const cx = wide && c.kind === "top" ? (useCol ? colX : SX) : lay.pos[i];
-      if (c.kind === "menu" || c.kind === "cal") { over.push([c, cx, y, cw]); return; }
+      if (c.kind === "menu" || c.kind === "cal") {
+        // 펼친 칸 아래에 맞춘다. 줄마다 칸 너비가 달라 자리를 그대로 쓰면 어긋난다
+        over.push([c, openAt ? openAt[0] : cx, y, openAt ? openAt[1] : cw]);
+        return;
+      }
+      if (OPENK.indexOf(c.kind) >= 0) openAt = [cx, cw];
       drawWFCell(ctx, c, cx, y, cw, rh);
     });
     y += rh + WFGAP;
@@ -3149,7 +3156,8 @@ function buildDocBody(html) {
       let at = 0;
       showItem = (k, quiet) => {
         at = k;
-        current.flow = items[k].id || "";
+        // Flow 번호가 있으면 그것으로, 없으면 탭 순번으로 자리를 적는다
+        current.flow = items[k].id || ("t" + k);
         if (!quiet) putHash(true);
         slot.innerHTML = "";
         barTitle.innerHTML = "";
@@ -3181,8 +3189,10 @@ function buildDocBody(html) {
         const b = e.target.closest("[data-flow]");
         if (b) showItem(+b.dataset.flow);
       };
-      const start = flowId ? items.findIndex(it => it.id === flowId) : 0;
-      showItem(start < 0 ? 0 : start, true);
+      const start = !flowId ? 0
+        : /^t\d+$/.test(flowId) ? Number(flowId.slice(1))
+        : items.findIndex(it => it.id === flowId);
+      showItem(start < 0 || start >= items.length ? 0 : start, true);
     }
     addLegend(holder);
     markScreenHeads(holder);
@@ -3281,7 +3291,7 @@ window.markPlace = (sec, flow) => {
   putHash();
 };
 function routeFrom(hash) {
-  const m = String(hash || "").match(/^#\/doc\/(\d+)(?:\/(\d+))?(?:\/(FL-\d{3}))?/);
+  const m = String(hash || "").match(/^#\/doc\/(\d+)(?:\/(\d+))?(?:\/(FL-\d{3}|t\d+))?/);
   if (m) {
     const i = D.documents.findIndex(d => d.no === Number(m[1]));
     if (i >= 0) {
