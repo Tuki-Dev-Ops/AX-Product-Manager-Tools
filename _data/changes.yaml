@@ -2363,3 +2363,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-253
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 펼친 드롭다운과 달력이 다시 자리를 차지하던 것을 겹쳐 띄우도록 되돌린다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-254
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 등록·수정 모달의 입력을 한 줄에 하나씩 둔다. 시작일과 종료일, 은행과 계좌번호처럼 붙어 있던 칸을 나눈다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
