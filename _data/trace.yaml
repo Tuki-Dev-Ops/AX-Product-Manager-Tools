@@ -803,7 +803,7 @@ flows:
   functions: []
   screens: []
 - id: FL-003
-  title: 메뉴 마스터 배포 전체 흐름
+  title: 메뉴 등록과 반영 전체 흐름
   users:
   - UT-01
   - UT-02
@@ -953,6 +953,7 @@ flows:
   functions: []
   screens:
   - ADM-STOR-FORM
+  - ADM-ADDR-FIND
 - id: FL-118
   title: 매장 상세
   users:
@@ -1239,7 +1240,7 @@ flows:
   - STR-OPTG-LIST
   - STR-OPTG-FORM
 - id: FL-228
-  title: 매장별 가격
+  title: 판매가 설정
   users:
   - UT-02
   functions: []
@@ -1854,7 +1855,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-PRIC-FORM
-  title: 매장별 가격
+  title: 판매가 설정
   type: 페이지
   functions:
   - FN-111
@@ -1862,7 +1863,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-SOUT-FORM
-  title: 품절 관리
+  title: 품절 설정
   type: 페이지
   functions:
   - FN-206
@@ -1945,7 +1946,7 @@ screens:
   - UT-01
   wireframe: 작성
 - id: STR-AUTH-LOGIN
-  title: 가맹 로그인
+  title: 로그인
   type: 페이지
   functions:
   - FN-201
@@ -1953,7 +1954,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-AUTH-OTP
-  title: 가맹 2차 인증
+  title: 2차 인증
   type: 페이지
   functions:
   - FN-201
@@ -2025,7 +2026,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-SALE-LIST
-  title: 매점 매출 조회
+  title: 매출 조회
   type: 페이지
   functions:
   - FN-208
@@ -2219,7 +2220,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: KSK-ADMN-SOUT
-  title: 키오스크 품절 설정
+  title: 품절 설정
   type: 전체화면
   functions:
   - FN-408

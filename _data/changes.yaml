@@ -2039,3 +2039,39 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-217
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-05
+    summary: 문서와 trace의 화면명 6건, Flow 제목 4건이 서로 달랐던 것을 맞춘다. 주소 검색을 매장 등록 Flow에 연결하고 06 화면 목록 표에 추가한다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-218
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-05
+    summary: 주문 접수 목록의 상태값에 취소를 넣는다. 주문 상태는 다섯 가지이며 다른 화면과 값이 달랐다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-219
+    date: 2026-09-08
+    type: 수정
+    source: 결함
+    document: DOC-07
+    summary: 주소 검색 명세가 FL-105 매장 상태 전환을 매장 등록으로 잘못 참조하던 것을 FL-117로 고친다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-220
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-05
+    summary: 권한 표기 순서를 본사 운영자, 가맹 관리자, 고객 순으로 통일한다. 순서가 뒤집힌 화면 2건을 맞추고 공통 화면 규칙에 기준을 넣는다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
