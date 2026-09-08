@@ -2408,3 +2408,75 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-258
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 어드민 화면 기준을 KRDS로 확인하고 반영한다. 필수·선택은 수가 적은 쪽만 표시하고, 한 화면에 강조 버튼을 하나만 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-259
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 표 정렬 기준을 나눈다. 수량과 금액만 오른쪽에 두고 주문번호, 사업자등록번호, 날짜, 시각은 왼쪽에 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-260
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 표의 셀 구분을 '쉼표 뒤 공백'으로 바꾼다. 금액의 천 단위 구분과 괄호 안 쉼표 때문에 열이 밀린 행 11개를 함께 고친다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-261
+    date: 2026-09-08
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 표의 빈 칸에 대시를 넣는다. 값이 없는 것인지 빠진 것인지 구분한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-262
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 상황판과 화면 코드 뷰어에 화면별 주소를 둔다. 새로 고치거나 주소를 공유해도 보던 화면과 탭이 그대로 열린다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-263
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 모달 머리말에 있던 저장·다음 버튼 8곳을 아래 버튼 줄로 내린다. 모달 머리말에는 화면 이름과 닫기만 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-264
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: "'필수 항목입니다'로 적던 오류 문구 13곳을 항목 이름과 할 일을 적은 문구로 바꾼다"
+    affects: [DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-265
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 모달 입력 줄 10곳을 한 줄에 하나씩으로 나눈다. 기간의 시작·종료와 같은 단위의 짧은 수치 항목만 한 줄에 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

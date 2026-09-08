@@ -1337,18 +1337,34 @@ function wfMarks(cv) {
     host.appendChild(d);
   });
 }
+// 셀 구분은 쉼표 뒤 공백을 기준으로 한다. 금액의 천 단위 구분과 괄호 안 쉼표는 나누지 않는다
+function wfCells(str) {
+  const out = []; let d = 0, cur = "";
+  for (let k = 0; k < str.length; k++) {
+    const c = str.charAt(k);
+    if (c === "(" || c === "[") d++;
+    else if (c === ")" || c === "]") d = Math.max(0, d - 1);
+    if (c === "," && d === 0 && (k + 1 >= str.length || str.charAt(k + 1) === " ")) {
+      out.push(cur.trim()); cur = ""; continue;
+    }
+    cur += c;
+  }
+  out.push(cur.trim());
+  return out;
+}
 const NUMRE = /^[+-]?[\d,]+(\.\d+)?\s*(원|천원|건|개|명|%|kcal|g|mg|초|분|시간|회)?$/;
+const LEFTRE = /번호|우편|일자|일시|날짜|시각|시간|코드|ID|아이디/;
 function tableCols(items, from) {
-  const head = items[from][0].text.split(",").map(v => v.trim());
+  const head = wfCells(items[from][0].text);
   const wide = head.map(h => (h === "[]" || h === "#") ? 0.4 : 1);
   const align = head.map(() => "left");
   for (let k = from + 1; k < items.length; k++) {
     const r = items[k];
     if (r.length !== 1) break;
     if (r[0].kind !== "td") break;
-    const cells = r[0].text.split(",").map(v => v.trim());
+    const cells = wfCells(r[0].text);
     cells.forEach((v, i) => {
-      if (i < align.length && v && NUMRE.test(v)) align[i] = "right";
+      if (i < align.length && v && !LEFTRE.test(head[i] || "") && NUMRE.test(v)) align[i] = "right";
     });
     break;
   }
@@ -1889,7 +1905,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     return;
   }
   if (k === "t" || k === "td") {
-    const cols = s.split(",").map(v => v.trim());
+    const cols = wfCells(s);
     if (k === "t") { ctx.fillStyle = WFC.deep; ctx.fillRect(x, y, w, h); }
     ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x + w, y + h); ctx.stroke();
@@ -1908,8 +1924,10 @@ function drawWFCell(ctx, c, x, y, w, h) {
         roundRect(ctx, cx2 + 12, y + h / 2 - 7, 14, 14, 2); ctx.fill(); ctx.stroke();
       } else {
         const ali = (i < align.length ? align[i] : "left");
-        if (ali === "right") wfText(ctx, cc, cx2 + cw - 12, y + h / 2, cw - 20, font, ink, "right");
-        else wfText(ctx, cc, cx2 + 12, y + h / 2, cw - 20, font, ink);
+        const tv = (k === "td" && cc === "") ? "-" : cc;
+        const tk = (k === "td" && cc === "") ? WFC.hint : ink;
+        if (ali === "right") wfText(ctx, tv, cx2 + cw - 12, y + h / 2, cw - 20, font, tk, "right");
+        else wfText(ctx, tv, cx2 + 12, y + h / 2, cw - 20, font, tk);
       }
       cx2 += cw;
     });
@@ -2897,10 +2915,11 @@ const pages = { list: document.getElementById("page-list"),
                 changes: document.getElementById("page-changes"),
                 doc: document.getElementById("page-doc") };
 const tabs = document.querySelectorAll("nav [data-nav]");
-let current = { view: "list", doc: 0 };
+let current = { view: "list", doc: 0, sec: 0, flow: "" };
 
-function renderDoc(idx) {
+function renderDoc(idx, sec, flow) {
   const d = D.documents[idx];
+  window.__start = { sec: sec || 0, flow: flow || "" };
   const on = d.status === "작성 중" || d.status === "검토 중";
   document.getElementById("docHead").innerHTML = `
     <h2>${String(d.no).padStart(2, "0")} ${esc(d.title)}</h2>
@@ -3066,6 +3085,7 @@ function buildDocBody(html) {
   body.appendChild(pre);
   if (secs.length < 2) {
     aside.hidden = true;
+    current.sec = 0; current.flow = "";
     secs.forEach(s => body.appendChild(s.frag));
     icons();
     drawFlowCanvases(body);
@@ -3093,6 +3113,8 @@ function buildDocBody(html) {
   };
   let showItem = null;
   const pick = (i, flowId) => {
+    current.sec = i;
+    current.flow = "";
     holder.innerHTML = "";
     const { lead, items } = splitFlows(secs[i].frag.cloneNode(true));
     holder.appendChild(lead);
@@ -3116,8 +3138,10 @@ function buildDocBody(html) {
       slot.className = "fslot";
       holder.appendChild(slot);
       let at = 0;
-      showItem = (k) => {
+      showItem = (k, quiet) => {
         at = k;
+        current.flow = items[k].id || "";
+        if (!quiet) putHash(true);
         slot.innerHTML = "";
         barTitle.innerHTML = "";
         const frag = items[k].frag.cloneNode(true);
@@ -3149,7 +3173,7 @@ function buildDocBody(html) {
         if (b) showItem(+b.dataset.flow);
       };
       const start = flowId ? items.findIndex(it => it.id === flowId) : 0;
-      showItem(start < 0 ? 0 : start);
+      showItem(start < 0 ? 0 : start, true);
     }
     addLegend(holder);
     markScreenHeads(holder);
@@ -3166,7 +3190,7 @@ function buildDocBody(html) {
     lg.innerHTML = FLOW_LEGEND;
     first.parentNode.insertBefore(lg.firstElementChild, first);
   };
-  nav.onclick = (e) => { const b = e.target.closest("[data-sec]"); if (b) pick(+b.dataset.sec); };
+  nav.onclick = (e) => { const b = e.target.closest("[data-sec]"); if (b) { pick(+b.dataset.sec); putHash(true); } };
   window.pickSection = (sid) => {
     for (let i = 0; i < secs.length; i++) {
       const txt = secs[i].frag.textContent || "";
@@ -3186,7 +3210,10 @@ function buildDocBody(html) {
     });
     return true;
   };
-  pick(0);
+  const st = window.__start || { sec: 0, flow: "" };
+  window.__start = null;
+  pick(st.sec < secs.length ? st.sec : 0, st.flow);
+  putHash();
 }
 
 const SCREEN_DOC = new Map();
@@ -3218,26 +3245,49 @@ function goToScreenLocal(id) {
   return true;
 }
 function show(view, doc) {
-  current = { view, doc: doc ?? current.doc };
+  current = { view, doc: doc ?? current.doc, sec: current.sec || 0, flow: current.flow || "" };
   Object.entries(pages).forEach(([k, el]) => { el.hidden = (k !== view); });
   tabs.forEach(b => b.setAttribute("aria-selected", String(b.dataset.nav === view)));
-  if (view === "doc") renderDoc(current.doc);
-  const hash = view === "doc" ? `#/doc/${D.documents[current.doc].no}` : view === "changes" ? "#/changes" : "#/";
-  if (location.hash !== hash) history.replaceState(null, "", hash);
+  if (view === "doc") renderDoc(current.doc, current.sec, current.flow);
+  putHash();
+}
+// 절과 Flow까지 주소에 담는다. 새로 고쳐도 보던 자리가 그대로 열린다
+function putHash(push) {
+  const v = current.view;
+  let hash = "#/";
+  if (v === "doc") {
+    hash = `#/doc/${D.documents[current.doc].no}`;
+    if (current.sec) hash += "/" + current.sec;
+    if (current.flow) hash += "/" + current.flow;
+  } else if (v === "changes") hash = "#/changes";
+  if (location.hash === hash) return;
+  if (push) history.pushState(null, "", hash);
+  else history.replaceState(null, "", hash);
   try { localStorage.setItem("dash.route", hash); } catch (e) {}
 }
+window.markPlace = (sec, flow) => {
+  if (current.view !== "doc") return;
+  current.sec = sec || 0;
+  current.flow = flow || "";
+  putHash();
+};
 function routeFrom(hash) {
-  const m = String(hash || "").match(/^#\/doc\/(\d+)/);
+  const m = String(hash || "").match(/^#\/doc\/(\d+)(?:\/(\d+))?(?:\/(FL-\d{3}))?/);
   if (m) {
     const i = D.documents.findIndex(d => d.no === Number(m[1]));
-    if (i >= 0) return show("doc", i);
+    if (i >= 0) {
+      current.sec = m[2] ? Number(m[2]) : 0;
+      current.flow = m[3] || "";
+      return show("doc", i);
+    }
   }
   if (/^#\/changes/.test(hash || "")) return show("changes");
   return show("list");
 }
 tabs.forEach(b => b.addEventListener("click", () => show(b.dataset.nav)));
 document.getElementById("docList").addEventListener("click", e => {
-  const b = e.target.closest("[data-doc]"); if (b) show("doc", +b.dataset.doc);
+  const b = e.target.closest("[data-doc]");
+  if (b) { current.sec = 0; current.flow = ""; show("doc", +b.dataset.doc); }
 });
 document.getElementById("backBtn").addEventListener("click", () => show("list"));
 window.addEventListener("hashchange", () => routeFrom(location.hash));
