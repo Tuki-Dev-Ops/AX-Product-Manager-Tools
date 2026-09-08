@@ -739,7 +739,7 @@ function shape(ctx, kind, x, y, w, h, cx, cy, skin) {
   } else if (kind === "n-term") {
     roundRect(ctx, x, y, w, h, h / 2); ctx.fill(); ctx.stroke();
   } else {
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     if (kind === "n-ref") {
       ctx.beginPath();
       ctx.moveTo(x + 7, y); ctx.lineTo(x + 7, y + h);
@@ -1159,8 +1159,9 @@ const WFPRESET = {
   split:  [1920, 1030, 420, 0, 0.52],
 };
 const WFC = {
-  line: "#8A96A3", soft: "#C7CFD8", fill: "#EDF0F3", deep: "#D7DDE4",
-  bar: "#4A5560", ink: "#2B3442", mut: "#6B7784", bg: "#FFFFFF",
+  line: "#98A4B0", soft: "#D5DBE1", fill: "#F2F5F8", deep: "#E3E8ED",
+  bar: "#2B3442", ink: "#2B3442", mut: "#6B7784", bg: "#FFFFFF",
+  pri: "#2A5D8F", bad: "#B4444A", hint: "#98A4B0",
 };
 
 function renderWF(src) {
@@ -1576,8 +1577,8 @@ function drawWFCell(ctx, c, x, y, w, h) {
     if (parts[1]) {
       ctx.font = FS;
       const bw = Math.min(130, ctx.measureText(parts[1]).width + 26);
-      ctx.fillStyle = WFC.bar; ctx.strokeStyle = WFC.bar; ctx.lineWidth = 1;
-      roundRect(ctx, x + w - bw, y + (h - 28) / 2, bw, 28, 3); ctx.fill();
+      ctx.fillStyle = WFC.pri; ctx.strokeStyle = WFC.pri; ctx.lineWidth = 1;
+      roundRect(ctx, x + w - bw, y + (h - 28) / 2, bw, 28, 4); ctx.fill();
       wfText(ctx, parts[1], x + w - bw / 2, y + h / 2, bw - 14, FS, "#FFFFFF", "center");
     }
     ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
@@ -1591,15 +1592,15 @@ function drawWFCell(ctx, c, x, y, w, h) {
   }
   if (k === "fx") {
     const pp = s.split("~").map(v => v.trim());
-    ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.line; ctx.lineWidth = 1.2;
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.pri; ctx.lineWidth = 1.4;
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     wfText(ctx, pp[0] || "", x + 11, y + h / 2, w - (pp[1] ? 90 : 24), F, WFC.ink);
     if (pp[1]) wfText(ctx, pp[1], x + w - 11, y + h / 2, 80, FS, WFC.mut, "right");
     return;
   }
   if (k === "fo") {
     ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     const pp = s.split("~").map(v => v.trim());
     wfText(ctx, pp[0] || "", x + 11, y + h / 2, w - (pp[1] ? 90 : 24), F, WFC.soft);
     if (pp[1]) wfText(ctx, pp[1], x + w - 11, y + h / 2, 80, FS, WFC.soft, "right");
@@ -1607,22 +1608,20 @@ function drawWFCell(ctx, c, x, y, w, h) {
   }
   if (k === "fe") {
     const pe = s.split("~").map(v => v.trim());
-    ctx.fillStyle = WFC.bg; ctx.strokeStyle = "#3D4954"; ctx.lineWidth = 1.6;
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.bad; ctx.lineWidth = 1.4;
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     wfText(ctx, pe[0] || "", x + 11, y + h / 2, w - (pe[1] ? 90 : 24), F, WFC.ink);
-    if (pe[1]) wfText(ctx, pe[1], x + w - 11, y + h / 2, 80, FS, "#3D4954", "right");
+    if (pe[1]) wfText(ctx, pe[1], x + w - 11, y + h / 2, 80, FS, WFC.ink, "right");
     return;
   }
   if (k === "bd") {
     ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
-    roundRect(ctx, x, y + 1, w, h - 2, 3); ctx.fill(); ctx.stroke();
+    roundRect(ctx, x, y + 1, w, h - 2, 4); ctx.fill(); ctx.stroke();
     wfText(ctx, s, x + w / 2, y + h / 2, w - 16, FS, WFC.soft, "center");
     return;
   }
   if (k === "err") {
-    ctx.fillStyle = "#3D4954";
-    ctx.fillRect(x, y + 6, 3, h - 12);
-    wfText(ctx, s, x + 12, y + h / 2, w - 16, FS, "#3D4954");
+    wfText(ctx, "! " + s, x + 1, y + h / 2 - 4, w - 4, FS, WFC.bad);
     return;
   }
   if (["f", "sel", "fd", "fq", "fs", "fx", "fe", "fo"].indexOf(k) >= 0 && s.indexOf("//") >= 0) {
@@ -1633,11 +1632,11 @@ function drawWFCell(ctx, c, x, y, w, h) {
     const fy = y + 24, fh = h - 24;
     const on = (k === "fx" || k === "fe");
     ctx.fillStyle = k === "fo" ? WFC.fill : WFC.bg;
-    ctx.strokeStyle = k === "fe" ? "#3D4954" : (on ? WFC.line : WFC.soft);
-    ctx.lineWidth = k === "fe" ? 1.6 : (on ? 1.2 : 1);
-    roundRect(ctx, x, fy, w, fh, 2); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = k === "fe" ? WFC.bad : (on ? WFC.pri : WFC.soft);
+    ctx.lineWidth = k === "fe" ? 1.4 : (on ? 1.4 : 1);
+    roundRect(ctx, x, fy, w, fh, 4); ctx.fill(); ctx.stroke();
     const lead = k === "fq" ? 32 : 11;
-    wfText(ctx, lp[1] || "", x + lead, fy + fh / 2, w - lead - 30, F, on ? WFC.ink : WFC.mut);
+    wfText(ctx, lp[1] || "", x + lead, fy + fh / 2, w - lead - 30, F, on ? WFC.ink : WFC.hint);
     ctx.strokeStyle = WFC.mut; ctx.lineWidth = 1.3;
     if (k === "sel") {
       ctx.beginPath();
@@ -1667,7 +1666,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
   if (k === "f" || k === "sel" || k === "fd" || k === "fq" || k === "fs") {
     const pf = s.split("~").map(v => v.trim());
     ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     let lbl = pf[0] || "";
     if (c.req) lbl += " *";
     const cy = y + h / 2;
@@ -1703,9 +1702,9 @@ function drawWFCell(ctx, c, x, y, w, h) {
   }
   if (k === "b" || k === "b2") {
     const prim = k === "b";
-    ctx.fillStyle = prim ? WFC.bar : WFC.bg;
-    ctx.strokeStyle = prim ? WFC.bar : WFC.line; ctx.lineWidth = 1;
-    roundRect(ctx, x, y + 1, w, h - 2, 3); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = prim ? WFC.pri : WFC.bg;
+    ctx.strokeStyle = prim ? WFC.pri : WFC.line; ctx.lineWidth = 1;
+    roundRect(ctx, x, y + 1, w, h - 2, 4); ctx.fill(); ctx.stroke();
     wfText(ctx, s, x + w / 2, y + h / 2, w - 16, FS, prim ? "#FFFFFF" : WFC.ink, "center");
     return;
   }
@@ -1735,7 +1734,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
   if (k === "cnt") { wfText(ctx, s, x + w, y + h / 2, w, F, WFC.mut, "right"); return; }
   if (k === "note") {
     ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
-    roundRect(ctx, x, y, w, h, 2); ctx.fill(); ctx.stroke();
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     wfText(ctx, "(!) " + s, x + 10, y + h / 2, w - 20, FS, WFC.mut);
     return;
   }

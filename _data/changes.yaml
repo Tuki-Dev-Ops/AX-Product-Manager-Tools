@@ -1841,3 +1841,12 @@ changes:
     affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-195
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 입력 칸과 버튼에 시각 기준을 적용한다. 강조색은 기본 버튼, 선택한 탭, 입력 중인 칸에만 쓰고 오류는 별도 색으로 구분한다. 모서리와 안내 문구 명도도 함께 맞춘다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
