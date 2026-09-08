@@ -1805,3 +1805,30 @@ changes:
     affects: [DOC-04, DOC-05, DOC-06]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-191
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 로그인 아이디를 이메일로 바꾼다. 별도 아이디를 두지 않는다. 로그인, 계정 등록·수정, 계정 목록, 비밀번호 재설정에 함께 적용
+    affects: [DOC-02, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-192
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 계정 발급 항목을 한 줄에 하나씩 둔다. 비밀번호와 비밀번호 재확인을 추가하고 본사 운영자가 비밀번호를 지정한다
+    affects: [DOC-04, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-193
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 모달 머리말에서 아래 버튼과 겹치는 동작 버튼을 없앤다. 머리말에는 화면 이름만 둔다. 모달 19개에 적용
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
