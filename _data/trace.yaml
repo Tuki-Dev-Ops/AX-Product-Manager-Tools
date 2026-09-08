@@ -920,6 +920,7 @@ flows:
   screens:
   - ADM-EVNT-LIST
   - ADM-EVNT-FORM
+  - ADM-COMN-CONF
   - ADM-ADDR-FIND
 - id: FL-114
   title: 상권 목록·등록
@@ -1714,6 +1715,15 @@ screens:
   - UT-01
   - UT-02
   wireframe: 작성
+- id: ADM-COMN-CONF
+  title: 확인 팝업
+  type: 페이지
+  functions:
+  - FN-102
+  users:
+  - UT-01
+  - UT-02
+  wireframe: 작성
 - id: ADM-ZONE-LIST
   title: 상권 목록
   type: 페이지
@@ -2370,6 +2380,10 @@ specs:
 - id: FS-089
   screen: ADM-ADDR-FIND
   title: 주소 검색
+  status: 작성
+- id: FS-091
+  screen: ADM-COMN-CONF
+  title: 확인 팝업
   status: 작성
 - id: FS-006
   screen: ADM-ZONE-LIST

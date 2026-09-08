@@ -1850,3 +1850,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-196
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 등록·수정 화면의 라벨을 칸 위로 올린다. 칸 안에는 안내 문구나 입력값만 둔다. 필수 표시도 상태 화면에 함께 남긴다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-197
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-06
+    summary: 저장, 삭제, 상태 변경, 작업 취소의 확인 팝업(ADM-COMN-CONF)과 처리 결과 토스트 화면을 그린다. 토스트는 화면 아래 가운데에 3초 표시한다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
