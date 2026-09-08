@@ -635,7 +635,7 @@ empty 조회 결과가 없습니다. // 기간을 넓히거나 기준을 바꿔 
 @ admin
 h 매출 조회 ~ 내려받기
 fd 시작일 | fd 종료일 | sel 행사 | sel 상권
-sel 브랜드 | sel 매장 | sp | sp
+sel 브랜드 | fq 매장명·사업자번호 | sp | sp
 rad 주문 시점 소속 | rad 현재 소속 | sp | sp
 b2 오늘 | b2 7일 | b2 30일
 b:0.5 조회 | sp | cnt 총 24건
@@ -1336,7 +1336,7 @@ note 표시 정보를 입력해야 판매할 수 있습니다
 @ popup
 h 알레르기·영양성분 입력
 tx 메뉴  아메리카노 | sp
-sub 알레르기 유발물질 (법정 19개 품목)
+sub 알레르기 유발물질 (법정 18개 품목)
 chk 알류 | chk 우유 | chk 메밀 | chk 땅콩
 chk 대두 | chk 밀 | chk 고등어 | chk 게
 chk 새우 | chk 돼지고기 | chk 복숭아 | chk 토마토
@@ -1352,7 +1352,7 @@ b2 취소 | b 저장
 @ popup
 h 알레르기·영양성분 입력
 tx 메뉴  아메리카노 | sp
-sub 알레르기 유발물질 (법정 19개 품목)
+sub 알레르기 유발물질 (법정 18개 품목)
 chk 알류 | chk 우유 | chk 메밀 | chk 땅콩
 chk 대두 | chk 밀 | chk 고등어 | chk 게
 chk 새우 | chk 돼지고기 | chk 복숭아 | chk 토마토
