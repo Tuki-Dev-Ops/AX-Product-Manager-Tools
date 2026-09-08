@@ -848,8 +848,6 @@ flows:
   - ADM-EVNT-FORM
   - ADM-ZONE-LIST
   - ADM-ZONE-FORM
-  - ADM-BRND-FORM
-  - ADM-STOR-FORM
   - STR-CATG-LIST
   - STR-CATG-FORM
   - STR-MENU-FORM
@@ -930,30 +928,14 @@ flows:
   screens:
   - ADM-ZONE-LIST
   - ADM-ZONE-FORM
-  - ADM-ZONE-DETAIL
-- id: FL-115
-  title: 브랜드 등록
-  users:
-  - UT-01
-  functions: []
-  screens:
-  - ADM-BRND-FORM
 - id: FL-116
-  title: 상권 상세·매장
+  title: 상권 매장 관리
   users:
   - UT-01
   functions:
   - FN-128
   screens:
-  - ADM-ZONE-DETAIL
-- id: FL-117
-  title: 매장 등록·수정
-  users:
-  - UT-01
-  functions: []
-  screens:
-  - ADM-STOR-FORM
-  - ADM-ADDR-FIND
+  - ADM-ZONE-FORM
 - id: FL-118
   title: 매장 상세
   users:
@@ -1737,31 +1719,8 @@ screens:
   title: 상권 등록·수정
   type: 페이지
   functions:
-  - FN-103
-  users:
-  - UT-01
-  wireframe: 작성
-- id: ADM-ZONE-DETAIL
-  title: 상권 상세
-  type: 페이지
-  functions:
-  - FN-103
-  users:
-  - UT-01
-  wireframe: 작성
-- id: ADM-BRND-FORM
-  title: 브랜드 등록·수정
-  type: 페이지
-  functions:
   - FN-119
-  users:
-  - UT-01
-  wireframe: 작성
-- id: ADM-STOR-FORM
-  title: 매장 등록·수정
-  type: 페이지
-  functions:
-  - FN-104
+  - FN-103
   users:
   - UT-01
   wireframe: 작성
@@ -2391,21 +2350,9 @@ specs:
   screen: ADM-ZONE-LIST
   title: 상권 목록
   status: 작성
-- id: FS-090
-  screen: ADM-ZONE-DETAIL
-  title: 상권 상세
-  status: 작성
 - id: FS-007
   screen: ADM-ZONE-FORM
   title: 상권 등록·수정
-  status: 작성
-- id: FS-009
-  screen: ADM-BRND-FORM
-  title: 브랜드 등록·수정
-  status: 작성
-- id: FS-011
-  screen: ADM-STOR-FORM
-  title: 매장 등록·수정
   status: 작성
 - id: FS-012
   screen: ADM-STOR-DETAIL
