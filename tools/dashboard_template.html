@@ -1231,7 +1231,7 @@ function parseCell(c) {
 const WFH = {
   top: 56, h: 60, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
   err: 30, chk: 30, rad: 30,
-  tx: 26, cnt: 40, note: 40, empty: 230, fs: 40, toast: 0, selx: 40, sele: 40, selo: 40, fsx: 40, fse: 40, fso: 40, fdx: 40, fde: 40, fdo: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
+  tx: 26, cnt: 40, pick: 44, note: 40, empty: 230, fs: 40, toast: 0, selx: 40, sele: 40, selo: 40, fsx: 40, fse: 40, fso: 40, fdx: 40, fde: 40, fdo: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
 };
 function wfCellH(c) {
@@ -1819,6 +1819,26 @@ function drawWFCell(ctx, c, x, y, w, h) {
         ctx.beginPath(); ctx.arc(cx, cy, 13, 0, Math.PI * 2); ctx.fill();
       }
       wfText(ctx, String(day), cx, cy, cw, FS, day === sel ? "#FFFFFF" : WFC.ink, "center");
+    }
+    return;
+  }
+  if (k === "pick") {
+    const pp = s.split("~").map(v => v.trim());
+    ctx.fillStyle = "#EEF4FA"; ctx.strokeStyle = "#C6D6E6"; ctx.lineWidth = 1;
+    roundRect(ctx, x, y, w, h - 4, 4); ctx.fill(); ctx.stroke();
+    wfText(ctx, pp[0] || "", x + 14, y + (h - 4) / 2, w / 2, FB, WFC.pri);
+    if (pp[1]) {
+      const bs = pp[1].split("/").map(v => v.trim());
+      let bx = x + w - 12;
+      ctx.font = FS;
+      bs.slice().reverse().forEach(b => {
+        const bw = ctx.measureText(b).width + 26;
+        bx -= bw;
+        ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.line; ctx.lineWidth = 1;
+        roundRect(ctx, bx, y + 5, bw, h - 14, 4); ctx.fill(); ctx.stroke();
+        wfText(ctx, b, bx + bw / 2, y + (h - 4) / 2, bw - 12, FS, WFC.ink, "center");
+        bx -= 6;
+      });
     }
     return;
   }

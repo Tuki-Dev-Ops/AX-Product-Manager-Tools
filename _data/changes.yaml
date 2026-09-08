@@ -2336,3 +2336,30 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-250
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-06
+    summary: 목록의 상태값을 배지로 표시한다. 42개 행에 적용해 상태가 다른 열과 섞이지 않게 한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-251
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-06
+    summary: 목록에 기본 정렬 표시와 페이지당 건수를 둔다. 상단 바에 현재 위치를 적는다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-252
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-06
+    summary: 목록에서 행을 고르면 표 위에 선택 건수와 처리 버튼을 띄운다. 행사 목록 선택 화면을 추가한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
