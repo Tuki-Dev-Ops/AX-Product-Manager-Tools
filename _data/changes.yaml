@@ -2228,3 +2228,12 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-238
+    date: 2026-09-08
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-05
+    summary: 내부 어드민의 매장 상태 전환을 없앤다. 매장 상태는 가맹 관리자가 영업 상태 변경에서 관리한다. REQ-005, FN-105, FL-105, FL-119, ADM-STOR-STATE를 함께 삭제한다
+    affects: [DOC-01, DOC-02, DOC-03, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

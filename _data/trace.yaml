@@ -19,11 +19,6 @@ requirements:
   area: 기준정보
   functions:
   - FN-104
-- id: REQ-005
-  title: 본사 운영자는 매장의 영업 상태를 영업, 일시중지, 종료로 관리한다.
-  area: 기준정보
-  functions:
-  - FN-105
 - id: REQ-006
   title: 가맹 관리자는 브랜드별로 카테고리와 메뉴를 등록한다.
   area: 메뉴
@@ -310,7 +305,6 @@ decisions:
   decision: 매장을 삭제하지 않는다. 상태를 영업, 일시중지, 종료, 폐점 네 단계로 나누고 매장 코드를 재사용하지 않는다.
   reason: 조사한 8개 제품 중 삭제가 가능한 것은 하나뿐이고 법령이 거래 기록을 5년 보존하도록 요구한다.
   requirements:
-  - REQ-005
   decided_by: 기획 담당
   date: '2026-09-04'
 - id: DC-011
@@ -394,12 +388,6 @@ functions:
   - UT-01
   requirements:
   - REQ-004
-- id: FN-105
-  title: 매장 상태 관리
-  users:
-  - UT-01
-  requirements:
-  - REQ-005
 - id: FN-106
   title: 카테고리 관리
   users:
@@ -868,14 +856,6 @@ flows:
   - ADM-USER-FORM
   - ADM-USER-PROXY
   - ADM-ALOG-LIST
-- id: FL-105
-  title: 매장 상태 전환
-  users:
-  - UT-01
-  functions:
-  - FN-105
-  screens:
-  - ADM-STOR-STATE
 - id: FL-110
   title: 로그인
   users:
@@ -924,13 +904,6 @@ flows:
   - FN-128
   screens:
   - ADM-ZONE-FORM
-- id: FL-119
-  title: 매장 상태 전환
-  users:
-  - UT-01
-  functions: []
-  screens:
-  - ADM-STOR-STATE
 - id: FL-133
   title: 매출 조회
   users:
@@ -1698,14 +1671,6 @@ screens:
   users:
   - UT-01
   wireframe: 작성
-- id: ADM-STOR-STATE
-  title: 매장 상태 전환
-  type: 레이어팝업
-  functions:
-  - FN-105
-  users:
-  - UT-01
-  wireframe: 작성
 - id: STR-CATG-LIST
   title: 카테고리 목록
   type: 페이지
@@ -2312,10 +2277,6 @@ specs:
 - id: FS-007
   screen: ADM-ZONE-FORM
   title: 상권 등록·수정
-  status: 작성
-- id: FS-013
-  screen: ADM-STOR-STATE
-  title: 매장 상태 전환
   status: 작성
 - id: FS-014
   screen: STR-CATG-LIST
