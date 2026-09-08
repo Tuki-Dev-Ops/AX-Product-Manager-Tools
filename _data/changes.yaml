@@ -1832,3 +1832,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-194
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 상권 수정의 계정 탭에서 계정 목록을 없애고 발급된 계정 정보를 읽기 전용으로 표시한다. 계정 정보 수정과 비밀번호 재설정은 시스템 > 관리자에서 한다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
