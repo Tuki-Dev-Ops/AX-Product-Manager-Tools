@@ -1742,3 +1742,30 @@ changes:
     affects: [DOC-02, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-184
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-07
+    summary: 행사 등록·수정의 입력 항목별 필수 여부, 형식, 검증 규칙과 오류 문구를 정의한다. 장소를 필수로 바꾼다
+    affects: [DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-185
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 공통 화면 규칙에 검증 시점, 오류 표시, 오류 해제, 오류 문구 기준을 추가한다
+    affects: [DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-186
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 상권 목록과 상권 등록·수정을 행사와 같은 구성으로 맞춘다. 조회 조건, 목록 열, 정보·매장 탭, 검증 오류 화면을 같게 둔다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
