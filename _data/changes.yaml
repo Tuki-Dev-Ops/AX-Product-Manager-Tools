@@ -2219,3 +2219,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-237
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-06
+    summary: 채널별 화면 모음 페이지를 만든다. 내부 어드민 77개 화면을 한 페이지에서 배율을 바꿔 가며 본다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

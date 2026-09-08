@@ -114,7 +114,8 @@ When an upstream document changes, every document that inherits from it returns 
 │   └── dashboard_template.html
 ├── dashboard/
 │   ├── index.html             Dashboard (generated)
-│   └── wireframe.html         Screen code viewer (generated)
+│   ├── wireframe.html         Screen code viewer (generated)
+│   └── admin.html             All internal-admin screens on one page (generated)
 └── agent-system/              Role-based instructions used to extend the documents
 ```
 

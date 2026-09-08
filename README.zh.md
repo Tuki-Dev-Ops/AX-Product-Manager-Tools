@@ -114,7 +114,8 @@ python tools/build_dashboard.py
 │   └── dashboard_template.html
 ├── dashboard/
 │   ├── index.html             看板（生成物）
-│   └── wireframe.html         页面代码查看器（生成物）
+│   ├── wireframe.html         页面代码查看器（生成物）
+│   └── admin.html             内部后台页面汇总（生成物）
 └── agent-system/              用于补全文档的角色指示书
 ```
 

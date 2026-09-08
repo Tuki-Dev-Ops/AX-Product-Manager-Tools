@@ -114,7 +114,8 @@ python tools/build_dashboard.py
 │   └── dashboard_template.html
 ├── dashboard/
 │   ├── index.html             ダッシュボード（生成物）
-│   └── wireframe.html         画面コードビューア（生成物）
+│   ├── wireframe.html         画面コードビューア（生成物）
+│   └── admin.html             内部管理画面まとめ（生成物）
 └── agent-system/              ドキュメント補強に用いる役割別の指示書
 ```
 

@@ -114,7 +114,8 @@ Flow, IA, 아키텍처, 와이어프레임은 본문 안에서 도형으로 그�
 │   └── dashboard_template.html
 ├── dashboard/
 │   ├── index.html             상황판 (생성물)
-│   └── wireframe.html         화면 코드 뷰어 (생성물)
+│   ├── wireframe.html         화면 코드 뷰어 (생성물)
+│   └── admin.html             내부 어드민 화면 모음 (생성물)
 └── agent-system/              문서 보강 작업에 쓰는 역할별 지시서
 ```
 
