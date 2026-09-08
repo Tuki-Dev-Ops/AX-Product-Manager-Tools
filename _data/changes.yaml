@@ -1877,3 +1877,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-199
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-06
+    summary: 드롭다운과 달력의 펼친 화면을 그린다. 조회 조건 드롭다운, 폼 드롭다운, 날짜 선택 3종. 안내 문구 명도를 높여 읽히게 한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

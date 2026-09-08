@@ -1161,7 +1161,7 @@ const WFPRESET = {
 const WFC = {
   line: "#98A4B0", soft: "#D5DBE1", fill: "#F2F5F8", deep: "#E3E8ED",
   bar: "#2B3442", ink: "#2B3442", mut: "#6B7784", bg: "#FFFFFF",
-  pri: "#2A5D8F", bad: "#B4444A", hint: "#98A4B0",
+  pri: "#2A5D8F", bad: "#B4444A", hint: "#7C8794",
 };
 
 function renderWF(src) {
@@ -1242,6 +1242,8 @@ function wfCellH(c) {
     const bh0 = isNaN(n) ? WFH[c.kind] : n;
     return c.text.indexOf("//") >= 0 ? bh0 + 24 : bh0;
   }
+  if (c.kind === "menu") return c.text.split("/").length * 32 + 10;
+  if (c.kind === "cal") return 272;
   if (c.kind === "lines") return (parseInt(c.text, 10) || 4) * 13 + 4;
   return WFH[c.kind] || 26;
 }
@@ -1353,10 +1355,10 @@ function tableCols(items, from) {
   return { wide: wide, align: align, n: head.length };
 }
 const BTN = ["b", "b2", "bd"];
-const FLD = ["f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo"];
+const FLD = ["menu", "cal", "f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo"];
 const CAP = { fq: 320, f: 220, fx: 220, fe: 220, fo: 220, fd: 200, sel: 200, fs: 220,
   selx: 200, sele: 200, selo: 200, fsx: 220, fse: 220, fso: 220,
-  fdx: 200, fde: 200, fdo: 200 };
+  fdx: 200, fde: 200, fdo: 200, menu: 200, cal: 260 };
 // mode 0 어드민 본문, 1 카드·폼, 2 좁은 화면
 // 칸은 왼쪽부터 앞 칸에 붙는다. 여백 칸(sp)이 남는 폭을 가져간다
 // 버튼만 있는 줄은 오른쪽 끝에 붙인다
@@ -1750,6 +1752,44 @@ function drawWFCell(ctx, c, x, y, w, h) {
     wfText(ctx, ep[0] || "", ex, y + h / 2 + 34, w - 40,
            '600 13px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.mut, "center");
     if (ep[1]) wfText(ctx, ep[1], ex, y + h / 2 + 58, w - 40, FS, WFC.soft, "center");
+    return;
+  }
+  if (k === "menu") {
+    const its = s.split("/").map(v => v.trim());
+    ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
+    its.forEach((it0, i) => {
+      const on = it0.charAt(0) === "*";
+      const it = on ? it0.slice(1) : it0;
+      const ry = y + 5 + i * 32;
+      if (on) { ctx.fillStyle = "#EAF1F8"; roundRect(ctx, x + 4, ry, w - 8, 32, 3); ctx.fill(); }
+      wfText(ctx, it, x + 13, ry + 16, w - 26, F, on ? WFC.pri : WFC.ink);
+    });
+    return;
+  }
+  if (k === "cal") {
+    const pc = s.split("~").map(v => v.trim());
+    const sel = parseInt(pc[1], 10) || 0;
+    ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
+    roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
+    wfText(ctx, "<", x + 16, y + 24, 12, F, WFC.mut);
+    wfText(ctx, pc[0] || "", x + w / 2, y + 24, w - 70, FB, WFC.ink, "center");
+    wfText(ctx, ">", x + w - 18, y + 24, 12, F, WFC.mut, "right");
+    const cw = (w - 24) / 7, top = y + 46;
+    ["일", "월", "화", "수", "목", "금", "토"].forEach((d, i) => {
+      wfText(ctx, d, x + 12 + cw * i + cw / 2, top, cw, FS, WFC.mut, "center");
+    });
+    for (let i = 0; i < 35; i++) {
+      const day = i - 1;
+      if (day < 1 || day > 30) continue;
+      const cx = x + 12 + cw * (i % 7) + cw / 2;
+      const cy = top + 26 + Math.floor(i / 7) * 30;
+      if (day === sel) {
+        ctx.fillStyle = WFC.pri;
+        ctx.beginPath(); ctx.arc(cx, cy, 13, 0, Math.PI * 2); ctx.fill();
+      }
+      wfText(ctx, String(day), cx, cy, cw, FS, day === sel ? "#FFFFFF" : WFC.ink, "center");
+    }
     return;
   }
   if (k === "tx") { wfText(ctx, s, x, y + h / 2, w, F, WFC.mut); return; }
