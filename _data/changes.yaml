@@ -1958,3 +1958,30 @@ changes:
     affects: [DOC-03, DOC-04]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-208
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-05
+    summary: 05 메뉴 구조에 옛 메뉴와 새 메뉴가 함께 남아 있던 것을 하나로 합친다. 화면 목록의 Depth와 맞춘다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-209
+    date: 2026-09-08
+    type: 삭제
+    source: 기획 검토
+    document: DOC-03
+    summary: 표시 정보 검수 폐지가 반영되지 않은 곳을 정리한다. 01 범위 문장, 03 사용자 역할과 설계 결정 항목, 04 대시보드 처리 대기, 05 메뉴, 06 대시보드 행, 07 메뉴 반려 문구
+    affects: [DOC-01, DOC-02, DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-210
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-04
+    summary: 존재하지 않는 Flow를 가리키던 참조를 고친다. FL-146 검수 대기 분기 삭제, FL-139를 FL-232 단말기 목록으로
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
