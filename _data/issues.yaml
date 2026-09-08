@@ -127,25 +127,22 @@ issues:
   type: 의사결정 필요
   document: DOC-02
   title: 메뉴 배포의 승인과 되돌리기 지원 여부
-  detail: 1분으로 확정했다. 초과하면 주문을 자동 취소한다. FL-203에 반영했다.
+  detail: 배포 절차를 두지 않기로 확정했다. 매장이 저장하면 그 매장의 주문 채널에 반영된다. 승인과 되돌리기도 두지 않는다.
   related:
   - FL-102
-  - FL-906
-  - DC-005
+  - DC-003
   status: 해결
   raised: 2026-09-03
 - id: IS-017
   type: 의사결정 필요
   document: DOC-03
   title: 알레르기 정보의 등록 단위
-  detail: 5만원 이상으로 확정했다. FL-401에 반영했다.
+  detail: 메뉴 단위로 확정했다. 법정 19개 품목 중에서 고르고 자유 입력은 두지 않는다. 옵션은 항목마다 따로 받아 주문 화면에서 합집합으로 계산한다.
   related:
   - FN-109
-  - FL-106
-  - DC-006
   status: 해결
   raised: 2026-09-03
-- id: IS-016
+- id: IS-037
   type: 확인 필요
   document: DOC-04
   title: 주문 미응답 제한 시간
@@ -154,7 +151,7 @@ issues:
   - FL-203
   status: 해결
   raised: 2026-09-04
-- id: IS-017
+- id: IS-038
   type: 확인 필요
   document: DOC-04
   title: 키오스크 서명 대상 금액 기준
@@ -339,3 +336,23 @@ issues:
   related: []
   status: 미결
   raised: '2026-09-07'
+- id: IS-039
+  type: 확인 필요
+  document: DOC-05
+  title: 상권을 가로지르는 매장 검색 경로
+  detail: 매장 목록을 없애고 상권 상세의 매장 탭으로 옮기면서 상권과 무관하게 매장을 찾는 경로가 사라졌다. 운영 중 그런 조회가 잦은지 확인한 뒤 대시보드 검색이나 매출 조회의 매장 조건 방식을 정한다.
+  related:
+  - ADM-ZONE-DETAIL
+  - ADM-HOME-MAIN
+  status: 미결
+  raised: 2026-09-08
+- id: IS-040
+  type: 가정
+  document: DOC-07
+  title: 상권 담당 계정이 여러 명인 경우
+  detail: 상권 등록에서는 담당 계정을 한 건만 발급한다. 담당자가 여러 명이면 시스템 > 관리자에서 계정을 추가한다. 상권 등록 화면에 계정을 여러 개 만드는 구성은 두지 않는다.
+  related:
+  - ADM-ZONE-FORM
+  - ADM-USER-FORM
+  status: 해결
+  raised: 2026-09-08

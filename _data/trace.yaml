@@ -932,7 +932,7 @@ flows:
   - ADM-ZONE-FORM
   - ADM-ZONE-DETAIL
 - id: FL-115
-  title: 브랜드 목록·등록
+  title: 브랜드 등록
   users:
   - UT-01
   functions: []

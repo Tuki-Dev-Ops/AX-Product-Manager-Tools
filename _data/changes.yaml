@@ -1931,3 +1931,30 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-205
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-08
+    summary: 08 검토 결과를 현재 수치와 열린 항목으로 다시 쓴다. 완료된 R-3을 지우고 매장 검색 경로와 계정 발급 경로를 검토 사항으로 올린다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-206
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-04
+    summary: 없어진 화면을 가리키던 참조를 정리한다. FL-105 진입점을 상권 상세의 매장 탭으로, FL-115 이름을 브랜드 등록으로 바꾼다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-207
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-02
+    summary: 이슈 식별자 중복 4건을 정리한다. IS-016과 IS-017의 내용이 다른 항목과 뒤바뀌어 있었고 같은 번호가 두 번 쓰였다
+    affects: [DOC-03, DOC-04]
+    status: 완료
+    requested_by: 기획 담당

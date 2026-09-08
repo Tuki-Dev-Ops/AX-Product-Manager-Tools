@@ -11,8 +11,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.0'
-  updated: 2026-09-04
+  version: '2.1'
+  updated: 2026-09-08
   inherits: []
   defines:
   - REQ
@@ -23,8 +23,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.0'
-  updated: 2026-09-04
+  version: '2.1'
+  updated: 2026-09-08
   inherits:
   - DOC-01
   defines:
@@ -36,8 +36,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.0'
-  updated: 2026-09-04
+  version: '2.1'
+  updated: 2026-09-08
   inherits:
   - DOC-01
   - DOC-02
@@ -51,8 +51,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.1'
-  updated: 2026-09-04
+  version: '2.2'
+  updated: 2026-09-08
   inherits:
   - DOC-03
   defines:
@@ -64,8 +64,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '1.1'
-  updated: 2026-09-04
+  version: '1.4'
+  updated: 2026-09-08
   inherits:
   - DOC-03
   - DOC-04
@@ -78,8 +78,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '1.0'
-  updated: '2026-09-04'
+  version: '1.3'
+  updated: 2026-09-08
   inherits:
   - DOC-05
   - DOC-04
@@ -91,8 +91,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '1.0'
-  updated: '2026-09-04'
+  version: '1.2'
+  updated: 2026-09-08
   inherits:
   - DOC-03
   - DOC-05
@@ -107,8 +107,8 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '1.0'
-  updated: 2026-09-03
+  version: '1.1'
+  updated: 2026-09-08
   inherits:
   - DOC-04
   - DOC-05
