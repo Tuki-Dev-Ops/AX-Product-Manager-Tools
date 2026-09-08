@@ -1796,3 +1796,12 @@ changes:
     affects: [DOC-04, DOC-05, DOC-06]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-190
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-07
+    summary: 상권 등록 시 담당 계정 발급을 필수로 바꾼다. 계정 없이 상권만 저장할 수 없다. 발급 여부 선택 항목과 미발급 화면을 없앤다
+    affects: [DOC-04, DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당
