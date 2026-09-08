@@ -2012,3 +2012,30 @@ changes:
     affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-214
+    date: 2026-09-08
+    type: 수정
+    source: 결함
+    document: DOC-07
+    summary: 정합성 점검이 기능 명세를 기능 단위로 찾아 65건을 미연결로 잘못 보고하던 것을 고친다. 명세는 화면 단위로 쓰므로 기능은 그 기능의 화면에 명세가 있으면 갖춘 것으로 본다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-215
+    date: 2026-09-08
+    type: 수정
+    source: 결함
+    document: DOC-05
+    summary: 이상 알림 발송(FN-125)을 계정 등록·수정 화면에 연결한다. 수신 대상을 지정하는 화면이 그곳이다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-216
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: README
+    summary: README 4종의 점검 결과 예시와 화면 코드 뷰어 설명을 현재 상태로 맞춘다. 정의 편집 패널은 제거되었다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

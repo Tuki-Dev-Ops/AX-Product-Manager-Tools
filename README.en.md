@@ -64,15 +64,15 @@ Flows, IA, architecture, and wireframes are drawn as diagrams within the text.
 Consistency results are not shown on screen. They are printed to the console at build time.
 
 ```text
-Built: dashboard/index.html (597KB, document text included)
+Built: dashboard/index.html (639KB, document text included)
 Overall progress 100% · in progress 0 · pending 0 · done 8
-Check: 1 open item, 67 unlinked items
+Check: 0 open items, 0 unlinked items
 ```
 
 ### Screen code viewer
 
 `dashboard/wireframe.html` inspects wireframes one screen at a time.
-Pick a screen on the left, edit its definition in the middle, and the rendered screen and its HTML appear on the right.
+Pick a screen on the left and the rendered screen and its HTML appear on the right.
 "Copy code" hands over the HTML and CSS for that screen as-is.
 
 ### Working sequence
@@ -178,7 +178,7 @@ The following conditions are checked at build time. Violations are printed with 
 | A function (FN) has no screen (SC) | 05 |
 | A screen (SC) does not appear in any flow (FL) | 04 |
 | A screen (SC) has no wireframe yet | 06 |
-| A function (FN) has no functional specification (FS) | 07 |
+| A screen (SC) has no functional specification (FS) | 07 |
 | A reference points to an identifier that does not exist | Definition conflict |
 
 ### Document status and progress

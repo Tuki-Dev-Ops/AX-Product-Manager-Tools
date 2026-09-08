@@ -1905,6 +1905,7 @@ screens:
   title: 계정 등록·수정
   type: 페이지
   functions:
+  - FN-125
   - FN-116
   users:
   - UT-01

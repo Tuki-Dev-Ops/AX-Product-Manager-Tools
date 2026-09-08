@@ -81,6 +81,9 @@ def check_links(trace, doc_titles):
         check_refs(fs, "functions", "DOC-07")
         check_refs(fs, "screens", "DOC-07")
         check_refs(fs, "decisions", "DOC-07")
+        if fs.get("screen") and fs["screen"] not in known:
+            add("정의 간 불일치", fs["id"],
+                f"{fs['screen']} 는 trace.yaml 에 정의되지 않은 ID다", "DOC-07")
 
     fn_by_req, fl_by_fn, sc_by_fn, fs_by_fn, fl_by_sc = {}, {}, {}, {}, {}
     for f in fns:
@@ -94,9 +97,17 @@ def check_links(trace, doc_titles):
     for sc in screens:
         for f in sc.get("functions", []) or []:
             sc_by_fn.setdefault(f, []).append(sc["id"])
+    fs_by_sc = {}
     for fs in specs:
         for f in fs.get("functions", []) or []:
             fs_by_fn.setdefault(f, []).append(fs["id"])
+        if fs.get("screen"):
+            fs_by_sc.setdefault(fs["screen"], []).append(fs["id"])
+    # 명세는 화면 단위로 쓴다. 기능은 그 기능의 화면에 명세가 있으면 갖춘 것으로 본다
+    for sc in screens:
+        for fid in fs_by_sc.get(sc["id"], []):
+            for f in sc.get("functions", []) or []:
+                fs_by_fn.setdefault(f, []).append(fid)
 
     for r in reqs:
         if not fn_by_req.get(r["id"]):
@@ -111,6 +122,8 @@ def check_links(trace, doc_titles):
     for sc in screens:
         if not fl_by_sc.get(sc["id"]):
             add("연결되지 않은 항목", sc["id"], "화면이 어떤 Flow(FL)에도 나타나지 않음", "DOC-04")
+        if not fs_by_sc.get(sc["id"]):
+            add("연결되지 않은 항목", sc["id"], "화면에 기능 명세(FS)가 없음", "DOC-07")
         if sc.get("wireframe", "미착수") == "미착수":
             add("연결되지 않은 항목", sc["id"], "Wireframe 미착수", "DOC-06")
     return found
