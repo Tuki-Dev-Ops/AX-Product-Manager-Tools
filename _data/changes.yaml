@@ -1868,3 +1868,12 @@ changes:
     affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-198
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 소속 행사를 드롭다운으로 둔다. 상태가 바뀌어도 드롭다운, 날짜, 검색 입력의 종류 표시를 유지한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
