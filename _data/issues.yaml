@@ -356,3 +356,13 @@ issues:
   - ADM-USER-FORM
   status: 해결
   raised: 2026-09-08
+- id: IS-041
+  type: 가정
+  document: DOC-05
+  title: 브랜드 관리 주체
+  detail: 브랜드는 매장 등록 시 이름으로 만들고 본사 운영자가 관리한다. 별도 브랜드 화면과 선택 전용 제약을 두지 않는다. 입력 주체가 본사 운영자 한 곳이므로 이름이 갈라질 위험을 관리로 감당한다.
+  related:
+  - ADM-ZONE-FORM
+  - FN-119
+  status: 해결
+  raised: 2026-09-08
