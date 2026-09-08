@@ -191,7 +191,9 @@ header.top .sp { margin-left:auto; }
 
 /* 폼 한 줄이 지나치게 길어지지 않게 */
 .wf-modal .wf-fld, .wf-modal .wf-in, .wf-modal .wf-box, .wf-form .wf-fld, .wf-form .wf-in {
-  max-width:520px; }
+  max-width:none; }
+/* 넓은 모달에서만 한 줄이 길어지지 않게 상한을 둔다 */
+.wf-modal.wide .wf-fld, .wf-modal.wide .wf-in, .wf-modal.wide .wf-box { max-width:520px; }
 .wf-modal .wf-c:has(.wf-btn) .wf-btn { max-width:none; }
 /* 탭 상태 */
 .wf-tab { border-radius:4px; }
@@ -316,9 +318,9 @@ const FRAME = {
   admin:  [1920, 1030, 0, 0, 0],
   center: [1920, 1030, 520, 0, 0],
   split:  [1920, 1030, 420, 0, 0.52],
-  popup:  [1920, 1030, 640, 1, 0],
-  popup2: [1920, 1030, 640, 2, 0],
-  wpopup: [1920, 1030, 1000, 1, 0],
+  popup:  [1920, 1030, 560, 1, 0],
+  popup2: [1920, 1030, 560, 2, 0],
+  wpopup: [1920, 1030, 880, 1, 0],
   mobile: [390, 844, 0, 0, 0],
   mpopup: [390, 844, 330, 1, 0],
   kiosk:  [1080, 1920, 0, 0, 0],
@@ -625,7 +627,7 @@ function frameHTML(sc) {
         bg += screenHTML(b);
       }
     });
-    main = bg + '<div class="wf-dim"><div class="wf-modal" style="width:' + sc.cw + 'px">' +
+    main = bg + '<div class="wf-dim"><div class="wf-modal' + (sc.cw > 620 ? " wide" : "") + '" style="width:' + sc.cw + 'px">' +
            inner + "</div></div>";
   } else if (sc.cw) {
     main = '<div class="wf-center"><div class="wf-form" style="max-width:' + sc.cw + 'px">' + inner + "</div></div>";

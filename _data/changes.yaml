@@ -2399,3 +2399,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-257
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 모달 폭을 입력 칸에 맞춘다. 입력 전용 모달 560px, 표가 있는 모달 880px. 좁은 모달에서는 칸이 폭을 채운다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

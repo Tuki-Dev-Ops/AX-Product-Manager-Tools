@@ -1149,9 +1149,9 @@ let WF_SEQ = 1;
 const WFPRESET = {
   admin:  [1920, 1030, 0, 0],
   center: [1920, 1030, 520, 0],
-  popup:  [1920, 1030, 640, 1],
-  popup2: [1920, 1030, 640, 2],
-  wpopup: [1920, 1030, 1000, 1],
+  popup:  [1920, 1030, 560, 1],
+  popup2: [1920, 1030, 560, 2],
+  wpopup: [1920, 1030, 880, 1],
   mobile: [390, 844, 0, 0],
   mpopup: [390, 844, 330, 1],
   kiosk:  [1080, 1920, 0, 0],
@@ -1374,8 +1374,8 @@ function wfLay(row, baseX, innerW, full, mode) {
     if (k !== "sp" && !full && mode === 0 && FLD.indexOf(k) >= 0) {
       wid[i] = CAP[k] || 220; fixed += wid[i]; return;
     }
-    if (k !== "sp" && mode === 1 && FLD.indexOf(k) >= 0 && innerW > 560) {
-      wid[i] = Math.min(innerW, 520); fixed += wid[i]; return;   // 폼 한 줄이 너무 길어지지 않게
+    if (k !== "sp" && mode === 1 && FLD.indexOf(k) >= 0 && innerW > 620) {
+      wid[i] = Math.min(innerW, 520); fixed += wid[i]; return;   // 넓은 모달에서만 폭을 제한한다
     }
     flex.push(i); flexSum += (c.wt || 1);
   });
