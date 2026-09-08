@@ -47,9 +47,10 @@ def check_links(trace, doc_titles):
     flows = trace.get("flows", []) or []
     screens = trace.get("screens", []) or []
     specs = trace.get("specs", []) or []
+    nfrs = trace.get("nfrs", []) or []
 
     known = {}
-    for group in (reqs, decisions, users, fns, flows, screens, specs):
+    for group in (reqs, decisions, users, fns, flows, screens, specs, nfrs):
         for item in group:
             known[item["id"]] = item.get("title", "")
 
@@ -119,6 +120,11 @@ def check_links(trace, doc_titles):
             add("연결되지 않은 항목", f["id"], "기능에 연결된 화면(SC)이 없음", "DOC-05")
         if not fs_by_fn.get(f["id"]):
             add("연결되지 않은 항목", f["id"], "기능 명세(FS)가 없음", "DOC-07")
+    for nf in nfrs:
+        if not nf.get("criterion"):
+            add("연결되지 않은 항목", nf["id"], "비기능 요구사항에 판정 기준이 없음", "DOC-01")
+        if not nf.get("basis"):
+            add("연결되지 않은 항목", nf["id"], "비기능 요구사항에 근거가 없음", "DOC-01")
     for sc in screens:
         if not fl_by_sc.get(sc["id"]):
             add("연결되지 않은 항목", sc["id"], "화면이 어떤 Flow(FL)에도 나타나지 않음", "DOC-04")

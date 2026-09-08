@@ -2075,3 +2075,30 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-221
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-01
+    summary: 비기능 요구사항 56건을 trace.yaml에 등록한다. 영역, 판정 기준, 근거를 함께 남기고 기준이나 근거가 없으면 점검에서 잡는다
+    affects: [DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-222
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-07
+    summary: 조건 절이 없던 연동 계정 목록과 키오스크 관리자 메뉴에 조건과 예외를 채운다. 05 정책 열도 함께 채운다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-223
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-02
+    summary: 조사 개요 표에 빠져 있던 조사 원본 9건을 추가한다. 조사 16건이 모두 본문에서 참조된다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
