@@ -2543,3 +2543,39 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-273
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 요소 사이 여백을 4px 배수로 맞춘다. 라벨과 칸 6, 칸 사이 12, 줄 사이 16, 구역 사이 28, 화면 안쪽 24를 쓴다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-274
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 넓은 모달의 폭 상한을 칸이 아닌 줄에 둔다. 칸에 두면 딸린 버튼이 줄 오른쪽 끝으로 밀려 칸과 떨어졌다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-275
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 겹쳐 띄우는 판을 화면 테두리에 붙여 그린다. 모달 안에 두면 아래가 잘렸다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-276
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 팝업 뒤 바탕 화면을 그 화면 본래 배치로 그린다. 카드 배치를 적용해 조회 조건이 가로로 늘어나 있었다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

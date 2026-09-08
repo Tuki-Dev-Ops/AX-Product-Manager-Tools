@@ -1256,7 +1256,7 @@ function wfCellH(c, touch) {
   return WFH[c.kind] || 26;
 }
 
-const WFPAD = 18, WFGAP = 10, WFCG = 14, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
+const WFPAD = 24, WFGAP = 16, WFCG = 12, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
 function wfMeasure(sc) {
   const touch = sc.h > sc.w;
   sc.heights = sc.items.map(row => Math.max.apply(null, row.map(c => wfCellH(c, touch))));
@@ -1416,7 +1416,8 @@ function wfLay(row, baseX, innerW, full, mode) {
   }
   return { pos: pos, wid: wid };
 }
-function drawWFRows(ctx, items, heights, X, Y, W) {
+// mode: 0 어드민 본문, 1 카드·폼, 2 좁은 화면. 바탕 화면은 제 모습대로 그린다
+function drawWFRows(ctx, items, heights, X, Y, W, mode) {
   let y = Y + WFPAD;
   const innerW = W - WFPAD * 2;
   let tbl = null;
@@ -1428,7 +1429,7 @@ function drawWFRows(ctx, items, heights, X, Y, W) {
     const full = row.length === 1;
     const avail = innerW - WFCG * (row.length - 1);
     const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
-    const lay = wfLay(row, X + WFPAD, innerW, full, 1);
+    const lay = wfLay(row, X + WFPAD, innerW, full, mode === undefined ? 1 : mode);
     row.forEach((c, i) => {
       if (lay.pos[i] === null) return;
       const wide = (c.kind === "top" || c.kind === "hr") && full;
@@ -1549,9 +1550,9 @@ function drawWFScreen(ctx, sc) {
           const by = FY + Math.max(WFPAD, (sc.fh - bh) / 2);
           ctx.fillStyle = "#FFFFFF"; ctx.strokeStyle = WFC.line; ctx.lineWidth = 1;
           roundRect(ctx, bx, by, bw, bh, 4); ctx.fill(); ctx.stroke();
-          drawWFRows(ctx, b.items, b.heights, bx, by + 5 - WFPAD / 2, bw);
+          drawWFRows(ctx, b.items, b.heights, bx, by + 5 - WFPAD / 2, bw, 1);
         } else {
-          drawWFRows(ctx, b.items, b.heights, SX, SY, SW);
+          drawWFRows(ctx, b.items, b.heights, SX, SY, SW, sc.w < 1400 ? 2 : 0);
         }
       });
       ctx.fillStyle = "rgba(36,46,58,0.42)";

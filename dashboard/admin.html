@@ -312,6 +312,46 @@ header.top .sp { margin-left:auto; }
 .wf-touch .wf-chk, .wf-touch .wf-rad { width:22px; height:22px; }
 .wf-touch .wf-tbl td, .wf-touch .wf-tbl th { padding:14px 16px; }
 
+/* ── 여백 기준
+   4px 배수로 맞춘다. 라벨은 자기 칸에 붙이고, 줄 사이는 그보다 넓게 둔다.
+   묶음 안(라벨-칸 6) < 묶음 사이(줄 16) < 구역 사이(28) 순으로 벌린다 */
+.wf-row { gap:12px; margin:0 0 16px; }
+.wf-row:last-child { margin-bottom:0; }
+.wf-fld > b { margin:0 0 6px; }
+.wf-err { margin:6px 0 0; }
+.wf-tx { margin:0 0 4px; }
+.wf-note { margin:12px 0 0; padding:11px 13px; }
+.wf-hr { margin:20px 0; }
+.wf-sp { height:4px; }
+.wf-sub { margin:28px 0 12px; }
+.wf-h + .wf-sub, .wf-tabs + .wf-sub { margin-top:4px; }
+.wf-tabs { margin:0 0 20px; }
+.wf-tbl { margin:0 0 16px; }
+.wf-pick { margin:0 0 16px; }
+.wf-page { padding:16px 0 0; }
+.wf-h { padding-bottom:14px; margin-bottom:20px; }
+.wf-empty { min-height:260px; padding:40px 20px; gap:14px; }
+.wf-main { padding:24px; }
+.wf-modal { padding:0; }
+.wf-modal > * { margin-left:20px; margin-right:20px; }
+.wf-modal > .wf-h { padding:20px 20px 14px; margin:0 0 20px; }
+.wf-modal > .wf-row:last-child { padding:16px 20px 20px; margin:4px 0 0; }
+.wf-modal .wf-tbl:last-of-type { margin-bottom:0; }
+/* 표 바로 앞뒤에 붙는 안내와 버튼 줄은 표에 붙여 둔다 */
+.wf-tbl + .wf-note { margin-top:0; }
+.wf-note + .wf-row { margin-top:12px; }
+
+/* 넓은 모달에서 상한은 칸이 아니라 줄에 둔다.
+   칸에 두면 딸린 버튼이 오른쪽 끝으로 밀려 칸과 떨어진다 */
+.wf-modal.wide .wf-fld, .wf-modal.wide .wf-in, .wf-modal.wide .wf-box { max-width:none; }
+.wf-modal.wide .wf-row:has(.wf-fld), .wf-modal.wide .wf-row:has(> .wf-c > .wf-in),
+.wf-modal.wide .wf-row:has(.wf-box) { max-width:520px; }
+.wf-modal.wide .wf-row:last-child { max-width:none; }
+
+/* 칸에 딸린 버튼은 글자에 맞춰 두고 줄이지 않는다 */
+.wf-row:has(.wf-fld) .wf-btn, .wf-row:has(> .wf-c > .wf-in) .wf-btn {
+  width:auto; min-width:88px; padding:0 16px; white-space:nowrap; }
+
 </style>
 <header class="top">
   <h1>내부 어드민</h1><em id="cnt"></em>
@@ -689,7 +729,8 @@ const KEY = [];
     KEY.push(seen[d.id] > 1 ? d.id + "." + seen[d.id] : d.id);
   });
 })();
-// 겹쳐 띄우는 판을 바로 위 줄의 펼친 칸 아래에 맞춘다
+// 겹쳐 띄우는 판을 펼친 칸 바로 아래에 띄운다.
+// 모달 안에 두면 잘리므로 화면 바깥 테두리에 붙여 그린다
 function placeDrops(root) {
   root.querySelectorAll('[data-drop="1"]').forEach(function (cell) {
     const panel = cell.querySelector(".wf-float > *");
@@ -698,10 +739,15 @@ function placeDrops(root) {
     let prev = row.previousElementSibling;
     while (prev && !prev.querySelector('[data-open="1"]')) prev = prev.previousElementSibling;
     const src = prev && prev.querySelector('[data-open="1"] .wf-in');
-    if (!src) return;
-    const a = src.getBoundingClientRect(), b = cell.getBoundingClientRect();
-    panel.style.left = (a.left - b.left) + "px";
+    const screen = cell.closest(".wf-screen");
+    if (!src || !screen) return;
+    const a = src.getBoundingClientRect(), s = screen.getBoundingClientRect();
+    panel.style.position = "absolute";
+    panel.style.left = (a.left - s.left) + "px";
+    panel.style.top = (a.bottom - s.top + 4) + "px";
+    panel.style.zIndex = "40";
     if (panel.classList.contains("wf-menu")) panel.style.width = a.width + "px";
+    screen.appendChild(panel);
   });
 }
 
