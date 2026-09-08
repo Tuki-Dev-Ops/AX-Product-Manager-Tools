@@ -1374,6 +1374,9 @@ function wfLay(row, baseX, innerW, full, mode) {
     if (k !== "sp" && !full && mode === 0 && FLD.indexOf(k) >= 0) {
       wid[i] = CAP[k] || 220; fixed += wid[i]; return;
     }
+    if (k !== "sp" && mode === 1 && FLD.indexOf(k) >= 0 && innerW > 560) {
+      wid[i] = Math.min(innerW, 520); fixed += wid[i]; return;   // 폼 한 줄이 너무 길어지지 않게
+    }
     flex.push(i); flexSum += (c.wt || 1);
   });
   const gap = WFCG * (n - 1);
@@ -1569,11 +1572,22 @@ function drawWFScreen(ctx, sc) {
   if (tc.length) {
     const TF = '12px "IBM Plex Sans KR","Malgun Gothic",sans-serif';
     ctx.font = TF;
-    const tw = Math.min(sc.w - 80, ctx.measureText(tc[0]).width + 44);
+    const keep = tc[0].charAt(0) === "!";
+    if (keep) tc[0] = tc[0].slice(1).trim();
+    const tw = Math.min(sc.w - 80, ctx.measureText(tc[0]).width + 44 + (keep ? 34 : 0));
     const tx = FX + (sc.w - tw) / 2, ty = FY + sc.fh - 76;
     ctx.fillStyle = "rgba(29,37,47,0.92)";
     roundRect(ctx, tx, ty, tw, 42, 6); ctx.fill();
-    wfText(ctx, tc[0], tx + tw / 2, ty + 21, tw - 24, TF, "#FFFFFF", "center");
+    wfText(ctx, tc[0], tx + tw / 2 - (keep ? 16 : 0), ty + 21, tw - 24 - (keep ? 34 : 0),
+           TF, "#FFFFFF", "center");
+    if (keep) {
+      ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 1.3;
+      const kx = tx + tw - 22, ky = ty + 21;
+      ctx.beginPath();
+      ctx.moveTo(kx - 5, ky - 5); ctx.lineTo(kx + 5, ky + 5);
+      ctx.moveTo(kx + 5, ky - 5); ctx.lineTo(kx - 5, ky + 5);
+      ctx.stroke();
+    }
   }
 }
 
@@ -1883,12 +1897,19 @@ function drawWFCell(ctx, c, x, y, w, h) {
     ctx.font = FS;
     items.forEach((it0, i) => {
       const on = it0.charAt(0) === "*" || (!marked && i === 0);
-      const it = it0.charAt(0) === "*" ? it0.slice(1) : it0;
-      const tw2 = ctx.measureText(it).width + 24;
+      const bad = it0.indexOf("!") >= 0;
+      const off = it0.charAt(0) === "-";
+      const it = it0.replace(/^[*\-]/, "").replace(/!/g, "");
+      const tw2 = ctx.measureText(it).width + 24 + (bad ? 12 : 0);
       ctx.fillStyle = on ? WFC.deep : WFC.bg;
       ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
-      roundRect(ctx, tx, y + 3, tw2, h - 8, 3); ctx.fill(); ctx.stroke();
-      wfText(ctx, it, tx + tw2 / 2, y + h / 2, tw2 - 10, FS, WFC.ink, "center");
+      roundRect(ctx, tx, y + 3, tw2, h - 8, 4); ctx.fill(); ctx.stroke();
+      wfText(ctx, it, tx + tw2 / 2 - (bad ? 6 : 0), y + h / 2, tw2 - 10, FS,
+             off ? WFC.soft : (on ? WFC.pri : WFC.ink), "center");
+      if (bad) {
+        ctx.fillStyle = WFC.bad;
+        ctx.beginPath(); ctx.arc(tx + tw2 - 13, y + h / 2 - 1, 3.5, 0, Math.PI * 2); ctx.fill();
+      }
       tx += tw2 + 6;
     });
     return;

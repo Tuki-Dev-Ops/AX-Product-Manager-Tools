@@ -2282,3 +2282,39 @@ changes:
     affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-244
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-05
+    summary: 모달 안 입력 칸의 최대 폭을 520px로 둔다. 1920 폭에서 한 줄이 900px를 넘어 라벨과 값이 멀어지던 문제를 고친다
+    affects: [DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-245
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-06
+    summary: 탭에 오류와 비활성 상태를 표시한다. 검증에 걸린 탭에 표시를 남기고 안내 문구에 탭 이름을 적는다. 등록 시점에 비어 있는 매장과 히스토리 탭은 비활성으로 둔다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-246
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-07
+    summary: 실패 토스트는 자동으로 사라지지 않고 닫기를 둔다. 성공과 취소만 3초 뒤 사라진다
+    affects: [DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-247
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-06
+    summary: 빈 상태에 다음 행동 버튼을 둔다. 계정 잠금 화면에 비밀번호 재설정 경로를 붙인다. 행사 목록의 열 이름을 등록된 브랜드로 맞춘다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
