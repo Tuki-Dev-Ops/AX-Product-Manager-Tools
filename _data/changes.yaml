@@ -2237,3 +2237,30 @@ changes:
     affects: [DOC-01, DOC-02, DOC-03, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-239
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-02
+    summary: 두 어드민의 역할 경계를 적용 기준에 넣는다. 내부 어드민은 기준정보 등록과 계정 발급까지 하고 매장 운영에는 관여하지 않는다
+    affects: [DOC-03, DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-240
+    date: 2026-09-08
+    type: 수정
+    source: 기획 검토
+    document: DOC-06
+    summary: 대시보드의 이동 경로를 역할 경계에 맞춘다. 매장 화면에서 처리할 항목은 대행 접속으로 보낸다. 없어진 화면을 가리키던 매장 상세와 매장 관리 경로를 정리한다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-241
+    date: 2026-09-08
+    type: 추가
+    source: 기획 검토
+    document: DOC-08
+    summary: 매점 정보 변경 요청을 본사가 확정하는 화면이 없다는 검토 사항을 올린다. IS-042 등록
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
