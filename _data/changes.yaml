@@ -2615,3 +2615,66 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-281
+    date: 2026-09-08
+    type: 추가
+    source: 검토 반영
+    document: DOC-00
+    summary: 공통 화면 규칙 점검 도구를 만든다. tools/check_screens.py가 05 규칙을 06 화면에 대조한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-282
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 쪽 넘김이 빠진 목록 12건, 기본 정렬 표시가 빠진 목록 22건, 조회 건수가 빠진 목록 5건을 채운다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-283
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 로그인과 인증 화면의 라벨을 칸 위로 올린다. 조회 조건 칸은 조건명을 칸 안에 두는 것으로 규칙을 나눈다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-284
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 머리말에 동작 버튼이 있던 주소 검색과 메뉴 가져오기를 아래 버튼 줄로 옮긴다. 용도 설명이 없던 화면 12건에 한 줄 설명을 넣는다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-285
+    date: 2026-09-08
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 원산지 입력에 검증 오류 화면을 추가한다. 고른 품목의 원산지가 비면 저장할 수 없다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-286
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: Flow에 나오지 않던 화면 두 건을 잇는다. 확인 팝업은 FL-605, 접근성 안내는 FL-410에 넣는다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-287
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 로그인과 인증 카드의 폭과 글자 크기를 정리한다. 제목, 안내, 라벨, 버튼의 크기를 구분한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

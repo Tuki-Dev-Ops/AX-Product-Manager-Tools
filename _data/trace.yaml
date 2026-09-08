@@ -1632,7 +1632,8 @@ flows:
   - UT-02
   - UT-03
   functions: []
-  screens: []
+  screens:
+  - ADM-COMN-CONF
 - id: FL-606
   title: 목록 일괄 처리
   users:
