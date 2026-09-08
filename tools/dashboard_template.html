@@ -1234,7 +1234,15 @@ const WFH = {
   tx: 26, cnt: 40, pick: 44, note: 40, empty: 230, fs: 40, toast: 0, selx: 40, sele: 40, selo: 40, fsx: 40, fse: 40, fso: 40, fdx: 40, fde: 40, fdo: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
   stat: 84, img: 160, box: 110, lines: 0, key: 260, big: 130, list: 34,
 };
-function wfCellH(c) {
+// 손으로 누르는 화면은 조작 영역을 키운다 (키오스크, 모바일)
+const TOUCH = ["f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "b", "b2", "bd",
+               "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo",
+               "chk", "rad", "tab", "t", "td"];
+function wfCellH(c, touch) {
+  if (touch && TOUCH.indexOf(c.kind) >= 0) {
+    const base = wfCellH(c, false);
+    return Math.max(base, base > 52 ? base + 12 : 52);
+  }
   if (c.text && c.text.indexOf("//") >= 0 &&
       ["f", "fd", "fq", "sel", "fx", "fe", "fo"].indexOf(c.kind) >= 0) return 68;
   if (c.kind === "img" || c.kind === "box") {
@@ -1250,7 +1258,8 @@ function wfCellH(c) {
 
 const WFPAD = 18, WFGAP = 10, WFCG = 14, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
 function wfMeasure(sc) {
-  sc.heights = sc.items.map(row => Math.max.apply(null, row.map(wfCellH)));
+  const touch = sc.h > sc.w;
+  sc.heights = sc.items.map(row => Math.max.apply(null, row.map(c => wfCellH(c, touch))));
   let hh = WFPAD;
   sc.heights.forEach((h, i) => { hh += h + (i < sc.heights.length - 1 ? WFGAP : 0); });
   sc.rawh = hh + WFPAD;

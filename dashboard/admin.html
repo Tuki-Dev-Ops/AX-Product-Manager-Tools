@@ -306,6 +306,12 @@ header.top .sp { margin-left:auto; }
 /* 표의 빈 값은 대시로 채워 값이 없음을 알린다 */
 .wf-tbl .wf-dash { color:#B6BEC6; }
 
+/* 손으로 누르는 화면은 조작 영역을 44px 이상으로 둔다 (키오스크, 모바일) */
+.wf-touch .wf-btn, .wf-touch .wf-in, .wf-touch .wf-fld > .wf-in { height:52px; }
+.wf-touch .wf-tab { min-height:52px; }
+.wf-touch .wf-chk, .wf-touch .wf-rad { width:22px; height:22px; }
+.wf-touch .wf-tbl td, .wf-touch .wf-tbl th { padding:14px 16px; }
+
 </style>
 <header class="top">
   <h1>내부 어드민</h1><em id="cnt"></em>
@@ -665,7 +671,8 @@ function frameHTML(sc) {
       '<main class="wf-main">' + main + "</main></div>";
     return '<div class="wf-screen wf-shell" style="width:' + sc.w + "px;min-height:" + sc.h + 'px">' + shell + "</div>";
   }
-  const nw = sc.w < 1400 && !sc.cw ? " wf-narrow" : "";
+  const nw = (sc.w < 1400 && !sc.cw ? " wf-narrow" : "") +
+             (sc.h > sc.w ? " wf-touch" : "");
   return '<div class="wf-screen' + nw + '" style="width:' + sc.w + "px;min-height:" + sc.h + 'px">' +
          '<main class="wf-main">' + main + "</main></div>";
 }

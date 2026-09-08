@@ -2480,3 +2480,39 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-266
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 키오스크와 모바일 화면의 조작 영역을 44px 이상으로 둔다. 버튼, 입력 칸, 탭, 표 행에 적용한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-267
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 라벨 없이 안내 문구만 있던 웹앱·키오스크 입력 칸 6곳에 라벨을 붙인다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-268
+    date: 2026-09-08
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 주문 조회에 조회 실패 화면을 추가한다. 오류 문구 자리만 있고 상태 화면이 없었다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-269
+    date: 2026-09-08
+    type: 수정
+    source: 검토 반영
+    document: DOC-07
+    summary: 조건과 예외에 같은 문장을 겹쳐 적은 화면 13건을 정리한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
