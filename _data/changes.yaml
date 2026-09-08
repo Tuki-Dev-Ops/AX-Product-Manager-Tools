@@ -1886,3 +1886,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-200
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-07
+    summary: 이메일은 등록할 때만 입력한다. 수정 화면에서는 읽기 전용으로 둔다. 담당자가 바뀌면 계정을 사용 중지하고 새로 발급한다
+    affects: [DOC-02, DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-201
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 상권 상세와 매장 상세를 레이어팝업으로 바꾼다. 목록 위에 띄우고 매장 등록과 일괄 등록은 그 위에 겹친다
+    affects: [DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
