@@ -1778,3 +1778,21 @@ changes:
     affects: [DOC-03, DOC-04, DOC-05, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-188
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 상권 등록·수정의 탭을 정보와 계정으로 바꾼다. 매장 목록은 상권 상세에서만 본다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-189
+    date: 2026-09-08
+    type: 추가
+    source: 사용자 요청
+    document: DOC-07
+    summary: 상권을 등록하면서 담당 계정을 함께 발급한다. 역할은 가맹 관리자, 담당 범위는 그 상권으로 고정한다. 계정 발급은 선택이며 상권과 계정을 한 번에 처리한다
+    affects: [DOC-04, DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당
