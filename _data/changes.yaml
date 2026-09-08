@@ -2381,3 +2381,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-255
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 행사 등록·수정 모달의 폭을 1000px에서 640px로 줄인다. 입력 칸만 있는 모달은 내용 폭에 맞춘다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-256
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 표를 카드 형태로 다듬는다. 머리글을 옅게, 행 여백을 늘리고, 숫자 열을 자릿수 맞춤으로 둔다. 동작 열만 링크로 강조한다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
