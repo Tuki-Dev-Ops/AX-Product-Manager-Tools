@@ -2156,3 +2156,21 @@ changes:
     affects: [DOC-05, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-230
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 상권명을 브랜드명으로 바꾼다. 상권명이 곧 브랜드명이며 매장 탭에서 브랜드를 따로 입력받지 않는다
+    affects: [DOC-03, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-231
+    date: 2026-09-08
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 매장 정보 입력 칸을 한 줄에 하나씩 배치한다. 영업 시작과 종료 항목을 뺀다
+    affects: [DOC-07]
+    status: 완료
+    requested_by: 기획 담당
