@@ -97,10 +97,21 @@ def main():
                 if head[0] == "[]" and len(head) > 1 and head[1] not in ("#", "#v", "#^"):
                     add("목록 둘째 열이 순번이 아니다", "%s : %s" % (where, head[1]))
 
-            # 6. 기간 버튼이 쪼개진 줄
+            # 6. 기간 버튼은 앞 조건 줄이나 세그먼트 줄의 오른쪽에 붙인다
             pres = [c for c in cs if PRESET.match(c)]
-            if pres and len(pres) != len([c for c in cs if c != "sp"]):
-                add("기간 버튼 줄에 다른 요소가 섞였다", "%s : %s" % (where, l[:50]))
+            if pres and all(PRESET.match(c) or c == "sp" for c in cs):
+                add("기간 버튼만 있는 줄을 따로 두었다", "%s : %s" % (where, l[:50]))
+
+            # 6-2. 조회와 초기화는 조건 줄의 오른쪽 끝에 둔다
+            if desk and cs and re.match(r"^b2?(:[\d.]+)?\s+(조회|초기화)$", cs[0]):
+                add("조회 버튼을 조건 줄과 떼어 놓았다", "%s : %s" % (where, l[:50]))
+
+            # 6-3. 등록 버튼은 머리말 오른쪽에 둔다
+            if desk and len(cs) > 1:
+                for c in cs:
+                    if re.match(r"^b(:[\d.]+)?\s+\+", c) and any(
+                            re.match(r"^(fd|sel|fq|chk)", x) for x in cs):
+                        add("등록 버튼을 조건 줄에 두었다", "%s : %s" % (where, c))
 
             # 7. 같은 라벨 버튼의 폭
             for c in cs:

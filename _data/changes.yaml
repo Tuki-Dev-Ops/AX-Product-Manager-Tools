@@ -3335,3 +3335,12 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-361
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 조회 조건 영역의 배치를 맞춘다. 조회와 초기화는 조건 칸 오른쪽 끝에 붙이고, 기간 버튼은 세그먼트나 조건 칸 오른쪽에 같은 줄로 두며, 등록 버튼은 머리말 오른쪽으로 옮긴다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
