@@ -16,6 +16,7 @@ CHECKS = [
     ("check_terms",   "용어와 표기"),
     ("check_docs",    "문서 사이 정합"),
     ("check_screens", "공통 화면 규칙"),
+    ("check_layout",  "배치와 표기"),
     ("check_flow_chart", "순서도 표기"),
     ("check_flows",   "Flow 연결"),
     ("check_missing", "빠진 항목"),

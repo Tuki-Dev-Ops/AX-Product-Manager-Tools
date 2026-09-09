@@ -3317,3 +3317,21 @@ changes:
     affects: [DOC-06]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-359
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 배치와 표기 점검 도구(tools/check_layout.py)를 만든다. 조회 줄 구성과 버튼 폭, 날짜와 금액 표기, 목록 첫 두 열, 요약 지표 개수를 화면끼리 대조한다
+    affects: [DOC-05, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-360
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 화면마다 갈리던 표기를 맞춘다. 조회·초기화 버튼 폭과 검색 칸 폭, 마침표로 끊은 날짜, 천원 열의 원 단위, 두 줄로 쪼개진 기간 버튼, 주문 접수 목록의 순번 열을 고쳤다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당

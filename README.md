@@ -120,6 +120,7 @@ Flow, IA, 아키텍처, 와이어프레임은 본문 안에서 도형으로 그�
 │   ├── check_missing.py       누락 (상태·확인 팝업·구성 표·추적 고리·법정 항목)
 │   ├── check_terms.py         용어와 표기 (--list 사전 출력, --scan 후보 찾기)
 │   ├── check_screens.py       05 공통 화면 규칙 대 06 Wireframe
+│   ├── check_layout.py        배치와 표기 (버튼 폭·조회 줄·날짜·금액·요약 지표)
 │   ├── check_flow_chart.py    ISO 5807 순서도 표기
 │   ├── check_flows.py         Flow 연결
 │   ├── check_wording.py       ISO/IEC/IEEE 29148 문장 기준
@@ -147,6 +148,7 @@ python tools/check_all.py
 | check_terms | 용어 사전과 문서 표기 |
 | check_docs | 화면 집합과 이름·유형·상태값, 표 열 수, 뷰어 지원 표기 |
 | check_screens | 05 공통 화면 규칙 |
+| check_layout | 조회 줄 구성과 버튼 폭, 날짜·금액 표기, 목록 첫 두 열 |
 | check_flow_chart | ISO 5807 순서도 표기 |
 | check_flows | Flow 연결 |
 | check_missing | 빠진 상태·확인 팝업·구성 표·추적 고리·법정 항목 |
