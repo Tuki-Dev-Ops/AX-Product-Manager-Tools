@@ -2876,3 +2876,39 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-310
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-02
+    summary: 서비스를 열기 전에 갖출 정책을 정리한다. 개인정보 처리방침, 이용약관, 통신판매업 신고, 위치기반서비스사업 신고
+    affects: [DOC-04, DOC-05, DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-311
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 주문 가능 반경 판정을 서버에서 단말로 옮긴다. 좌표를 서버로 보내지 않아 위치기반서비스사업 신고 부담을 줄인다
+    affects: [DOC-02, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-312
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 판매자 정보 화면에 이용약관과 개인정보 처리방침 경로를 둔다. 이 둘은 본사가 정하고 전 매장에 같게 적용한다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-313
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 요구사항 문장 점검 도구를 만든다. tools/check_wording.py가 ISO/IEC/IEEE 29148 5.2.4와 5.2.7 기준으로 대조한다
+    affects: [DOC-08]
+    status: 완료
+    requested_by: 기획 담당
