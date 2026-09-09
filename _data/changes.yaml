@@ -2723,3 +2723,21 @@ changes:
     affects: []
     status: 진행 중
     requested_by: 기획 담당
+  - id: CH-293
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 가맹 어드민은 계정을 다루지 않는다는 것을 화면 목록 머리말에 명시한다. 하위 계정을 만드는 화면은 두지 않는다
+    affects: [DOC-02, DOC-03]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-294
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-05
+    summary: 매점 정보에 남아 있던 '변경은 요청으로 처리한다'를 지운다. 매점 정보는 매장이 바로 바꾸고 변경 이력만 남긴다는 결정과 어긋났다
+    affects: [DOC-07]
+    status: 완료
+    requested_by: 기획 담당
