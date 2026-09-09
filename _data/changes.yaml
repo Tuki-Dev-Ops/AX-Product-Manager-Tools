@@ -3101,3 +3101,30 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-335
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-02
+    summary: 매장 개설 절차를 정한다. 가맹 관리자가 등록하면 개설 준비, 본사가 결제대행사 하위가맹점 심사 결과로 개시를 확정하면 영업. 배달앱 입점·프랜차이즈·축제 부스 사례를 따랐다
+    affects: [DOC-03, DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-336
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-05
+    summary: 대시보드에 개시 확정 팝업(ADM-HOME-EXAM)을 둔다. 심사 완료 매장을 골라 확정하면 영업으로 바뀌고 채널에 노출된다. 결제대행사 결과가 자동으로 오면 사람이 누르지 않는다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-337
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-03
+    summary: 매장 상태값에 개설 준비를 더한다. 개설 준비 동안은 채널 비노출, 정산 제외, 소속 행사 변경 가능. 확정 뒤 잠긴다
+    affects: [DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

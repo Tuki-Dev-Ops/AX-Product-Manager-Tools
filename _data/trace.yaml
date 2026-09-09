@@ -877,6 +877,7 @@ flows:
   functions: []
   screens:
   - ADM-HOME-MAIN
+  - ADM-HOME-EXAM
 - id: FL-113
   title: 행사 목록·등록
   users:
@@ -1580,6 +1581,7 @@ flows:
   screens:
   - STR-STOR-LIST
   - STR-STOR-FORM
+  - ADM-HOME-EXAM
 - id: FL-425
   title: 메뉴 갱신
   users:
@@ -1703,6 +1705,14 @@ screens:
   functions:
   - FN-114
   - FN-128
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-HOME-EXAM
+  title: 개시 확정
+  type: 레이어팝업
+  functions:
+  - FN-104
   users:
   - UT-01
   wireframe: 작성
@@ -2748,6 +2758,10 @@ specs:
 - id: FS-093
   screen: STR-STOR-FORM
   title: 매장 등록·수정
+  status: 작성
+- id: FS-094
+  screen: ADM-HOME-EXAM
+  title: 개시 확정
   status: 작성
 nfrs:
 - id: NFR-01
