@@ -96,6 +96,12 @@ def main():
                     add("화면 머리말에 용도 설명이 없다", "%s %s" % (sid, s["state"] or "기본"))
                 if ismod and " ~ " in h:
                     add("모달 머리말에 동작 버튼이 있다", "%s %s" % (sid, s["state"] or "기본"))
+            # 화면에 문서체 설명문을 두지 않는다. 약관 전문은 뺀다
+            if sid != "WEB-INFO-POLI":
+                for l in R:
+                    if l.startswith("tx ") and re.search(r"(?<!니)다\.\s*$", l):
+                        add("화면에 문서체 설명문이 있다", "%s %s : %s" %
+                            (sid, s["state"] or "기본", l[3:40]))
             # 강조 버튼은 하나
             nb = sum(1 for l in R for c in cells(l) if re.match(r"^b(:[\d.]+)?(\s|$)", c))
             if nb > 1:
@@ -143,7 +149,8 @@ def main():
             # 겹쳐 뜨는 판은 펼친 칸 뒤에 온다
             for k, l in enumerate(R):
                 if l.startswith("menu ") or l.startswith("cal "):
-                    prev = [x for x in R[:k] if re.match(r"^(fx|selx|fsx|fdx)\b", x)]
+                    prev = [c for x in R[:k] for c in x.split("|")
+                            if re.match(r"^(fx|selx|fsx|fdx)\b", c.strip())]
                     if not prev:
                         add("펼친 칸 없이 목록이나 달력만 있다", "%s %s" % (sid, s["state"] or "기본"))
     return bad

@@ -936,7 +936,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 계층을 건너뛰는 연계선이 중간 카드를 관통하던 문제를 수정. 우회 통로를 두고 대상 계층 위쪽 여백에서 진입하도록 변경
     affects: []
     status: 완료
@@ -954,7 +954,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 연계선 통로를 가로 이동 거리 기준으로 정렬해 교차를 없애고, 연결 이름은 선을 모두 그린 뒤 겹치지 않는 자리에 올린다
     affects: []
     status: 완료
@@ -990,7 +990,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 되돌아가는 Flow 선을 오른쪽 통로로 보내고 대상 위에서 들어가게 변경. 왼쪽 세로선이 본 흐름과 겹치던 문제를 없앤다
     affects: []
     status: 완료
@@ -1152,7 +1152,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 자체 점검
-    document: 상황판
+    document: DOC-00
     summary: 표 테두리를 셀에서 감싸는 상자로 옮겨 마지막 행 아래 선이 잘리던 문제를 수정. 가로 스크롤 영역에도 아래 여백을 둔다
     affects: []
     status: 완료
@@ -1215,7 +1215,7 @@ changes:
     date: 2026-09-04
     type: 추가
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 화면 흐름 캔버스를 추가. 탭마다 화면을 저충실도 카드로 그리고 화면 간 이동 경로를 화살표로 잇는다. 카드 머리를 누르면 해당 화면 설계로 이동한다
     affects: [DOC-06]
     status: 완료
@@ -1224,7 +1224,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 자체 점검
-    document: 상황판
+    document: DOC-00
     summary: 본문 참조를 링크로 바꾸는 함수의 정규식이 문자열 이스케이프 오류로 동작하지 않던 문제를 수정
     affects: []
     status: 완료
@@ -1260,7 +1260,7 @@ changes:
     date: 2026-09-04
     type: 추가
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 화면 크게 보기를 보드 방식으로 바꿈. 같은 탭의 화면을 한 판에 펼치고 끌어서 이동, 휠로 확대한다. 카드 제목을 누르면 해당 화면 설계로 이동한다
     affects: [DOC-06]
     status: 완료
@@ -1332,7 +1332,7 @@ changes:
     date: 2026-09-04
     type: 추가
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 화면 이름표를 캔버스 위에 겹쳐 둠. 배율을 줄여도 글자 크기가 유지되어 어떤 화면인지 읽을 수 있다. 이름표를 누르면 기능 명세로 이동한다
     affects: []
     status: 완료
@@ -1422,7 +1422,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 자체 점검
-    document: 상황판
+    document: DOC-00
     summary: 필수 입력 표시가 f* 형태로 그대로 출력되던 문제를 수정. 칸 안에 별표로 표시한다
     affects: [DOC-06]
     status: 완료
@@ -1440,7 +1440,7 @@ changes:
     date: 2026-09-04
     type: 수정
     source: 사용자 요청
-    document: 상황판
+    document: DOC-00
     summary: 같은 화면의 상태들을 한 묶음으로 배치하고 화면이 바뀌는 자리에 구분선을 넣는다. 확대·축소와 전체 맞춤 버튼을 아이콘으로 바꾼다
     affects: [DOC-06]
     status: 완료
@@ -1629,7 +1629,7 @@ changes:
     date: 2026-09-07
     type: 추가
     source: 사용자 요청
-    document: README
+    document: DOC-00
     summary: README를 배경·목적·실행 방법·구조 4개 절로 재구성하고 영어·중국어·일본어 번역본을 추가한다
     affects: []
     status: 완료
@@ -2034,7 +2034,7 @@ changes:
     date: 2026-09-08
     type: 수정
     source: 기획 검토
-    document: README
+    document: DOC-00
     summary: README 4종의 점검 결과 예시와 화면 코드 뷰어 설명을 현재 상태로 맞춘다. 정의 편집 패널은 제거되었다
     affects: []
     status: 완료
@@ -3225,5 +3225,59 @@ changes:
     document: DOC-06
     summary: 누락 점검이 찾은 것을 채운다. 매출 집계 잠정·확정, 정산 대사 세 단계, 연동 계정 사용 중지, 매장 일시중지, 주문 불가 사유 세 가지를 화면에 그리고 명세 다섯 건에 구성 표를 넣는다
     affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-349
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 점검 도구를 넷 더 만든다. 식별자(check_ids), 데이터 규칙(check_data), 참조(check_links), 순서도 표기(check_flow_chart). check_all로 열 가지를 한 번에 돌린다
+    affects: [DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-350
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-02
+    summary: 의사결정 기록 DC-015가 두 번 들어가 있던 것을 한 벌로 정리한다. 변경 이력의 비문서 대상을 DOC-00으로 맞추고 해결한 이슈에 해결일을 채운다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-351
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 화면에 들어간 문서체 설명문 여덟 줄을 지운다. 판매자 정보의 중개자 고지는 법정 표시라 말투만 고친다. 같은 표기가 다시 들어오지 않게 화면 규칙 점검에 넣는다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-352
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 상권 화면에서 참여 행사를 다루지 않는다. 상권 목록의 조회 조건과 열, 상권 등록·수정의 입력에서 빼고 행사 등록·수정의 상권 탭에서만 붙이고 뗀다
+    affects: [DOC-01, DOC-03, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-353
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 매출 세 화면을 다시 짠다. 비교는 일평균 토글과 표시 개수, 전기 대비를 두고, 조회는 집계 단위와 열 고르기를 두며, 상세는 결제수단별 집계와 날짜 이동을 둔다
+    affects: [DOC-04, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-354
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 주문 상세(ADM-SALE-ORDR)와 내려받기(ADM-COMN-DOWN) 화면을 둔다. 주문 상세는 결제와 상태 이력, 알림 결과를 보여주고 본사는 조회만 한다. 내려받기는 매출·정산·이력 공통 팝업이다
+    affects: [DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
