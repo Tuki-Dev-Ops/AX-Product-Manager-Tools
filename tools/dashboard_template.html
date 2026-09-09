@@ -1261,6 +1261,25 @@ function wfCellH(c, touch) {
   return WFH[c.kind] || 26;
 }
 
+// 화면 첫머리에서 조회 조건 줄이 이어지는 범위를 찾는다
+function wfFilterRange(items) {
+  const COND = ["fd","fdx","fde","fdo","sel","selx","sele","selo","fq","chk","seg","sw","swo"];
+  const PASS = ["sp","b","b2","bd","menu","cal"];
+  let a = -1, b = -1;
+  for (let i = 0; i < items.length; i++) {
+    const ks = items[i].map(c => c.kind);
+    const isCond = ks.some(k => COND.indexOf(k) >= 0);
+    const ok = ks.every(k => COND.indexOf(k) >= 0 || PASS.indexOf(k) >= 0);
+    if (a < 0) {
+      if (ks.some(k => ["t","td","stat","sub","box","img","empty","p","note","tx","toast"].indexOf(k) >= 0)) break;
+      if (isCond && ok) { a = i; b = i; }
+      continue;
+    }
+    if (ok) { b = i; continue; }
+    break;
+  }
+  return a < 0 ? null : [a, b];
+}
 const WFPAD = 24, WFGAP = 16, WFCG = 12, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
 function wfMeasure(sc) {
   const touch = sc.h > sc.w;
@@ -1581,6 +1600,17 @@ function drawWFScreen(ctx, sc) {
   const over = [];
   const OPENK = ["fx", "selx", "fsx", "fdx"];
   let openAt = null;
+  // 조회 조건은 카드 하나로 묶어 배경을 깔아 준다
+  const fr = sc.items.some(r => r.some(c => c.kind === "t")) ? wfFilterRange(sc.items) : null;
+  if (fr) {
+    let fy = y, fh = 0;
+    for (let i = 0; i < fr[0]; i++) fy += sc.heights[i] + WFGAP;
+    for (let i = fr[0]; i <= fr[1]; i++) fh += sc.heights[i] + (i < fr[1] ? WFGAP : 0);
+    ctx.fillStyle = "#F7F9FB"; ctx.strokeStyle = WFC.line; ctx.lineWidth = 1;
+    roundRect(ctx, areaX + WFPAD / 2, fy - WFPAD / 2 - 4,
+              innerW + WFPAD, fh + WFPAD + 8, 4);
+    ctx.fill(); ctx.stroke();
+  }
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;

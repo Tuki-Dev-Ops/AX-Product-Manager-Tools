@@ -3371,3 +3371,30 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-365
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 목록 화면 골격을 표준으로 다시 짠다. 조회 조건은 카드로 묶고 기간 버튼은 날짜 옆에, 표시 개수와 건수는 표 바로 위 도구 줄에 둔다. 58개 화면의 조회 조건 영역을 재배치했다
+    affects: [DOC-05, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-366
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-00
+    summary: 뷰어와 상황판 그리기 규칙을 고친다. 조회 조건 카드 배경, 열 머리와 값의 정렬 일치, 페이지네이션 좌우 분리를 넣었다
+    affects: [DOC-06]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-367
+    date: 2026-09-09
+    type: 삭제
+    source: 검토 반영
+    document: DOC-06
+    summary: 표 아래 조작 설명 여섯 줄을 지운다. 주문 접수 목록의 동작 열에서 상태 배지를 빼고 글자로 바꾼다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
