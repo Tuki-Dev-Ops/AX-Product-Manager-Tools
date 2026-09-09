@@ -2984,3 +2984,48 @@ changes:
     affects: [DOC-02, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-322
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 상권이 여러 행사에 참여할 수 있게 한다. 소속 행사를 참여 행사로 바꾸고 여러 건 고를 수 있게 한다. 참여 행사는 선택이며 비워 둘 수 있다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-323
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 행사 등록·수정의 상권 탭에서 상권을 붙이고 뗄 수 있게 한다. 상권 붙이기 화면을 추가한다. 붙이는 것은 선택이며 비워 두고 저장할 수 있다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-324
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-05
+    summary: 브랜드명 중복 기준을 같은 행사 안에서 전체로 넓힌다. 상권이 여러 행사에 참여하므로 행사 단위로 판정할 수 없다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-325
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-00
+    summary: 겹쳐 뜨는 판이 배율에 맞지 않게 그려지던 것을 고친다. 잰 값에서 배율을 걷어내고 자리를 잡는다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-326
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-00
+    summary: 표가 들어가는 겹친 모달을 위해 880px 겹침 프레임을 만든다. 상권 붙이기에 적용한다
+    affects: [DOC-05, DOC-06]
+    status: 완료
+    requested_by: 기획 담당

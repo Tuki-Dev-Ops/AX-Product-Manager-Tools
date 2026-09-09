@@ -887,6 +887,7 @@ flows:
   - ADM-EVNT-FORM
   - ADM-COMN-CONF
   - ADM-ADDR-FIND
+  - ADM-EVNT-ZONE
 - id: FL-114
   title: 상권 목록·등록
   users:
@@ -1707,6 +1708,14 @@ screens:
 - id: ADM-EVNT-FORM
   title: 행사 등록·수정
   type: 페이지
+  functions:
+  - FN-102
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-EVNT-ZONE
+  title: 상권 붙이기
+  type: 레이어팝업
   functions:
   - FN-102
   users:
@@ -2703,6 +2712,10 @@ specs:
 - id: FS-090
   screen: WEB-INFO-POLI
   title: 서비스 정책
+  status: 작성
+- id: FS-091
+  screen: ADM-EVNT-ZONE
+  title: 상권 붙이기
   status: 작성
 nfrs:
 - id: NFR-01
