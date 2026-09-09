@@ -995,6 +995,14 @@ flows:
   - FN-123
   screens:
   - ADM-PRIV-LIST
+- id: FL-146
+  title: 미수령 주문 마감
+  users:
+  - UT-02
+  functions:
+  - FN-207
+  screens:
+  - ADM-BATC-LIST
 - id: FL-201
   title: 매점 운영
   users:
@@ -1035,6 +1043,8 @@ flows:
   - STR-ORDR-LIST
   - STR-ORDR-DETAIL
   - STR-ORDR-PRNT
+  - STR-ORDR-ACPT
+  - STR-ORDR-RJCT
 - id: FL-204
   title: 알레르기 정보 등록
   users:
@@ -1075,6 +1085,8 @@ flows:
   functions: []
   screens:
   - STR-ORDR-LIST
+  - STR-ORDR-ACPT
+  - STR-ORDR-RJCT
 - id: FL-214
   title: 주문 상세
   users:
@@ -1505,6 +1517,7 @@ flows:
   screens:
   - STR-ORDR-DETAIL
   - WEB-ORDR-STAT
+  - STR-ORDR-RJCT
 - id: FL-904
   title: VAN 망취소
   users:
@@ -1939,6 +1952,22 @@ screens:
 - id: STR-ORDR-DETAIL
   title: 주문 상세
   type: 페이지
+  functions:
+  - FN-207
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-ORDR-ACPT
+  title: 주문 접수
+  type: 레이어팝업
+  functions:
+  - FN-207
+  users:
+  - UT-02
+  wireframe: 작성
+- id: STR-ORDR-RJCT
+  title: 주문 거절
+  type: 레이어팝업
   functions:
   - FN-207
   users:
@@ -2628,6 +2657,14 @@ specs:
   title: 오류 로그
   status: 작성
 
+- id: FS-086
+  screen: STR-ORDR-ACPT
+  title: 주문 접수
+  status: 작성
+- id: FS-087
+  screen: STR-ORDR-RJCT
+  title: 주문 거절
+  status: 작성
 nfrs:
 - id: NFR-01
   title: 웹앱 최대 콘텐츠 표시 시간

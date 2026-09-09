@@ -2795,3 +2795,39 @@ changes:
     affects: [DOC-04]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-301
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-02
+    summary: 매장 미응답 제한 시간을 1분에서 5분으로 바꾼다. 접수 화면에 남은 시간을 표시하고 1분 남으면 붉게 바꾼다
+    affects: [DOC-03, DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-302
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-02
+    summary: 예상 준비 시간을 정한다. 매점 정보에 기본 준비 시간을 두어 결제 전에 안내하고, 매장이 접수할 때 5~30분에서 다시 고른다
+    affects: [DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-303
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-04
+    summary: 미수령 주문 마감 배치를 추가한다 (FL-146). 영업 종료 한 시간 뒤 조리 완료 주문을 수령 완료로 바꾸고 미수령으로 남긴다. 결제는 취소하지 않는다
+    affects: [DOC-02, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-304
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 주문 접수와 주문 거절 화면을 추가한다. 접수는 준비 시간을 고르고, 거절은 사유를 골라 결제까지 취소한다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
