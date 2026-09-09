@@ -1269,6 +1269,7 @@ flows:
   screens:
   - WEB-STOR-ENTRY
   - WEB-INFO-SELL
+  - WEB-INFO-POLI
 - id: FL-312
   title: 주문 불가 안내
   users:
@@ -2031,6 +2032,14 @@ screens:
   users:
   - UT-03
   wireframe: 작성
+- id: WEB-INFO-POLI
+  title: 서비스 정책
+  type: 페이지
+  functions:
+  - FN-301
+  users:
+  - UT-03
+  wireframe: 작성
 - id: WEB-STOR-BLOCK
   title: 주문 불가 안내
   type: 페이지
@@ -2690,6 +2699,10 @@ specs:
 - id: FS-089
   screen: KSK-INFO-SELL
   title: 판매자 정보
+  status: 작성
+- id: FS-090
+  screen: WEB-INFO-POLI
+  title: 서비스 정책
   status: 작성
 nfrs:
 - id: NFR-01

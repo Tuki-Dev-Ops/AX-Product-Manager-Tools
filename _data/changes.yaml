@@ -2912,3 +2912,39 @@ changes:
     affects: [DOC-08]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-314
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-02
+    summary: 아이오더를 통신판매중개자로 정한다. 중개가 아니라고 적혀 있던 곳을 고치고 제20조와 제20조의2 의무를 반영한다
+    affects: [DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-315
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-02
+    summary: 이용약관 조항 열 가지, 개인정보 처리방침 항목, 알림톡 템플릿 문구 네 가지를 정한다. 표준약관과 작성지침을 따랐다
+    affects: [DOC-05, DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-316
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-02
+    summary: 분쟁 처리 절차를 둔다. 전자상거래법 제20조의2 제3항이 정한 의무다. 접수 창구는 본사, 처리 기한은 3영업일
+    affects: [DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-317
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-05
+    summary: 서비스 정책 화면을 둔다. 이용약관과 개인정보 처리방침을 탭으로 나누고 시행일과 이전 판을 표시한다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
