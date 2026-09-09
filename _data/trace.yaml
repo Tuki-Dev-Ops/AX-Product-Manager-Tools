@@ -143,7 +143,7 @@ requirements:
   functions:
   - FN-118
 - id: REQ-030
-  title: 가맹 관리자는 매점 정보를 조회하고 변경을 요청한다.
+  title: 가맹 관리자는 매장 정보를 조회하고 변경을 요청한다.
   area: 매장 운영
   functions:
   - FN-202
@@ -233,7 +233,7 @@ requirements:
   functions:
   - FN-125
 - id: REQ-049
-  title: 본사 운영자는 업체별 정산 진행 상태와 미정산 금액을 조회한다.
+  title: 본사 운영자는 매장별 정산 진행 상태와 미정산 금액을 조회한다.
   area: 매출
   functions:
   - FN-126
@@ -248,7 +248,7 @@ requirements:
   functions:
   - FN-129
 - id: REQ-051
-  title: 본사 운영자는 행사별 개시 준비 상태를 한 화면에서 확인하고 미완료 업체에 안내를 보낸다.
+  title: 본사 운영자는 행사별 개시 준비 상태를 한 화면에서 확인하고 미완료 매장에 안내를 보낸다.
   area: 기준정보
   functions:
   - FN-128
@@ -473,13 +473,13 @@ functions:
   requirements:
   - REQ-027
 - id: FN-202
-  title: 매점 정보 조회
+  title: 매장 정보 조회
   users:
   - UT-02
   requirements:
   - REQ-030
 - id: FN-203
-  title: 매점 정보 변경
+  title: 매장 정보 변경
   users:
   - UT-02
   requirements:
@@ -491,7 +491,7 @@ functions:
   requirements:
   - REQ-031
 - id: FN-205
-  title: 매점 메뉴 조회
+  title: 매장 메뉴 조회
   users:
   - UT-02
   requirements:
@@ -510,7 +510,7 @@ functions:
   - REQ-019
   - REQ-020
 - id: FN-208
-  title: 매점 매출 조회
+  title: 매장 매출 조회
   users:
   - UT-02
   requirements:
@@ -636,7 +636,7 @@ functions:
   - UT-01
   requirements:
   - REQ-034
-  description: 전체 매장의 단말 연결 상태를 가맹 어드민의 단말기 화면에서 확인하고, 장애 단말을 사용 중지하거나 재개한다
+  description: 전체 매장의 단말 연결 상태를 가맹 어드민의 단말 화면에서 확인하고, 장애 단말을 사용 중지하거나 재개한다
 - id: FN-410
   title: 메뉴 수신
   users:
@@ -718,14 +718,14 @@ functions:
   - REQ-046
   description: 검증기준을 준수한 단말을 쓰고 위치를 음성으로 안내한다
 - id: FN-213
-  title: 단말기 등록
+  title: 단말 등록
   users:
   - UT-02
   requirements:
   - REQ-047
   description: 매장에서 쓰는 키오스크, 카드 단말, 주문서 프린터를 등록하고 연결한다
 - id: FN-214
-  title: 단말기 상태 확인
+  title: 단말 상태 확인
   users:
   - UT-02
   requirements:
@@ -747,12 +747,12 @@ functions:
   - REQ-048
   description: 단말 미연결이 30분을 넘기면 매장에, 60분을 넘기면 본사에 알린다
 - id: FN-126
-  title: 업체별 정산 조회
+  title: 매장별 정산 조회
   users:
   - UT-01
   requirements:
   - REQ-049
-  description: 결제대행사 지급 내역을 업체 단위로 조회한다. 플랫폼이 정산금액을 계산하지 않는다
+  description: 결제대행사 지급 내역을 매장 단위로 조회한다. 플랫폼이 정산금액을 계산하지 않는다
 - id: FN-127
   title: 오류 로그 조회
   users:
@@ -773,7 +773,7 @@ functions:
   - UT-01
   requirements:
   - REQ-051
-  description: 행사에 속한 상권과 업체, 개시 준비 상태를 한 화면에서 확인하고 미완료 업체에 안내를 보낸다
+  description: 행사에 속한 상권과 매장, 개시 준비 상태를 한 화면에서 확인하고 미완료 매장에 안내를 보낸다
 flows:
 - id: FL-001
   title: 서비스 전체 흐름
@@ -1019,7 +1019,7 @@ flows:
   screens:
   - ADM-BATC-LIST
 - id: FL-201
-  title: 매점 운영
+  title: 매장 운영
   users:
   - UT-02
   functions:
@@ -1087,7 +1087,7 @@ flows:
   - STR-AUTH-OTP
   - STR-STOR-PICK
 - id: FL-212
-  title: 매점 홈
+  title: 매장 홈
   users:
   - UT-02
   functions: []
@@ -1117,14 +1117,14 @@ flows:
   screens:
   - STR-ORDR-PRNT
 - id: FL-216
-  title: 매점 정보
+  title: 매장 정보
   users:
   - UT-02
   functions: []
   screens:
   - STR-INFO-DETAIL
 - id: FL-217
-  title: 매점 정보 변경
+  title: 매장 정보 변경
   users:
   - UT-02
   functions: []
@@ -1567,7 +1567,7 @@ flows:
   - ADM-AUTH-LOGIN
   - STR-AUTH-LOGIN
 - id: FL-232
-  title: 단말기 목록
+  title: 단말 목록
   users:
   - UT-01
   - UT-02
@@ -1577,7 +1577,7 @@ flows:
   screens:
   - STR-DEVC-LIST
 - id: FL-233
-  title: 단말기 연결
+  title: 단말 연결
   users:
   - UT-02
   functions:
@@ -1624,7 +1624,7 @@ flows:
   - STR-NOTI-LIST
   - ADM-USER-FORM
 - id: FL-148
-  title: 업체별 정산
+  title: 매장별 정산
   users:
   - UT-01
   functions:
@@ -1979,7 +1979,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-HOME-MAIN
-  title: 매점 홈
+  title: 매장 홈
   type: 페이지
   functions:
   - FN-202
@@ -2027,7 +2027,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-INFO-DETAIL
-  title: 매점 정보
+  title: 매장 정보
   type: 페이지
   functions:
   - FN-202
@@ -2035,7 +2035,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-INFO-FORM
-  title: 매점 정보 변경
+  title: 매장 정보 변경
   type: 페이지
   functions:
   - FN-203
@@ -2366,7 +2366,7 @@ screens:
   - UT-02
   wireframe: 작성
 - id: STR-DEVC-LIST
-  title: 단말기 목록
+  title: 단말 목록
   users:
   - UT-01
   - UT-02
@@ -2375,14 +2375,14 @@ screens:
   - FN-409
   wireframe: 작성
 - id: STR-DEVC-FORM
-  title: 단말기 등록·수정
+  title: 단말 등록·수정
   users:
   - UT-02
   functions:
   - FN-213
   wireframe: 작성
 - id: STR-DEVC-PAIR
-  title: 단말기 연결
+  title: 단말 연결
   users:
   - UT-02
   functions:
@@ -2403,7 +2403,7 @@ screens:
   - FN-412
   wireframe: 작성
 - id: ADM-RECN-STOR
-  title: 업체별 정산
+  title: 매장별 정산
   users:
   - UT-01
   functions:
@@ -2547,7 +2547,7 @@ specs:
   status: 작성
 - id: FS-037
   screen: STR-HOME-MAIN
-  title: 매점 홈
+  title: 매장 홈
   status: 작성
 - id: FS-038
   screen: STR-ORDR-LIST
@@ -2563,11 +2563,11 @@ specs:
   status: 작성
 - id: FS-041
   screen: STR-INFO-DETAIL
-  title: 매점 정보
+  title: 매장 정보
   status: 작성
 - id: FS-042
   screen: STR-INFO-FORM
-  title: 매점 정보 변경
+  title: 매장 정보 변경
   status: 작성
 - id: FS-043
   screen: STR-OPEN-STATE
@@ -2575,7 +2575,7 @@ specs:
   status: 작성
 - id: FS-044
   screen: STR-SALE-LIST
-  title: 매점 매출 조회
+  title: 매장 매출 조회
   status: 작성
 - id: FS-045
   screen: WEB-STOR-ENTRY
@@ -2715,15 +2715,15 @@ specs:
   status: 작성
 - id: FS-079
   screen: STR-DEVC-LIST
-  title: 단말기 목록
+  title: 단말 목록
   status: 작성
 - id: FS-080
   screen: STR-DEVC-FORM
-  title: 단말기 등록·수정
+  title: 단말 등록·수정
   status: 작성
 - id: FS-081
   screen: STR-DEVC-PAIR
-  title: 단말기 연결
+  title: 단말 연결
   status: 작성
 - id: FS-082
   screen: KSK-ADMN-SYNC
@@ -2735,7 +2735,7 @@ specs:
   status: 작성
 - id: FS-084
   screen: ADM-RECN-STOR
-  title: 업체별 정산
+  title: 매장별 정산
   status: 작성
 - id: FS-085
   screen: ADM-ERRL-LIST

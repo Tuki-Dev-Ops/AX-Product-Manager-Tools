@@ -1,0 +1,132 @@
+# 기획 용어 사전
+#
+# terms  : 문서 전체에서 한 가지 표기로만 쓰는 업무 용어
+# spacing: 띄어쓰기가 갈리는 표기. write 쪽으로 맞춘다
+# allow  : 다른 뜻이어서 함께 써도 되는 표기와 그 근거
+#
+# 점검은 python tools/check_terms.py 로 한다.
+
+terms:
+  - term: 행사
+    definition: 시작일과 종료일을 가진 운영 단위. 상설 매장은 종료일 없는 상시 행사에 속한다
+    avoid: []
+  - term: 상권
+    definition: 행사 안에서 매장을 묶는 지역 구분 단위
+    avoid: [상가]
+  - term: 브랜드
+    definition: 카테고리와 메뉴를 소유하는 단위
+    avoid: []
+  - term: 매장
+    definition: 실제 판매가 일어나는 장소. 브랜드 하나에 속하고 지점번호를 갖는다
+    avoid: [매점, 업체]
+    note: 가맹 어드민 화면도 매장으로 부른다. 본사와 가맹이 같은 대상을 다르게 부르지 않는다
+  - term: 지점번호
+    definition: 브랜드 안에서 매장을 구분하는 일련번호
+    avoid: [점포번호]
+  - term: 단말
+    definition: 주문과 결제에 쓰는 장치. 키오스크, 카드 단말, 주문서 프린터를 아우른다
+    avoid: [단말기, 기기]
+  - term: 본사 운영자
+    definition: 내부 어드민을 쓰는 아이오더 직원
+    avoid: [본사 관리자, 내부 관리자]
+  - term: 가맹 관리자
+    definition: 가맹 어드민을 쓰는 매장 운영자
+    avoid: [매장 관리자, 점주]
+  - term: 고객
+    definition: 웹앱이나 키오스크로 주문하는 사람
+    avoid: [구매자]
+    note: 법령을 인용할 때만 소비자, 이용자, 정보주체를 쓴다
+  - term: 매장별 메뉴 설정
+    definition: 매장과 메뉴를 잇는 연결 객체. 판매가, 노출 여부, 품절 상태를 담는다
+    avoid: []
+  - term: 본사 통제
+    definition: 매장에서 메뉴 설정을 바꿀 수 없는 상태
+    avoid: []
+  - term: 매장 통제
+    definition: 매장이 자기 매장의 판매가, 노출 여부, 품절 상태를 바꿀 수 있는 상태
+    avoid: []
+  - term: 카테고리
+    definition: 메뉴를 묶는 관리용 분류
+    avoid: []
+  - term: 메뉴
+    definition: 판매 단위. 원산지와 알레르기 정보를 속성으로 갖는다
+    avoid: []
+  - term: 옵션 그룹
+    definition: 메뉴에 연결하는 선택 묶음
+    avoid: []
+  - term: 옵션 항목
+    definition: 옵션 그룹 안의 개별 선택지
+    avoid: []
+  - term: 망취소
+    definition: 승인 결과를 판단할 수 없을 때 원 승인을 되돌리는 처리
+    avoid: []
+  - term: 주문서
+    definition: 매장 프린터로 출력하는 조리용 출력물
+    avoid: [주문표]
+    note: 카드 매출전표는 카드 단말이 내는 별개 출력물이다
+  - term: 정산계좌
+    definition: 결제대행사가 대금을 보내는 계좌
+    avoid: [입금계좌, 지급계좌]
+  - term: 결제대행사
+    definition: 결제 승인과 정산을 맡는 외부 사업자
+    avoid: [PG사, 결제사]
+  - term: 확인 팝업
+    definition: 되돌릴 수 없는 처리 전에 한 번 더 묻는 팝업
+    avoid: [확인창, 알림창, 컨펌]
+  - term: 결과 없음
+    definition: 조회 결과가 하나도 없을 때 목록 자리에 표시하는 화면
+    avoid: [빈 화면, 노데이터]
+  - term: 개설 준비
+    definition: 가맹 관리자가 매장을 등록한 뒤 본사가 개시를 확정하기 전까지의 상태
+    avoid: [등록 대기]
+  - term: 대행 접속
+    definition: 본사가 가맹 어드민 화면에 대신 접속하는 것
+    avoid: [대리 접속, 임시 접속]
+
+spacing:
+  - {write: 결제수단, avoid: 결제 수단}
+  - {write: 표시 정보, avoid: 표시정보}
+  - {write: 정산 대사, avoid: 정산대사}
+  - {write: 매장 개설, avoid: 매장개설}
+  - {write: 이상 알림, avoid: 이상알림}
+  - {write: 보유 기간, avoid: 보유기간}
+  - {write: 준비 시간, avoid: 준비시간}
+  - {write: 제한 시간, avoid: 제한시간}
+  - {write: 개인정보 보호법, avoid: 개인정보보호법}
+  - {write: 회원가입, avoid: 회원 가입}
+  - {write: 취식유형, avoid: 취식 유형}
+  - {write: 거래 내역, avoid: 거래내역}
+  - {write: 재화 공급, avoid: 재화공급}
+  - {write: 코드 체계, avoid: 코드체계}
+  - {write: 표시 책임, avoid: 표시책임}
+  - {write: 표시 의무, avoid: 표시의무}
+  - {write: 매장 수명주기, avoid: 매장수명주기}
+  - {write: 비기능 요구사항, avoid: 비기능요구사항}
+  - {write: 한 곳에서, avoid: 한곳에서}
+  - {write: 입력해 주세요, avoid: 입력해주세요}
+  - {write: 선택해 주세요, avoid: 선택해주세요}
+  - {write: 검색해 주세요, avoid: 검색해주세요}
+
+# 긴 낱말 안에 들어간 표기는 점검하지 않는다
+exempt_phrases:
+  - 무인정보단말기
+  - 매출전표
+  - 행정구역
+  - 동일점포매출
+  - 단말 승인 대기
+  - 승인 대기 시간
+
+allow:
+  - {terms: [사용자, 고객], reason: 사용자는 UT 구분에만 쓴다. 화면 문구에는 고객을 쓴다}
+  - {terms: [회원, 고객], reason: 회원은 표준약관 조문을 인용할 때만 쓴다. 본 서비스에는 회원 제도가 없다}
+  - {terms: [이용자, 고객], reason: 이용자는 법령 문구를 인용할 때만 쓴다}
+  - {terms: [소비자, 고객], reason: 소비자는 전자상거래법 문구를 인용할 때만 쓴다}
+  - {terms: [정보주체, 고객], reason: 정보주체는 개인정보 보호법 문구를 인용할 때만 쓴다}
+  - {terms: [영수증, 주문서], reason: 영수증은 키오스크가 고객에게 내주는 출력물이다. 주문서는 주방용이다}
+  - {terms: [매출전표, 주문서], reason: 매출전표는 카드 단말이 내는 결제 증빙이다}
+
+# 아래 표기는 파일 경로나 알림톡 변수라서 띄어쓰기 점검에서 뺀다
+exempt_patterns:
+  - "research/"
+  - "#\\{[^}]*\\}"
+  - "_조사.md"

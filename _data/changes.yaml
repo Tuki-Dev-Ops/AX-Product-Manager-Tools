@@ -78,7 +78,7 @@ changes:
     type: 범위 변경
     source: 사용자 요청
     document: DOC-01
-    summary: 초도 작업 범위를 ERP로 정의. 구축 순서는 내부 어드민 > 가맹 어드민(매점 관리) > 하이브리드 웹앱 > 키오스크
+    summary: 초도 작업 범위를 ERP로 정의. 구축 순서는 내부 어드민 > 가맹 어드민(매장 관리) > 하이브리드 웹앱 > 키오스크
     affects: [DOC-03, DOC-04, DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -1018,7 +1018,7 @@ changes:
     type: 추가
     source: 사용자 요청
     document: DOC-05
-    summary: 가맹 어드민에 설정 > 단말기를 추가. 화면 STR-DEVC-LIST, STR-DEVC-FORM, STR-DEVC-PAIR와 기능 FN-213, FN-214, Flow FL-232, FL-233, 요구사항 REQ-047 신설
+    summary: 가맹 어드민에 설정 > 단말를 추가. 화면 STR-DEVC-LIST, STR-DEVC-FORM, STR-DEVC-PAIR와 기능 FN-213, FN-214, Flow FL-232, FL-233, 요구사항 REQ-047 신설
     affects: [DOC-01, DOC-03, DOC-04]
     status: 완료
     requested_by: 기획 담당
@@ -1126,7 +1126,7 @@ changes:
     type: 추가
     source: 사용자 요청
     document: DOC-05
-    summary: 결제 완료 화면에 호출 순번과 주문표를 표시. 순번은 매장별로 매일 1번부터 채번하고 조회와 대사에는 주문번호를 쓴다
+    summary: 결제 완료 화면에 호출 순번과 주문서를 표시. 순번은 매장별로 매일 1번부터 채번하고 조회와 대사에는 주문번호를 쓴다
     affects: [DOC-02, DOC-03, DOC-04]
     status: 완료
     requested_by: 기획 담당
@@ -1468,7 +1468,7 @@ changes:
     type: 수정
     source: 사용자 요청
     document: DOC-05
-    summary: 내부 어드민 메뉴를 대시보드, 행사, 매출, 정산, 시스템으로 재편. 운영 관리를 행사 아래 운영으로 옮기고 매출과 정산을 행사별·업체별과 일자별·업체별로 나눈다
+    summary: 내부 어드민 메뉴를 대시보드, 행사, 매출, 정산, 시스템으로 재편. 운영 관리를 행사 아래 운영으로 옮기고 매출과 정산을 행사별·매장별과 일자별·매장별로 나눈다
     affects: [DOC-03, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -1486,7 +1486,7 @@ changes:
     type: 추가
     source: 사용자 요청
     document: DOC-05
-    summary: 업체별 정산(ADM-RECN-STOR)과 오류 로그(ADM-ERRL-LIST) 화면 신설. 기능 FN-126, FN-127과 Flow FL-148, FL-149, 요구사항 REQ-049, REQ-050을 함께 정의
+    summary: 매장별 정산(ADM-RECN-STOR)과 오류 로그(ADM-ERRL-LIST) 화면 신설. 기능 FN-126, FN-127과 Flow FL-148, FL-149, 요구사항 REQ-049, REQ-050을 함께 정의
     affects: [DOC-01, DOC-03, DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -1927,7 +1927,7 @@ changes:
     type: 수정
     source: 기획 검토
     document: DOC-06
-    summary: 매점 정보 변경 요청의 입력 칸을 라벨과 현재값 구조로 정리한다. 판매가 설정의 저장 버튼을 머리말에서 아래로 옮긴다
+    summary: 매장 정보 변경 요청의 입력 칸을 라벨과 현재값 구조로 정리한다. 판매가 설정의 저장 버튼을 머리말에서 아래로 옮긴다
     affects: []
     status: 완료
     requested_by: 기획 담당
@@ -1981,7 +1981,7 @@ changes:
     type: 수정
     source: 기획 검토
     document: DOC-04
-    summary: 존재하지 않는 Flow를 가리키던 참조를 고친다. FL-146 검수 대기 분기 삭제, FL-139를 FL-232 단말기 목록으로
+    summary: 존재하지 않는 Flow를 가리키던 참조를 고친다. FL-146 검수 대기 분기 삭제, FL-139를 FL-232 단말 목록으로
     affects: []
     status: 완료
     requested_by: 기획 담당
@@ -2260,7 +2260,7 @@ changes:
     type: 추가
     source: 기획 검토
     document: DOC-08
-    summary: 매점 정보 변경 요청을 본사가 확정하는 화면이 없다는 검토 사항을 올린다. IS-042 등록
+    summary: 매장 정보 변경 요청을 본사가 확정하는 화면이 없다는 검토 사항을 올린다. IS-042 등록
     affects: []
     status: 완료
     requested_by: 기획 담당
@@ -2269,7 +2269,7 @@ changes:
     type: 수정
     source: 사용자 요청
     document: DOC-03
-    summary: 매점 정보 변경에서 본사 확정을 없앤다. 매장이 자율로 바꾸고 저장하면 바로 반영한다. 화면명을 매점 정보 변경으로 바꾼다
+    summary: 매장 정보 변경에서 본사 확정을 없앤다. 매장이 자율로 바꾸고 저장하면 바로 반영한다. 화면명을 매장 정보 변경으로 바꾼다
     affects: [DOC-02, DOC-04, DOC-05, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -2737,7 +2737,7 @@ changes:
     type: 수정
     source: 검토 반영
     document: DOC-05
-    summary: 매점 정보에 남아 있던 '변경은 요청으로 처리한다'를 지운다. 매점 정보는 매장이 바로 바꾸고 변경 이력만 남긴다는 결정과 어긋났다
+    summary: 매장 정보에 남아 있던 '변경은 요청으로 처리한다'를 지운다. 매장 정보는 매장이 바로 바꾸고 변경 이력만 남긴다는 결정과 어긋났다
     affects: [DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -2755,7 +2755,7 @@ changes:
     type: 수정
     source: 검토 반영
     document: DOC-04
-    summary: 어디에서도 가리키지 않던 Flow 7건을 잇는다. 화면 조작 Flow는 05 문서 8.1 표에서, 이상 알림은 단말기 목록 Flow에서 가리킨다
+    summary: 어디에서도 가리키지 않던 Flow 7건을 잇는다. 화면 조작 Flow는 05 문서 8.1 표에서, 이상 알림은 단말 목록 Flow에서 가리킨다
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
@@ -2809,7 +2809,7 @@ changes:
     type: 추가
     source: 사용자 요청
     document: DOC-02
-    summary: 예상 준비 시간을 정한다. 매점 정보에 기본 준비 시간을 두어 결제 전에 안내하고, 매장이 접수할 때 5~30분에서 다시 고른다
+    summary: 예상 준비 시간을 정한다. 매장 정보에 기본 준비 시간을 두어 결제 전에 안내하고, 매장이 접수할 때 5~30분에서 다시 고른다
     affects: [DOC-04, DOC-05, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -3070,7 +3070,7 @@ changes:
     type: 수정
     source: 검토 반영
     document: DOC-04
-    summary: 매점 정보 변경 Flow를 즉시 반영과 이력 기록으로 다시 쓴다. 본사 확정 대기가 남아 있었다
+    summary: 매장 정보 변경 Flow를 즉시 반영과 이력 기록으로 다시 쓴다. 본사 확정 대기가 남아 있었다
     affects: [DOC-03]
     status: 완료
     requested_by: 기획 담당
@@ -3079,7 +3079,7 @@ changes:
     type: 수정
     source: 검토 반영
     document: DOC-04
-    summary: 키오스크의 영수증 출력을 주문표 출력으로 통일한다. 카드 매출전표는 카드 단말이 낸다. 주문 완료에 예상 준비 시간과 미수령 마감을 넣는다
+    summary: 키오스크의 영수증 출력을 주문서 출력으로 통일한다. 카드 매출전표는 카드 단말이 낸다. 주문 완료에 예상 준비 시간과 미수령 마감을 넣는다
     affects: [DOC-03, DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -3151,7 +3151,7 @@ changes:
     type: 수정
     source: 검토 반영
     document: DOC-06
-    summary: 개설 준비 매장의 화면을 채운다. 매점 홈에 개시 전 준비 화면, 매장 수정에 개설 준비 변형, 개시 확정에 결과 없음 화면을 둔다. 영업 상태 변경은 개시 확정 뒤에 연다
+    summary: 개설 준비 매장의 화면을 채운다. 매장 홈에 개시 전 준비 화면, 매장 수정에 개설 준비 변형, 개시 확정에 결과 없음 화면을 둔다. 영업 상태 변경은 개시 확정 뒤에 연다
     affects: [DOC-04, DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
@@ -3189,5 +3189,41 @@ changes:
     document: DOC-08
     summary: 문서 정합 점검 도구(tools/check_docs.py)를 만든다. 화면 집합과 이름, 유형, 상태값, Flow 참조, 표의 열 수, 뷰어 표기 지원 여부를 한 번에 대조한다
     affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-345
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-03
+    summary: 기획 용어 사전(_data/terms.yaml)과 용어 점검 도구(tools/check_terms.py)를 만든다. 03 용어 정의 절을 사전과 같게 맞춘다
+    affects: [DOC-01, DOC-02, DOC-04, DOC-05, DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-346
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 용어를 통일한다. 매점과 업체는 매장으로, 단말기는 단말로, 주문표는 주문서로, 먹고가기는 매장 식사로 적는다. 안내 문구는 입력해 주세요 형태로 맞춘다
+    affects: [DOC-01, DOC-02, DOC-03, DOC-04, DOC-05, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-347
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-08
+    summary: 누락 점검 도구(tools/check_missing.py)를 만든다. 정의만 하고 화면에 없는 상태, 확인 팝업 없는 되돌릴 수 없는 동작, 명세의 구성 표, 추적 고리, 법정 표시 항목을 본다
+    affects: [DOC-04, DOC-05, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-348
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 누락 점검이 찾은 것을 채운다. 매출 집계 잠정·확정, 정산 대사 세 단계, 연동 계정 사용 중지, 매장 일시중지, 주문 불가 사유 세 가지를 화면에 그리고 명세 다섯 건에 구성 표를 넣는다
+    affects: [DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당

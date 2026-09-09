@@ -108,15 +108,33 @@ Flow, IA, 아키텍처, 와이어프레임은 본문 안에서 도형으로 그�
 │   ├── documents.yaml         문서별 상태·진행률·완료 예상·상속 관계
 │   ├── trace.yaml             요구사항 → 기능 → Flow → 화면 → 명세 추적 항목
 │   ├── changes.yaml           변경 이력
-│   └── issues.yaml            확인 필요 · 가정 · 의사결정 필요 · 정의 간 불일치
+│   ├── issues.yaml            확인 필요 · 가정 · 의사결정 필요 · 정의 간 불일치
+│   └── terms.yaml             기획 용어 사전. 쓰는 표기와 쓰지 않는 표기
 ├── tools/
 │   ├── build_dashboard.py     YAML + 문서 → 상황판 생성, 정합성 점검
+│   ├── check_docs.py          문서 사이 정합 (화면 집합·이름·유형·상태값·표 열 수)
+│   ├── check_missing.py       누락 (상태·확인 팝업·구성 표·추적 고리·법정 항목)
+│   ├── check_terms.py         용어와 표기 (--list 사전 출력, --scan 후보 찾기)
+│   ├── check_screens.py       05 공통 화면 규칙 대 06 Wireframe
+│   ├── check_flows.py         Flow 연결
+│   ├── check_wording.py       ISO/IEC/IEEE 29148 문장 기준
 │   └── dashboard_template.html
 ├── dashboard/
 │   ├── index.html             상황판 (생성물)
 │   ├── wireframe.html         화면 코드 뷰어 (생성물)
 │   └── admin.html             내부 어드민 화면 모음 (생성물)
 └── agent-system/              문서 보강 작업에 쓰는 역할별 지시서
+```
+
+문서를 고친 뒤에는 점검 여섯 가지를 돌린다.
+
+```
+python tools/check_docs.py      문서 사이 정합
+python tools/check_missing.py   빠진 상태·확인 팝업·구성 표·추적 고리
+python tools/check_terms.py     용어와 표기
+python tools/check_screens.py   공통 화면 규칙
+python tools/check_flows.py     Flow 연결
+python tools/check_wording.py   문장 기준
 ```
 
 `dashboard/` 아래 파일은 생성물이다. 직접 고치지 않는다.
