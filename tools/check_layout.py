@@ -8,9 +8,10 @@
   3 날짜 표기
   4 목록의 첫 두 열
   5 한 열 안에서 금액 단위 혼용
-  6 기간 버튼이 여러 줄로 쪼개진 곳
+  6 조회·기간·등록 버튼의 자리와 조회 조건 개수
   7 한 화면에서 같은 라벨 버튼의 폭이 다른 곳
   8 요약 지표 개수
+  9 표 위 동작 개수
 """
 import re, sys, pathlib, collections
 
@@ -113,6 +114,26 @@ def main():
                             re.match(r"^(fd|sel|fq|chk)", x) for x in cs):
                         add("등록 버튼을 조건 줄에 두었다", "%s : %s" % (where, c))
 
+            # 6-4. 초기화는 조회 왼쪽에 둔다
+            qi = [k for k, c in enumerate(cs) if re.match(r"^b2?(:[\d.]+)?\s+조회$", c)]
+            ri = [k for k, c in enumerate(cs) if re.match(r"^b2?(:[\d.]+)?\s+초기화$", c)]
+            if qi and ri and qi[0] < ri[0]:
+                add("초기화를 조회 오른쪽에 두었다", "%s : %s" % (where, l[:50]))
+
+            # 6-5. 한 줄에 조건은 셋까지. 시작일과 종료일은 한 조건으로 센다
+            if desk:
+                cnt, seen_date = 0, False
+                for c in cs:
+                    k = c.split(" ")[0].split(":")[0]
+                    if k.startswith("fd"):
+                        if not seen_date:
+                            cnt += 1
+                            seen_date = True
+                    elif k.startswith("sel") or k.startswith("fq"):
+                        cnt += 1
+                if cnt > 3:
+                    add("한 줄에 조건을 넷 이상 두었다", "%s : %s" % (where, l[:50]))
+
             # 7. 같은 라벨 버튼의 폭
             for c in cs:
                 m = re.match(r"^(b|b2|bd)(:([\d.]+))?\s+(.+)$", c)
@@ -123,6 +144,17 @@ def main():
             n = len([c for c in cs if c.startswith("stat ")])
             if n and not 3 <= n <= 4:
                 add("요약 지표가 3~4개가 아니다", "%s : %d개" % (where, n))
+
+        # 9. 표 위 동작은 다섯 개까지. 표가 있는 어드민 화면만 본다
+        acts = set()
+        has_table = any(l.startswith("t ") for l in s["rows"]) if desk else False
+        for l in s["rows"]:
+            for c in cells(l):
+                m = re.match(r"^(b|b2|bd)(:[\d.]+)?\s+(.+)$", c)
+                if m and not re.match(r"^(조회|초기화|취소|저장|닫기|확인)$", m.group(3)):
+                    acts.add(m.group(3))
+        if has_table and len(acts) > 5:
+            add("표 위 동작이 다섯 개를 넘는다", "%s : %d개 %s" % (where, len(acts), sorted(acts)[:6]))
 
         for lab, kinds in labels.items():
             if len(kinds) > 1:

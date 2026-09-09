@@ -3344,3 +3344,21 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-362
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 배치를 어드민 표준에 맞춘다. 한 줄 조건은 셋까지, 초기화는 조회 왼쪽, 표 위 동작은 다섯 개까지, 간격은 칸 12px 줄 16px 화면 24px로 정한다. 근거는 research/어드민레이아웃표준_조사.md
+    affects: [DOC-02, DOC-06, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-363
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 조회 조건 줄 22곳의 버튼 순서를 초기화 다음 조회로 바꾸고, 단말 목록의 네 조건 줄을 셋으로 나눈다. 뷰어의 칸·줄 간격을 상황판과 같은 값으로 맞춘다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
