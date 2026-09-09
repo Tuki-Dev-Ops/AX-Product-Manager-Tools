@@ -67,6 +67,12 @@ def main():
         # 목록 화면은 조회 건수를 표시한다
         if isl and "cnt" not in base["kinds"]:
             add("목록에 조회 건수가 없다", sid)
+        # 목록은 체크박스와 순번 두 열로 시작한다
+        if isl:
+            # 한 화면에 요약표와 목록이 함께 있으면 목록 쪽만 본다
+            ths = [l for l in base["rows"] if l.startswith("t ")]
+            if ths and not any(l.startswith("t [], ") for l in ths):
+                add("목록에 선택 체크박스가 없다", "%s : %s" % (sid, ths[-1][2:38]))
         # 목록 화면은 기본 정렬 열을 표시한다
         if isl:
             ths = [l for l in base["rows"] if l.startswith("t ")]

@@ -2948,3 +2948,39 @@ changes:
     affects: [DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-318
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-02
+    summary: 위치기반서비스사업을 신고 대상으로 보고 갖춘다. 신고, 이용약관 위치정보 조항, 별도 동의, 위치정보관리책임자 지정을 넣는다
+    affects: [DOC-04, DOC-05, DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-319
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 행사·상권 비교에서 매장 수와 매장당 평균을 뺀다. 순매출과 비중을 비교하고 매장 수는 상권 목록에서 본다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-320
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 모든 목록의 첫 두 열을 선택 체크박스와 순번으로 맞춘다. 목록 30건에 적용하고 요약표와 항목 표는 그대로 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-321
+    date: 2026-09-09
+    type: 삭제
+    source: 사용자 요청
+    document: DOC-05
+    summary: 상권 등록·수정의 매장 탭을 없앤다. 탭은 정보, 계정, 히스토리 셋으로 둔다. 매장 목록은 매출 조회에서 상권 조건으로 본다
+    affects: [DOC-02, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
