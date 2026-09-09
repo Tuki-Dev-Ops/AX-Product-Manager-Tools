@@ -2777,3 +2777,21 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-299
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-02
+    summary: 주문 흐름을 스타벅스 사이렌 오더, 토스오더, 배민스토어 픽업과 대조한다. 조사 결과는 research/주문흐름_대조.md에 남긴다
+    affects: [DOC-04, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-300
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-02
+    summary: 대조에서 나온 의사결정 필요 4건을 주문 정책 표에 표기한다. 미응답 제한 시간, 준비 시간 안내, 미수령 주문, 거절 사유
+    affects: [DOC-04]
+    status: 완료
+    requested_by: 기획 담당
