@@ -1807,7 +1807,11 @@ function drawWFCell(ctx, c, x, y, w, h) {
     ctx.strokeStyle = WFC.line; ctx.lineWidth = 1; ctx.fillStyle = WFC.bg;
     if (k === "chk") { roundRect(ctx, x, cy - box / 2, box, box, 2); ctx.fill(); ctx.stroke(); }
     else { ctx.beginPath(); ctx.arc(x + box / 2, cy, box / 2, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
-    wfText(ctx, s, x + box + 8, cy, w - box - 12, F, WFC.ink);
+    const cp = s.split("~").map(v => v.trim());
+    ctx.font = F;
+    const lw = Math.min(ctx.measureText(cp[0]).width, w - box - 12);
+    wfText(ctx, cp[0], x + box + 8, cy, w - box - 12, F, WFC.ink);
+    if (cp[1]) wfText(ctx, cp[1], x + box + 16 + lw, cy, 120, F, WFC.pri);
     return;
   }
   if (k === "empty") {

@@ -2831,3 +2831,48 @@ changes:
     affects: [DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-305
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 판매자 정보 화면을 웹앱과 키오스크에 둔다. 전자상거래법 제13조 제1항 표시 의무를 채운다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-306
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 개인정보 동의를 체크박스 한 줄에서 목적·항목·보유 기간·거부권을 보이는 구성으로 바꾼다. 개인정보보호법 제15조 제2항
+    affects: [DOC-04, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-307
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 결제 버튼 위에 취소 가능 구간과 예상 준비 시간을 적는다. 전자상거래법 제17조 제3항에 따라 알리지 않으면 청약철회 제한이 인정되지 않는다
+    affects: [DOC-04, DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-308
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 상권 등록의 본사 정보에 통신판매업 신고번호를 받는다. 고객 화면의 판매자 정보에 쓴다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-309
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-00
+    summary: 체크박스와 라디오 옆에 보기 같은 링크를 붙일 수 있게 한다. 좁은 화면 모달의 버튼은 폭을 채운다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
