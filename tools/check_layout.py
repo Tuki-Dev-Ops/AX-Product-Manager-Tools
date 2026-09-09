@@ -134,6 +134,12 @@ def main():
                 if cnt > 3:
                     add("한 줄에 조건을 넷 이상 두었다", "%s : %s" % (where, l[:50]))
 
+            # 6-6. 표시 옵션과 건수만 있는 줄을 따로 두지 않는다. 조회 줄 오른쪽에 붙인다.
+            # 조회 버튼이 없는 화면은 붙일 자리가 없으므로 넘어간다
+            has_query = any(re.search(r"b2?(:[\d.]+)?\s+(조회|대사 실행)", x) for x in s["rows"])
+            if desk and has_query and cs and cs[0] == "sp" and any(c.startswith("cnt ") for c in cs):
+                add("표시 옵션을 조회 줄과 떼어 놓았다", "%s : %s" % (where, l[:50]))
+
             # 7. 같은 라벨 버튼의 폭
             for c in cs:
                 m = re.match(r"^(b|b2|bd)(:([\d.]+))?\s+(.+)$", c)

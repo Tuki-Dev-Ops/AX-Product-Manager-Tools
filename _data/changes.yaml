@@ -3362,3 +3362,12 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-364
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 표시 개수와 열 고르기, 조회 건수를 조회 버튼 오른쪽으로 옮긴다. 조회 버튼과의 사이에 여백을 넣어 오른쪽 끝에 붙이고 빈 칸만 있는 줄을 없앤다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
