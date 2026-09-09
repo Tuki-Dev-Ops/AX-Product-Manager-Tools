@@ -2741,3 +2741,39 @@ changes:
     affects: [DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-295
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: Flow 연결 점검 도구를 만든다. tools/check_flows.py가 Flow 사이 참조, 화면 참조, 명세의 연결 Flow를 대조한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-296
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 어디에서도 가리키지 않던 Flow 7건을 잇는다. 화면 조작 Flow는 05 문서 8.1 표에서, 이상 알림은 단말기 목록 Flow에서 가리킨다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-297
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 빠져 있던 이동 경로 두 곳을 잇는다. 로그인에서 비밀번호 재설정으로, 키오스크 대기화면에서 관리자 인증으로 간다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-298
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-07
+    summary: 화면을 다루는 Flow가 그 화면 명세의 연결 Flow에 빠져 있던 5건을 채운다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당

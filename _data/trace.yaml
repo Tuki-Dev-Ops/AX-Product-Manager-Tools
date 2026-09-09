@@ -1303,7 +1303,8 @@ flows:
   users:
   - UT-03
   functions: []
-  screens: []
+  screens:
+  - WEB-PAY-WAIT
 - id: FL-319
   title: 결제 완료
   users:
@@ -1415,13 +1416,15 @@ flows:
   users:
   - UT-03
   functions: []
-  screens: []
+  screens:
+  - KSK-PAY-TYPE
 - id: FL-417
   title: 결제 진행
   users:
   - UT-03
   functions: []
-  screens: []
+  screens:
+  - KSK-PAY-PROC
 - id: FL-418
   title: 고객 호출 정보 입력
   users:
@@ -1641,7 +1644,8 @@ flows:
   - UT-02
   - UT-03
   functions: []
-  screens: []
+  screens:
+  - ADM-COMN-CONF
 - id: FL-607
   title: 고객 화면 안내
   users:
