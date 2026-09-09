@@ -1414,9 +1414,10 @@ function wfLay(row, baseX, innerW, full, mode) {
   const rest = Math.max(0, innerW - fixed - gap);
   if (flexSum > 0) flex.forEach(i => { wid[i] = rest * ((row[i].wt || 1) / flexSum); });
   let x = baseX;
-  // 버튼만 있는 줄만 오른쪽에 붙인다. 칸에 딸린 버튼이 있는 줄은 왼쪽부터 둔다
+  // 버튼만 있는 줄은 화면 맨 끝일 때만 오른쪽에 붙인다.
+  // 조회 조건 사이의 기간 버튼 줄은 위아래 줄과 왼쪽을 맞춘다
   const onlyBtn = row.every(c => c.kind === "sp" || BTN.indexOf(c.kind) >= 0);
-  if (!flex.length && !full && onlyBtn) x += innerW - fixed - gap;
+  if (!flex.length && !full && onlyBtn && row.last) x += innerW - fixed - gap;
   const pos = new Array(n).fill(null);
   for (let i = 0; i < n; i++) {
     if (row[i].kind !== "sp") pos[i] = x;
@@ -1437,6 +1438,7 @@ function drawWFRows(ctx, items, heights, X, Y, W, mode) {
     const full = row.length === 1;
     const avail = innerW - WFCG * (row.length - 1);
     const sum = row.reduce((a, c) => a + (c.wt || 1), 0);
+    row.last = (ri === items.length - 1);
     const lay = wfLay(row, X + WFPAD, innerW, full, mode === undefined ? 1 : mode);
     row.forEach((c, i) => {
       if (lay.pos[i] === null) return;
@@ -1582,6 +1584,7 @@ function drawWFScreen(ctx, sc) {
   sc.items.forEach((row, ri) => {
     const rh = sc.heights[ri];
     const full = row.length === 1;
+    row.last = (ri === sc.items.length - 1);
     const lay = wfLay(row, baseX, innerW, full, useCol ? 1 : (sc.w < 1400 ? 2 : 0));
     row.forEach((c, i) => {
       if (lay.pos[i] === null) return;

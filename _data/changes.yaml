@@ -3308,3 +3308,12 @@ changes:
     affects: [DOC-01, DOC-05, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-358
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 버튼만 있는 줄의 정렬 규칙을 정한다. 화면 맨 끝의 버튼 줄만 오른쪽에 붙이고, 조회 조건 사이의 기간 버튼은 세그먼트와 왼쪽을 맞춘다. 뷰어와 상황판 그리기 규칙도 함께 고쳤다
+    affects: [DOC-06]
+    status: 완료
+    requested_by: 기획 담당

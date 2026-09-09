@@ -578,6 +578,7 @@ function screenHTML(sc) {
       i = j;
       continue;
     }
+    row.last = (i === sc.rows.length - 1);
     body.push(rowOne(row));
     i++;
   }
@@ -660,7 +661,10 @@ function rowOne(row) {
   }
   const BK = ["b", "b2", "bd"];
   let cl = row.length === 1 ? " wf-1" : "";
-  if (row.length > 1 && row.every(function (x) { return BK.indexOf(x.k) >= 0; })) cl += " wf-r";
+  // 버튼만 있는 줄은 화면 맨 끝(모달 버튼 줄)일 때만 오른쪽에 붙인다.
+  // 조회 조건 사이에 있는 기간 버튼 줄은 위아래 줄과 왼쪽을 맞춘다.
+  if (row.length > 1 && row.every(function (x) { return BK.indexOf(x.k) >= 0; }) && row.last)
+    cl += " wf-r";
   return '<div class="wf-row' + cl + '">' + row.map(function (x) { return cellHTML(x); }).join("") + "</div>";
 }
 const FLDK = ["f","fx","fe","fo","fd","fq","fs","sel","selx","sele","selo","fsx","fse","fso","fdx","fde","fdo"];
