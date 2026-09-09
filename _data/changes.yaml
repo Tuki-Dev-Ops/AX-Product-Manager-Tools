@@ -3029,3 +3029,30 @@ changes:
     affects: [DOC-05, DOC-06]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-327
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-03
+    summary: 행사와 상권의 관계를 N:M으로 바꾸고 행사와 매장의 1:N 관계를 더한다. 매장이 행사 하나에 속해 주문의 행사 귀속이 하나로 정해진다
+    affects: [DOC-01, DOC-02, DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-328
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-01
+    summary: REQ-002와 REQ-004를 고친다. 상권은 참여 행사를 여러 건 지정하고, 매장 등록 주체를 가맹 관리자로 맞춘다
+    affects: [DOC-03]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-329
+    date: 2026-09-09
+    type: 삭제
+    source: 검토 반영
+    document: DOC-05
+    summary: 상권 등록·수정에서 FN-104 매장 등록 연결을 끊는다. 매장 탭을 없앤 뒤로 그 화면은 매장을 등록하지 않는다
+    affects: [DOC-03]
+    status: 완료
+    requested_by: 기획 담당

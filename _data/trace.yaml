@@ -385,7 +385,7 @@ functions:
 - id: FN-104
   title: 매장 등록
   users:
-  - UT-01
+  - UT-02
   requirements:
   - REQ-004
 - id: FN-106
@@ -1751,7 +1751,6 @@ screens:
   title: 상권 등록·수정
   type: 페이지
   functions:
-  - FN-104
   - FN-119
   - FN-103
   users:

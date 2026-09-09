@@ -11,7 +11,7 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.1'
+  version: '2.2'
   updated: 2026-09-08
   inherits: []
   defines:
@@ -23,7 +23,7 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.6'
+  version: '2.7'
   updated: 2026-09-08
   inherits:
   - DOC-01
@@ -36,7 +36,7 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.2'
+  version: '2.3'
   updated: 2026-09-08
   inherits:
   - DOC-01
@@ -64,7 +64,7 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.4'
+  version: '2.5'
   updated: 2026-09-08
   inherits:
   - DOC-03
@@ -107,7 +107,7 @@ documents:
   status: 확정
   progress: 100
   eta: null
-  version: '2.1'
+  version: '2.2'
   updated: 2026-09-08
   inherits:
   - DOC-04
