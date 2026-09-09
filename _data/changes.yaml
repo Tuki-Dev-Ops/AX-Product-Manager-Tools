@@ -3128,3 +3128,30 @@ changes:
     affects: [DOC-05, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-338
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-05
+    summary: 상권 붙이기 화면이 화면 목록에서 빠져 있던 것을 행사 절로 옮기고 겹침 요소 표에 올린다
+    affects: [DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-339
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-03
+    summary: 기능 목록에 매장 개시 확정(FN-129), 키오스크 접근성 지원(FN-411), 판매 메뉴 설정(FN-412)을 올린다. 요구사항 REQ-052를 함께 정의한다
+    affects: [DOC-01, DOC-04, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-340
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 개설 준비 매장의 화면을 채운다. 매점 홈에 개시 전 준비 화면, 매장 수정에 개설 준비 변형, 개시 확정에 결과 없음 화면을 둔다. 영업 상태 변경은 개시 확정 뒤에 연다
+    affects: [DOC-04, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
