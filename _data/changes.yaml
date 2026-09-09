@@ -3281,3 +3281,30 @@ changes:
     affects: [DOC-04, DOC-06, DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-355
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-05
+    summary: 매출 조회의 기준을 일자별, 행사별, 상권별, 매장별 넷으로 넓힌다. 행을 선택하면 행사 → 상권 → 매장 → 하루치로 내려간다
+    affects: [DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-356
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 메뉴 매출(ADM-SALE-MENU) 화면을 둔다. 카테고리별과 메뉴별로 판매 수량과 순판매액을 본다. 옵션 추가금은 메뉴에 넣고 카테고리는 브랜드별로 나눠 센다
+    affects: [DOC-01, DOC-03, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-357
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-03
+    summary: 메뉴 매출 조회 기능(FN-130)과 요구사항(REQ-053)을 정의한다. FN-114 매출 조회에 행사와 상권 기준을 더한다
+    affects: [DOC-01, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당

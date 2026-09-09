@@ -242,6 +242,11 @@ requirements:
   area: 운영
   functions:
   - FN-127
+- id: REQ-053
+  title: 본사 운영자는 카테고리와 메뉴 단위로 판매 수량과 매출을 조회한다.
+  area: 매출
+  functions:
+  - FN-130
 - id: REQ-052
   title: 본사 운영자는 하위가맹점 심사가 끝난 매장의 개시를 확정한다.
   area: 기준정보
@@ -760,6 +765,13 @@ functions:
   requirements:
   - REQ-050
   description: 배치와 알림 발송과 외부 연동 오류를 한곳에서 조회하고 확인 처리한다
+- id: FN-130
+  title: 메뉴 매출 조회
+  users:
+  - UT-01
+  requirements:
+  - REQ-053
+  description: 카테고리와 메뉴 단위로 판매 수량과 순판매액을 조회한다. 옵션 추가금은 메뉴에 넣는다
 - id: FN-129
   title: 매장 개시 확정
   users:
@@ -775,6 +787,14 @@ functions:
   - REQ-051
   description: 행사에 속한 상권과 매장, 개시 준비 상태를 한 화면에서 확인하고 미완료 매장에 안내를 보낸다
 flows:
+- id: FL-152
+  title: 메뉴 매출 조회
+  users:
+  - UT-01
+  functions:
+  - FN-130
+  screens:
+  - ADM-SALE-MENU
 - id: FL-150
   title: 주문 상세
   users:
@@ -1746,6 +1766,14 @@ screens:
   type: 레이어팝업
   functions:
   - FN-129
+  users:
+  - UT-01
+  wireframe: 작성
+- id: ADM-SALE-MENU
+  title: 메뉴 매출
+  type: 페이지
+  functions:
+  - FN-130
   users:
   - UT-01
   wireframe: 작성
@@ -2819,6 +2847,10 @@ specs:
 - id: FS-096
   screen: ADM-COMN-DOWN
   title: 내려받기
+  status: 작성
+- id: FS-097
+  screen: ADM-SALE-MENU
+  title: 메뉴 매출
   status: 작성
 nfrs:
 - id: NFR-01
