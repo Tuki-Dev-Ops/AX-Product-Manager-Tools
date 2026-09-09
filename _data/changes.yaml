@@ -3056,3 +3056,48 @@ changes:
     affects: [DOC-03]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-330
+    date: 2026-09-09
+    type: 추가
+    source: 검토 반영
+    document: DOC-05
+    summary: 가맹 어드민 설정 > 매장에 매장 목록과 매장 등록·수정 화면을 둔다. 등록할 때 상권의 참여 행사 중에서 소속 행사를 고른다. 폐점은 되돌릴 수 없다
+    affects: [DOC-02, DOC-03, DOC-04, DOC-06, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-331
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 매점 정보 변경 Flow를 즉시 반영과 이력 기록으로 다시 쓴다. 본사 확정 대기가 남아 있었다
+    affects: [DOC-03]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-332
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-04
+    summary: 키오스크의 영수증 출력을 주문표 출력으로 통일한다. 카드 매출전표는 카드 단말이 낸다. 주문 완료에 예상 준비 시간과 미수령 마감을 넣는다
+    affects: [DOC-03, DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-333
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-07
+    summary: 변경 로그를 따라 네 채널의 파급을 고친다. 행사·상권 삭제 조건, 정산의 미수령 포함, 주문 상태의 준비 시간, 폐점 매장 단말 처리, 상권 등록의 떼기 조건
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-334
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-07
+    summary: 명세 깊이를 맞춘다. 목록 화면 24건에 목록 구성 표, 입력 화면 10건에 입력 항목 표를 넣고 처리가 한 줄이던 28건을 여러 단계로 푼다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
