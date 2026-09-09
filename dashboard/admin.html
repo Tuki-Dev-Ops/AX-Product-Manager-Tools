@@ -388,6 +388,18 @@ header.top .sp { margin-left:auto; }
 .wf-form .wf-row:not(:has(.wf-fld)):not(:has(.wf-in)) .wf-c:has(.wf-btn) { flex:1 1 auto; }
 .wf-form .wf-btn { width:100%; max-width:none; }
 
+/* 달력: 날짜 칸을 정사각으로 두어 선택 표시가 동그라미가 되게 한다 */
+.wf-dp { width:238px; padding:10px 10px 12px; }
+.wf-dp header { height:26px; }
+.wf-grid { margin-top:4px; }
+.wf-grid b { line-height:22px; }
+.wf-grid i { display:flex; align-items:center; justify-content:center;
+  width:28px; height:28px; margin:1px auto; line-height:1; border-radius:50%; }
+.wf-grid i.on { background:#2A5D8F; color:#FFF; font-weight:600; }
+
+/* 겹쳐 뜬 판이 아래 버튼 줄을 가리지 않게 모달을 늘린다 */
+.wf-drop-space { flex:none; }
+
 </style>
 <header class="top">
   <h1>내부 어드민</h1><em id="cnt"></em>
@@ -795,12 +807,31 @@ function placeDrops(root) {
     const screen = cell.closest(".wf-screen");
     if (!src || !screen) return;
     const a = src.getBoundingClientRect(), s = screen.getBoundingClientRect();
+    // 모달 안에서 열었으면 모달 밖으로 나가지 않게 한다
+    const host = cell.closest(".wf-modal") || screen;
+    const hb = host.getBoundingClientRect();
     panel.style.position = "absolute";
-    panel.style.left = (a.left - s.left) + "px";
-    panel.style.top = (a.bottom - s.top + 4) + "px";
     panel.style.zIndex = "40";
     if (panel.classList.contains("wf-menu")) panel.style.width = a.width + "px";
     screen.appendChild(panel);
+    const ph = panel.offsetHeight, pw = panel.offsetWidth;
+    const top = a.bottom + 4;
+    let left = a.left;
+    if (left + pw > hb.right - 8) left = Math.max(hb.left + 8, hb.right - 8 - pw);
+    // 아래 버튼 줄을 가리지 않게 모달을 그만큼 늘린다
+    const foot = host !== screen ? host.querySelector(":scope > .wf-row:last-child") : null;
+    if (foot) {
+      const limit = foot.getBoundingClientRect().top - 12;
+      const over = top + ph - limit;
+      if (over > 0) {
+        const gap = document.createElement("div");
+        gap.className = "wf-drop-space";
+        gap.style.height = over + "px";
+        host.insertBefore(gap, foot);
+      }
+    }
+    panel.style.left = (left - s.left) + "px";
+    panel.style.top = (top - s.top) + "px";
   });
 }
 

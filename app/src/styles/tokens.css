@@ -1,0 +1,72 @@
+/* 디자인 토큰
+   값은 05 IA 공통 화면 규칙과 현재 상황판·와이어프레임에서 쓰던 것을 그대로 옮겼다.
+   색과 여백은 여기서만 정의하고 컴포넌트는 토큰만 참조한다. */
+
+:root {
+  color-scheme: light;
+
+  /* 바탕과 글자 */
+  --ground: #ffffff;
+  --surface: #ffffff;
+  --raise: #f6f8fa;
+  --ink: #1a2530;
+  --muted: #5f6f7e;
+  --faint: #8a99a6;
+
+  /* 선 */
+  --line: #dce3e9;
+  --line-soft: #ebf0f4;
+
+  /* 강조 */
+  --accent: #2a5d8f;
+  --accent-soft: #e4eef7;
+  --accent-ink: #1e4568;
+
+  /* 상태 */
+  --good: #1f7a4d;
+  --good-bg: #e3f2e9;
+  --warn: #9a6a12;
+  --warn-bg: #fbf0d6;
+  --crit: #b1362e;
+  --crit-bg: #f9e3e1;
+  --neutral: #5f6f7e;
+  --neutral-bg: #eceff2;
+  --track: #e5eaef;
+
+  /* 글자 */
+  --font: 'IBM Plex Sans KR', 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+  --mono: 'IBM Plex Mono', 'Consolas', 'D2Coding', monospace;
+  --fs-title: 18px;
+  --fs-head: 16px;
+  --fs-sub: 13px;
+  --fs-body: 14px;
+  --fs-cell: 12px;
+  --fs-label: 12px;
+  --fs-note: 11px;
+
+  /* 여백. 4px 배수로 맞춘다.
+     묶음 안(라벨-칸 6) < 묶음 사이(줄 16) < 구역 사이(28) 순으로 벌린다 */
+  --sp-1: 4px;
+  --sp-label: 6px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-row: 16px;
+  --sp-4: 20px;
+  --sp-page: 24px;
+  --sp-section: 28px;
+
+  /* 크기 */
+  --h-field: 40px;
+  --h-field-touch: 52px;
+  --h-btn: 40px;
+  --w-field: 220px;
+  --w-search: 320px;
+  --w-btn: 120px;
+  --w-modal: 560px;
+  --w-modal-wide: 880px;
+  --w-card: 400px;
+
+  --radius: 4px;
+  --radius-lg: 6px;
+  --radius-pill: 99px;
+}

@@ -1,0 +1,56 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-page);
+}
+
+.shell-top {
+  padding: var(--sp-page) 0 0;
+}
+
+.shell-eyebrow {
+  font-size: var(--fs-note);
+  color: var(--faint);
+  letter-spacing: 0.06em;
+}
+
+.shell-title h1 {
+  margin: var(--sp-1) 0 0;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.shell-nav {
+  display: flex;
+  gap: 2px;
+  margin-top: var(--sp-4);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.shell-nav a {
+  padding: 13px 14px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-size: var(--fs-body);
+  color: var(--muted);
+}
+
+.shell-nav a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.shell-nav a.active {
+  color: var(--accent-ink);
+  border-bottom-color: var(--accent);
+  font-weight: 500;
+}
+
+.shell-main {
+  flex: 1;
+  padding: var(--sp-section) 0 64px;
+}

@@ -1245,14 +1245,17 @@ function wfCellH(c, touch) {
     return Math.max(base, base > 52 ? base + 12 : 52);
   }
   if (c.text && c.text.indexOf("//") >= 0 &&
-      ["f", "fd", "fq", "sel", "fx", "fe", "fo"].indexOf(c.kind) >= 0) return 68;
+      ["f", "fx", "fe", "fo", "fd", "fdx", "fde", "fdo", "fq",
+       "fs", "fsx", "fse", "fso", "sel", "selx", "sele", "selo"].indexOf(c.kind) >= 0) {
+    return touch ? 80 : 68;
+  }
   if (c.kind === "img" || c.kind === "box") {
     const n = parseInt(c.text, 10);
     const bh0 = isNaN(n) ? WFH[c.kind] : n;
     return c.text.indexOf("//") >= 0 ? bh0 + 24 : bh0;
   }
   if (c.kind === "menu") return c.text.split("/").length * 32 + 10;
-  if (c.kind === "cal") return 272;
+  if (c.kind === "cal") return 224;
   if (c.kind === "lines") return (parseInt(c.text, 10) || 4) * 13 + 4;
   return WFH[c.kind] || 26;
 }
@@ -1385,7 +1388,7 @@ const SEGK = ["seg", "sw", "swo"];
 const FLD = ["menu", "cal", "f", "fx", "fe", "fo", "fd", "fq", "sel", "fs", "selx", "sele", "selo", "fsx", "fse", "fso", "fdx", "fde", "fdo"];
 const CAP = { fq: 320, f: 220, fx: 220, fe: 220, fo: 220, fd: 200, sel: 200, fs: 220,
   selx: 200, sele: 200, selo: 200, fsx: 220, fse: 220, fso: 220,
-  fdx: 200, fde: 200, fdo: 200, menu: 200, cal: 260 };
+  fdx: 200, fde: 200, fdo: 200, menu: 200, cal: 238 };
 // mode 0 어드민 본문, 1 카드·폼, 2 좁은 화면
 // 칸은 왼쪽부터 앞 칸에 붙는다. 여백 칸(sp)이 남는 폭을 가져간다
 // 버튼만 있는 줄은 오른쪽 끝에 붙인다
@@ -1410,7 +1413,9 @@ function wfLay(row, baseX, innerW, full, mode) {
   const rest = Math.max(0, innerW - fixed - gap);
   if (flexSum > 0) flex.forEach(i => { wid[i] = rest * ((row[i].wt || 1) / flexSum); });
   let x = baseX;
-  if (!flex.length && !full) x += innerW - fixed - gap;
+  // 버튼만 있는 줄만 오른쪽에 붙인다. 칸에 딸린 버튼이 있는 줄은 왼쪽부터 둔다
+  const onlyBtn = row.every(c => c.kind === "sp" || BTN.indexOf(c.kind) >= 0);
+  if (!flex.length && !full && onlyBtn) x += innerW - fixed - gap;
   const pos = new Array(n).fill(null);
   for (let i = 0; i < n; i++) {
     if (row[i].kind !== "sp") pos[i] = x;
@@ -1594,7 +1599,7 @@ function drawWFScreen(ctx, sc) {
   });
   // 펼친 목록과 달력은 아래 내용을 밀지 않고 겹쳐 그린다
   over.forEach(o => {
-    const oh = o[0].kind === "menu" ? o[0].text.split("/").length * 32 + 10 : 272;
+    const oh = o[0].kind === "menu" ? o[0].text.split("/").length * 32 + 10 : 224;
     ctx.save();
     ctx.shadowColor = "rgba(29,37,47,0.18)";
     ctx.shadowBlur = 12; ctx.shadowOffsetY = 4;
@@ -1679,7 +1684,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     ctx.beginPath(); ctx.moveTo(x, y + h - 4); ctx.lineTo(x + w, y + h - 4); ctx.stroke();
     return;
   }
-  if (k === "fx") {
+  if (k === "fx" && s.indexOf("//") < 0) {
     const pp = s.split("~").map(v => v.trim());
     ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.pri; ctx.lineWidth = 1.4;
     roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
@@ -1687,7 +1692,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     if (pp[1]) wfText(ctx, pp[1], x + w - 11, y + h / 2, 80, FS, WFC.mut, "right");
     return;
   }
-  if (k === "fo") {
+  if (k === "fo" && s.indexOf("//") < 0) {
     ctx.fillStyle = WFC.fill; ctx.strokeStyle = WFC.soft; ctx.lineWidth = 1;
     roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
     const pp = s.split("~").map(v => v.trim());
@@ -1695,7 +1700,7 @@ function drawWFCell(ctx, c, x, y, w, h) {
     if (pp[1]) wfText(ctx, pp[1], x + w - 11, y + h / 2, 80, FS, WFC.soft, "right");
     return;
   }
-  if (k === "fe") {
+  if (k === "fe" && s.indexOf("//") < 0) {
     const pe = s.split("~").map(v => v.trim());
     ctx.fillStyle = WFC.bg; ctx.strokeStyle = WFC.bad; ctx.lineWidth = 1.4;
     roundRect(ctx, x, y, w, h, 4); ctx.fill(); ctx.stroke();
@@ -1840,18 +1845,18 @@ function drawWFCell(ctx, c, x, y, w, h) {
     wfText(ctx, "<", x + 16, y + 24, 12, F, WFC.mut);
     wfText(ctx, pc[0] || "", x + w / 2, y + 24, w - 70, FB, WFC.ink, "center");
     wfText(ctx, ">", x + w - 18, y + 24, 12, F, WFC.mut, "right");
-    const cw = (w - 24) / 7, top = y + 46;
+    const cw = (w - 20) / 7, top = y + 42;
     ["일", "월", "화", "수", "목", "금", "토"].forEach((d, i) => {
-      wfText(ctx, d, x + 12 + cw * i + cw / 2, top, cw, FS, WFC.mut, "center");
+      wfText(ctx, d, x + 10 + cw * i + cw / 2, top, cw, FS, WFC.mut, "center");
     });
     for (let i = 0; i < 35; i++) {
       const day = i - 1;
       if (day < 1 || day > 30) continue;
-      const cx = x + 12 + cw * (i % 7) + cw / 2;
-      const cy = top + 26 + Math.floor(i / 7) * 30;
+      const cx = x + 10 + cw * (i % 7) + cw / 2;
+      const cy = top + 24 + Math.floor(i / 7) * 28;
       if (day === sel) {
         ctx.fillStyle = WFC.pri;
-        ctx.beginPath(); ctx.arc(cx, cy, 13, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, 14, 0, Math.PI * 2); ctx.fill();
       }
       wfText(ctx, String(day), cx, cy, cw, FS, day === sel ? "#FFFFFF" : WFC.ink, "center");
     }

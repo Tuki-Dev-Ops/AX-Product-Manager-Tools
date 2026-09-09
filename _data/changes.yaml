@@ -2678,3 +2678,48 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-288
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 달력의 날짜 칸을 정사각으로 두어 선택 표시가 동그라미가 되게 한다. 달력 폭을 238px로 줄인다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-289
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 겹쳐 뜬 판이 모달의 버튼 줄을 가리지 않게 그만큼 모달을 늘린다. 판은 누른 칸 바로 아래에 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-290
+    date: 2026-09-09
+    type: 수정
+    source: 검토 반영
+    document: DOC-00
+    summary: 상황판 도형에서 입력됨·오류·읽기전용 칸이 라벨을 그리지 않고 원문을 그대로 찍던 것을 고친다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-291
+    date: 2026-09-09
+    type: 수정
+    source: 사용자 요청
+    document: DOC-00
+    summary: 상황판 도형의 칸 크기를 맞춘다. 주소 검색 칸의 높이와 칸에 딸린 버튼이 있는 줄의 왼쪽 정렬을 고친다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-292
+    date: 2026-09-09
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 상황판을 React + Vite로 다시 만들 준비를 한다. app/ 아래에 빌드 환경, 폴더 구조, 디자인 토큰, 빈 라우팅을 둔다
+    affects: []
+    status: 진행 중
+    requested_by: 기획 담당

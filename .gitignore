@@ -11,3 +11,7 @@ desktop.ini
 __pycache__/
 *.pyc
 .venv/
+
+# 노드
+node_modules/
+dist/

@@ -208,3 +208,27 @@ Flow, IA, 아키텍처, 와이어프레임은 본문 안에서 도형으로 그�
 인터넷 조사 결과는 `research/`에 원본으로 남긴다.
 문서에는 조사 결과를 그대로 옮기지 않고, 본 서비스에 적용할 판단으로 바꿔서 `docs/02_기획검토.md`에 적는다.
 근거 URL은 조사 원본에 유지한다.
+
+## 화면 구현 준비 (app/)
+
+상황판과 화면 뷰어를 React + Vite로 다시 만들기 위한 환경이다. 지금은 빌드 설정과 빈 라우팅만 있다.
+
+```bash
+cd app
+npm install
+npm run dev        # 개발 서버
+npm run build      # 타입 검사 + 빌드
+npm run lint       # oxlint
+npm run format     # prettier
+```
+
+| 폴더 | 용도 |
+| --- | --- |
+| `src/app` | 앱 껍데기와 라우팅 |
+| `src/pages` | 주소 하나에 대응하는 화면 |
+| `src/components` | 화면끼리 나눠 쓰는 조각 |
+| `src/lib` | 주소 규칙 같은 순수 함수 |
+| `src/styles` | 디자인 토큰과 바탕 스타일 |
+
+색과 여백은 `src/styles/tokens.css`에만 정의한다. 값은 05 IA 공통 화면 규칙과 지금 와이어프레임에서 쓰던 것을 그대로 옮겼다.
+주소 체계는 지금 상황판과 같다. `/`, `/changes`, `/doc/:no/:sec?/:flow?`, `/wireframe/:id?`.
