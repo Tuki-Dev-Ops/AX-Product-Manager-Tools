@@ -1230,6 +1230,7 @@ function parseCell(c) {
 }
 
 const WFH = {
+  chip: 34,
   top: 56, h: 60, sub: 34, f: 40, fx: 40, fe: 40, fo: 40, fd: 40, fq: 40, sel: 40, b: 40, b2: 40, bd: 40,
   err: 30, chk: 30, rad: 30, seg: 40, sw: 40, swo: 40,
   tx: 26, cnt: 40, pick: 44, note: 40, empty: 230, fs: 40, toast: 0, selx: 40, sele: 40, selo: 40, fsx: 40, fse: 40, fso: 40, fdx: 40, fde: 40, fdo: 40, t: 42, td: 42, p: 44, tab: 44, hr: 18, sp: 16,
@@ -1988,6 +1989,20 @@ function drawWFCell(ctx, c, x, y, w, h) {
     const parts = s.split("~").map(v => v.trim());
     wfText(ctx, parts[0] || "", x + 12, y + 20, w - 24, FS, WFC.mut);
     wfText(ctx, parts[1] || "", x + 12, y + h - 22, w - 24, '600 16px "IBM Plex Sans KR","Malgun Gothic",sans-serif', WFC.ink);
+    return;
+  }
+  if (k === "chip") {
+    // 적용한 조회 조건 칩
+    const vs = s.split("/").map(v => v.trim()).filter(Boolean);
+    ctx.font = FS;
+    let cx3 = x;
+    vs.forEach(v => {
+      const w2 = ctx.measureText(v + "  ×").width + 20;
+      ctx.fillStyle = "#E9EFF5"; ctx.strokeStyle = "#CFDAE5"; ctx.lineWidth = 1;
+      roundRect(ctx, cx3, y + h / 2 - 13, w2, 26, 13); ctx.fill(); ctx.stroke();
+      wfText(ctx, v + "  ×", cx3 + w2 / 2, y + h / 2, w2 - 10, FS, WFC.ink, "center");
+      cx3 += w2 + 8;
+    });
     return;
   }
   if (k === "t" || k === "td") {

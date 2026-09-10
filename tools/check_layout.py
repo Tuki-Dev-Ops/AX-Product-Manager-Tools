@@ -170,6 +170,19 @@ def main():
         if has_table and len(acts) > 5:
             add("표 위 동작이 다섯 개를 넘는다", "%s : %d개 %s" % (where, len(acts), sorted(acts)[:6]))
 
+        # 조건이 세 줄을 넘는 화면은 조건을 접을 수 있어야 한다
+        CONDK = ("fd", "fdx", "fde", "fdo", "sel", "selx", "sele", "selo", "fq", "chk")
+        nrow = 0
+        for l in s["rows"]:
+            cs2 = cells(l)
+            ks2 = [c.split(" ")[0].split(":")[0] for c in cs2]
+            if any(k in CONDK for k in ks2) and all(
+                    k in CONDK + ("sp", "b", "b2", "cnt") for k in ks2):
+                nrow += 1
+        is_list = s["frame"] == "admin" and any(l.startswith("t ") for l in s["rows"])
+        if is_list and nrow >= 3 and not any("상세 조건" in l for l in s["rows"]):
+            add("조건이 세 줄을 넘는데 접을 수 없다", "%s : 조건 %d줄" % (where, nrow))
+
         for lab, kinds in labels.items():
             if len(kinds) > 1:
                 add("한 화면에서 같은 버튼의 폭이 다르다", "%s : %s %s" % (where, lab, sorted(kinds)))

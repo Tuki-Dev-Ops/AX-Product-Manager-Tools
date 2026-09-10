@@ -3443,3 +3443,21 @@ changes:
     affects: [DOC-07]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-373
+    date: 2026-09-10
+    type: 추가
+    source: 사용자 요청
+    document: DOC-05
+    summary: 조회 조건을 접을 수 있게 한다. 조건이 세 줄을 넘으면 첫 줄만 두고 접으며 상세 조건 버튼으로 편다. 접어도 적용한 조건은 칩으로 보여 준다
+    affects: [DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-374
+    date: 2026-09-10
+    type: 추가
+    source: 검토 반영
+    document: DOC-06
+    summary: 조건 접힘 화면을 매출 조회에 둔다. 조건이 세 줄을 넘는 목록 14곳에 상세 조건 버튼을 넣고, 뷰어와 상황판에 조건 칩 표기를 더한다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
