@@ -3416,3 +3416,30 @@ changes:
     affects: [DOC-05]
     status: 완료
     requested_by: 기획 담당
+  - id: CH-370
+    date: 2026-09-10
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 머리말의 버튼 자리에 있던 집계 시각과 남은 시간, 결제 금액, 노출 수를 설명 자리로 옮긴다. 버튼 자리에는 동작만 둔다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-371
+    date: 2026-09-10
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 키오스크 화면을 1080 x 1920 크기에 맞게 다시 그린다. 메뉴를 3열 격자로 두고 선택 버튼과 결제 안내를 키우며 하단 버튼 줄을 화면 아래에 붙인다
+    affects: []
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-372
+    date: 2026-09-10
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 장바구니가 빈 화면에 잘못 들어간 목록 화면 문구를 고친다. 담은 메뉴가 없을 때의 안내와 메뉴 보러 가기로 바꾼다
+    affects: [DOC-07]
+    status: 완료
+    requested_by: 기획 담당

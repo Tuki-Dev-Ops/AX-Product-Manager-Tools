@@ -140,6 +140,14 @@ def main():
             if desk and has_query and cs and cs[0] == "sp" and any(c.startswith("cnt ") for c in cs):
                 add("표시 옵션을 조회 줄과 떼어 놓았다", "%s : %s" % (where, l[:50]))
 
+            # 6-7. 머리말의 버튼 자리에는 동작만 둔다. 시각과 금액 같은 표시는 설명으로
+            if l.startswith("h ") and " ~ " in l:
+                act = l.split(" ~ ", 1)[1].split("//")[0].strip()
+                if not re.search(r"(등록|저장|추가|삭제|수정|내려받기|목록|확정|발급|보기|실행|접속|"
+                                 r"연결|취소|닫기|초기화|조회|출력|재발송|다시|전송|이동|선택|열기|"
+                                 r"변경|나가기|뒤로)", act):
+                    add("머리말 버튼 자리에 표시 정보를 두었다", "%s : %s" % (where, act))
+
             # 7. 같은 라벨 버튼의 폭
             for c in cs:
                 m = re.match(r"^(b|b2|bd)(:([\d.]+))?\s+(.+)$", c)
