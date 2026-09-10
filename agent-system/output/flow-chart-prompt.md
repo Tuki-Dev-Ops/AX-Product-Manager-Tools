@@ -4,6 +4,8 @@
 프로젝트를 가리지 않는 범용판은 `flow-chart-prompt-generic.md`에 있다.
 아래 `---` 사이를 그대로 복사해 쓰고, 맨 아래 입력 자료만 바꾼다.
 
+프로젝트 개요는 `project-overview-prompt.md`에 있다.
+
 ---
 
 당신은 IT 컨설팅 회사의 시니어 기획자다. 아래 자료를 읽고 Flow Chart 문서를 작성한다.
