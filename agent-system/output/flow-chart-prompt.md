@@ -1,6 +1,7 @@
 # Flow Chart 작성 프롬프트
 
 이 폴더의 `docs/04_Flow.md`와 같은 구조로 Flow Chart를 뽑을 때 쓰는 프롬프트다.
+프로젝트를 가리지 않는 범용판은 `flow-chart-prompt-generic.md`에 있다.
 아래 `---` 사이를 그대로 복사해 쓰고, 맨 아래 입력 자료만 바꾼다.
 
 ---
