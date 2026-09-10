@@ -1280,6 +1280,30 @@ function wfFilterRange(items) {
   }
   return a < 0 ? null : [a, b];
 }
+// 상태 배지 색. 뷰어와 같은 기준을 쓴다
+const WFTONE = {
+  ok:   { bg: "#E4F3E9", fg: "#1B6E3C" },
+  warn: { bg: "#FDF1DC", fg: "#8A5A08" },
+  bad:  { bg: "#FBE6E6", fg: "#9B2C2C" },
+  info: { bg: "#E5EFF8", fg: "#1F4E79" },
+  off:  { bg: "#EEF2F6", fg: "#6B7784" }
+};
+const WFTONEW = {
+  ok:   ["영업","완료","성공","정상","사용","연결","승인","확정","접수 완료","조리 완료","수령 완료",
+         "정산 완료","심사 완료","판매중","진행 중","일치","반영","해결"],
+  warn: ["일시중지","대기","접수 대기","심사 대기","미정산","지연","품절","잠정","미비","연결 끊김",
+         "부분","보류","확인 필요","심사 중"],
+  bad:  ["취소","실패","거절","오류","불일치","판매 불가","사용 중지","차단","초과","미처리","반려"],
+  info: ["조리 중","개설 준비","처리 중","진행","전송 중","접수","검토 중"],
+  off:  ["종료","폐점","미노출","진행 전","해당 없음","없음","중지","만료"]
+};
+function wfBadgeTone(v) {
+  const t = String(v || "").trim();
+  const order = ["bad", "warn", "ok", "info", "off"];
+  for (const k of order) if (WFTONEW[k].some(w => t === w)) return k;
+  for (const k of order) if (WFTONEW[k].some(w => t.indexOf(w) >= 0)) return k;
+  return null;
+}
 const WFPAD = 24, WFGAP = 16, WFCG = 12, WFCAP = 30, WFBGX = 44, WFBGY = 46, WFEDGE = 30, WFGRP = 130;
 function wfMeasure(sc) {
   const touch = sc.h > sc.w;
@@ -1984,6 +2008,15 @@ function drawWFCell(ctx, c, x, y, w, h) {
       if (cc === "[]") {
         ctx.strokeStyle = WFC.line; ctx.fillStyle = WFC.bg; ctx.lineWidth = 1;
         roundRect(ctx, cx2 + 12, y + h / 2 - 7, 14, 14, 2); ctx.fill(); ctx.stroke();
+      } else if (k === "td" && cc.charAt(0) === "{" && cc.slice(-1) === "}") {
+        // 상태 배지. 뜻에 따라 색을 고르고 글자를 함께 둔다
+        const bt = cc.slice(1, -1);
+        const tone = WFTONE[wfBadgeTone(bt) || "off"];
+        ctx.font = FS;
+        const bw = Math.min(ctx.measureText(bt).width + 20, cw - 20);
+        ctx.fillStyle = tone.bg;
+        roundRect(ctx, cx2 + 12, y + h / 2 - 11, bw, 22, 11); ctx.fill();
+        wfText(ctx, bt, cx2 + 12 + bw / 2, y + h / 2, bw - 8, FS, tone.fg, "center");
       } else {
         const ali = (i < align.length ? align[i] : "left");
         const tv = (k === "td" && cc === "") ? "-" : cc;

@@ -3398,3 +3398,21 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-368
+    date: 2026-09-10
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 상태 배지에 뜻에 따른 색을 넣는다. 정상은 초록, 주의는 노랑, 오류는 빨강, 진행은 파랑, 끝났거나 아직 아닌 것은 회색이다. 색만으로 알리지 않고 상태 이름을 함께 둔다
+    affects: [DOC-05, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-369
+    date: 2026-09-10
+    type: 수정
+    source: 사용자 요청
+    document: DOC-06
+    summary: 사이드바를 2뎁스로 바꾼다. 현재 메뉴의 하위 화면을 펼쳐 보이고 보고 있는 화면을 강조한다. 표 행 높이를 48px 안팎으로 올리고 짝수 행에 줄무늬를 넣는다
+    affects: [DOC-05]
+    status: 완료
+    requested_by: 기획 담당
