@@ -14,6 +14,7 @@ CHECKS = [
     ("check_data",    "문서 목록·변경 이력·이슈"),
     ("check_links",   "조사 파일과 절 참조"),
     ("check_terms",   "용어와 표기"),
+    ("check_fields",  "화면 이름과 데이터"),
     ("check_docs",    "문서 사이 정합"),
     ("check_screens", "공통 화면 규칙"),
     ("check_layout",  "배치와 표기"),

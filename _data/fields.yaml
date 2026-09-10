@@ -1,0 +1,425 @@
+# 데이터 사전
+#
+# 화면에 보이는 이름과 저장하는 데이터를 잇는다.
+# label   화면에 보이는 이름. 06 Wireframe의 입력 칸과 표 열 이름을 그대로 쓴다
+# column  저장할 때 쓰는 이름
+# type    문자(n) 숫자 금액 날짜 일시 코드 여부 파일
+# need    필수 · 선택 · 자동  (자동은 사람이 넣지 않고 시스템이 만든다)
+# rule    07 기능 명세에 적은 검증과 제약
+# code    코드 집합 이름. 아래 codes에 값이 있다
+# also    같은 데이터를 화면마다 다르게 부를 때 그 이름
+# screens 그 항목이 나오는 화면
+#
+# 점검은 python tools/check_fields.py 로 한다.
+
+entities:
+  - name: 행사
+    table: event
+    desc: 시작일과 종료일을 가진 운영 단위
+    fields:
+      - {label: 행사ID, column: event_id, type: 문자(20), need: 자동, rule: 발급한 뒤 바꾸지 않는다}
+      - {label: 행사명, column: event_name, type: 문자(50), need: 필수,
+         rule: 기간이 겹치는 행사와 이름이 같을 수 없다, screens: [ADM-EVNT-FORM, ADM-EVNT-LIST]}
+      - {label: 시작일, column: start_date, type: 날짜, need: 필수,
+         rule: 신규 등록은 오늘 이후만 고른다, screens: [ADM-EVNT-FORM, ADM-EVNT-LIST]}
+      - {label: 종료일, column: end_date, type: 날짜, need: 필수,
+         rule: 시작일 이후여야 한다. 기간은 최대 90일, screens: [ADM-EVNT-FORM, ADM-EVNT-LIST]}
+      - {label: 장소, column: place_address, type: 문자(200), need: 필수,
+         rule: 주소 검색으로만 입력한다, screens: [ADM-EVNT-FORM]}
+      - {label: 상태, column: event_status, type: 코드, need: 자동, code: 행사 상태,
+         rule: 기간과 오늘 날짜로 정한다, screens: [ADM-EVNT-LIST]}
+      - {label: 관리자 메모, column: admin_memo, type: 문자(200), need: 선택,
+         rule: 고객에게 보이지 않는다, screens: [ADM-EVNT-FORM]}
+
+  - name: 상권
+    table: zone
+    desc: 브랜드 하나를 담는 운영 단위. 매장의 사업자 정보와 정산계좌를 갖는다
+    fields:
+      - {label: 상권ID, column: zone_id, type: 문자(20), need: 자동}
+      - {label: 브랜드명, column: brand_name, type: 문자(30), need: 필수,
+         rule: 전체에서 중복할 수 없다, screens: [ADM-ZONE-FORM, ADM-ZONE-LIST, ADM-EVNT-ZONE]}
+      - {label: 위치, column: zone_address, type: 문자(200), need: 필수,
+         rule: 주소 검색으로만 입력한다, screens: [ADM-ZONE-FORM]}
+      - {label: 상호, column: biz_name, type: 문자(50), need: 필수,
+         rule: 사업자등록증의 상호를 그대로 적는다, screens: [ADM-ZONE-FORM, WEB-INFO-SELL, KSK-INFO-SELL]}
+      - {label: 사업자등록번호, column: biz_no, type: 문자(10), need: 필수, also: [사업자번호],
+         rule: 휴폐업 조회로 확인한다. 화면에는 가려서 표시한다,
+         screens: [ADM-ZONE-FORM, ADM-RECN-STOR, WEB-INFO-SELL, KSK-INFO-SELL]}
+      - {label: 대표자, column: ceo_name, type: 문자(30), need: 필수,
+         screens: [ADM-ZONE-FORM, WEB-INFO-SELL, KSK-INFO-SELL]}
+      - {label: 대표 연락처, column: biz_phone, type: 문자(20), need: 필수,
+         screens: [ADM-ZONE-FORM, WEB-INFO-SELL, KSK-INFO-SELL]}
+      - {label: 통신판매업 신고번호, column: ecommerce_no, type: 문자(40), need: 필수,
+         rule: 판매자 정보 화면에 표시한다, screens: [ADM-ZONE-FORM, WEB-INFO-SELL, KSK-INFO-SELL]}
+      - {label: 업태·종목, column: biz_category, type: 문자(60), need: 선택, screens: [ADM-ZONE-FORM]}
+      - {label: 은행, column: bank_code, type: 코드, need: 필수, code: 은행,
+         rule: 매장의 정산계좌로 상속한다, screens: [ADM-ZONE-FORM, STR-INFO-FORM]}
+      - {label: 계좌번호, column: account_no, type: 문자(20), need: 필수,
+         rule: 화면에는 뒤 네 자리만 보인다, screens: [ADM-ZONE-FORM, STR-INFO-FORM]}
+      - {label: 예금주, column: account_holder, type: 문자(30), need: 필수, screens: [ADM-ZONE-FORM]}
+      - {label: 관리자 메모, column: admin_memo, type: 문자(200), need: 선택, screens: [ADM-ZONE-FORM]}
+
+  - name: 행사 참여 상권
+    table: event_zone
+    desc: 행사와 상권을 잇는다. 하나의 상권이 여러 행사에 참여한다
+    fields:
+      - {label: 행사, column: event_id, type: 문자(20), need: 필수, screens: [ADM-EVNT-ZONE]}
+      - {label: 브랜드명, column: zone_id, type: 문자(20), need: 필수, screens: [ADM-EVNT-ZONE]}
+      - {label: 붙인 날, column: linked_at, type: 일시, need: 자동, screens: [ADM-EVNT-FORM]}
+      - {label: 매장 수, column: store_count, type: 숫자, need: 자동,
+         rule: 그 행사에 속한 매장 수를 센다. 하나라도 있으면 뗄 수 없다,
+         screens: [ADM-EVNT-FORM, ADM-EVNT-ZONE, ADM-ZONE-LIST]}
+
+  - name: 매장
+    table: store
+    desc: 실제 판매가 일어나는 장소. 상권 하나와 행사 하나에 속한다
+    fields:
+      - {label: 매장ID, column: store_id, type: 문자(20), need: 자동}
+      - {label: 지점번호, column: branch_no, type: 숫자, need: 자동,
+         rule: 브랜드 안에서 1부터 붙인다. 폐점해도 다시 쓰지 않는다, screens: [STR-STOR-LIST]}
+      - {label: 매장명, column: store_name, type: 문자(60), need: 자동,
+         rule: 브랜드명과 지점번호로 만든다,
+         screens: [STR-STOR-LIST, ADM-HOME-EXAM, ADM-SALE-LIST, ADM-RECN-STOR]}
+      - {label: 소속 행사, column: event_id, type: 문자(20), need: 필수,
+         rule: 상권의 참여 행사 중 진행 전이거나 진행 중인 것만 고른다. 개시를 확정하면 잠긴다,
+         screens: [STR-STOR-FORM, STR-STOR-LIST, ADM-HOME-EXAM]}
+      - {label: 위치, column: store_address, type: 문자(200), need: 필수,
+         rule: 주소 검색으로만 입력한다, screens: [STR-STOR-FORM]}
+      - {label: 영업 시작, column: open_time, type: 문자(5), need: 필수, also: [영업시간, 바꿀 시작 시각],
+         rule: 24시간 표기. 매장 정보 변경에서는 영업시간 한 묶음으로 받는다,
+         screens: [STR-STOR-FORM, STR-INFO-FORM, STR-INFO-DETAIL]}
+      - {label: 영업 종료, column: close_time, type: 문자(5), need: 필수, also: [영업시간, 바꿀 종료 시각],
+         screens: [STR-STOR-FORM, STR-INFO-FORM, STR-INFO-DETAIL]}
+      - {label: 대표 연락처, column: store_phone, type: 문자(20), need: 필수, screens: [STR-STOR-FORM, STR-INFO-FORM]}
+      - {label: 기본 준비 시간, column: prep_minutes, type: 숫자, need: 필수, code: 준비 시간,
+         rule: 결제 전 화면에 안내한다, screens: [STR-STOR-FORM, STR-INFO-FORM]}
+      - {label: 주문 채널, column: channel_flags, type: 코드, need: 필수, code: 주문 채널,
+         rule: 하나 이상 골라야 한다, screens: [STR-STOR-FORM, STR-STOR-LIST]}
+      - {label: 상태, column: store_status, type: 코드, need: 자동, code: 매장 상태,
+         rule: 등록하면 개설 준비다. 본사가 개시를 확정하면 영업이 된다,
+         screens: [STR-STOR-LIST, STR-OPEN-STATE]}
+      - {label: 재개 시각, column: resume_at, type: 일시, need: 필수,
+         rule: 일시중지일 때만 받는다. 지난 시각을 고를 수 없다, screens: [STR-OPEN-STATE]}
+      - {label: 하위가맹점 심사, column: pg_review_status, type: 코드, need: 자동, code: 하위가맹점 심사,
+         rule: 결제대행사 심사 결과다. 완료여야 본사가 개시를 확정한다,
+         screens: [ADM-HOME-EXAM, STR-INFO-DETAIL]}
+      - {label: 등록일, column: created_at, type: 일시, need: 자동, screens: [STR-STOR-LIST]}
+      - {label: 관리자 메모, column: admin_memo, type: 문자(200), need: 선택, screens: [STR-STOR-FORM]}
+
+  - name: 카테고리
+    table: category
+    desc: 메뉴를 묶는 분류. 브랜드에 속한다
+    fields:
+      - {label: 카테고리ID, column: category_id, type: 문자(20), need: 자동}
+      - {label: 카테고리명, column: category_name, type: 문자(30), need: 필수,
+         rule: 같은 브랜드 안에서 중복할 수 없다, screens: [STR-CATG-FORM, STR-CATG-LIST]}
+      - {label: 노출, column: is_visible, type: 여부, need: 필수,
+         rule: 기본값은 노출이다, screens: [STR-CATG-FORM, STR-CATG-LIST]}
+      - {label: 정렬 순서, column: sort_order, type: 숫자, need: 선택,
+         rule: 비우면 마지막에 붙인다, screens: [STR-CATG-FORM, STR-CATG-LIST]}
+      - {label: 메뉴 수, column: menu_count, type: 숫자, need: 자동, screens: [STR-CATG-LIST, ADM-SALE-MENU]}
+
+  - name: 메뉴
+    table: menu
+    desc: 판매 단위. 브랜드에 속하고 카테고리 하나에 들어간다
+    fields:
+      - {label: 메뉴ID, column: menu_id, type: 문자(20), need: 자동}
+      - {label: 메뉴명, column: menu_name, type: 문자(50), need: 필수,
+         screens: [STR-MENU-FORM, STR-MENU-LIST, ADM-SALE-MENU, KSK-ADMN-SOUT]}
+      - {label: 카테고리, column: category_id, type: 문자(20), need: 필수,
+         screens: [STR-MENU-FORM, STR-MENU-LIST]}
+      - {label: 판매가, column: base_price, type: 금액, need: 필수,
+         rule: 0원을 넣을 수 없다, screens: [STR-MENU-FORM, STR-MENU-LIST, STR-PRIC-FORM]}
+      - {label: 메뉴 이미지, column: image_url, type: 파일, need: 선택, also: [이미지 선택],
+         rule: 권장 비율은 1대 1이다, screens: [STR-MENU-FORM]}
+      - {label: 메뉴 설명, column: menu_desc, type: 문자(200), need: 선택, screens: [STR-MENU-FORM]}
+      - {label: 시작, column: sale_start, type: 문자(5), need: 선택,
+         rule: 판매 시간이다. 비우면 영업시간을 따른다, screens: [STR-MENU-FORM]}
+      - {label: 종료, column: sale_end, type: 문자(5), need: 선택,
+         rule: 판매 시간이다. 비우면 영업시간을 따른다, screens: [STR-MENU-FORM]}
+      - {label: 설명, column: menu_note, type: 문자(200), need: 선택, screens: [STR-MENU-FORM]}
+      - {label: 알레르기 유발물질, column: allergen_codes, type: 코드, need: 필수, code: 알레르기,
+         rule: 입력하지 않으면 판매 불가로 둔다, screens: [STR-MENU-ALGN]}
+      - {label: 열량 kcal, column: kcal, type: 숫자, need: 필수, screens: [STR-MENU-ALGN]}
+      - {label: 나트륨 mg, column: sodium_mg, type: 숫자, need: 필수, screens: [STR-MENU-ALGN]}
+      - {label: 당류 g, column: sugar_g, type: 숫자, need: 필수, screens: [STR-MENU-ALGN]}
+      - {label: 포화지방 g, column: sat_fat_g, type: 숫자, need: 필수, screens: [STR-MENU-ALGN]}
+      - {label: 단백질 g, column: protein_g, type: 숫자, need: 필수, screens: [STR-MENU-ALGN]}
+      - {label: 원산지, column: origin, type: 문자(200), need: 필수,
+         rule: 표시 대상 품목만 받는다. 글자 크기는 메뉴명과 같거나 크게 표시한다, screens: [STR-MENU-ORIG]}
+      - {label: 표시 정보, column: label_status, type: 코드, need: 자동, code: 표시 정보,
+         rule: 알레르기와 원산지가 모두 들어와야 완료다, screens: [STR-MENU-LIST]}
+      - {label: 정렬 순서, column: sort_order, type: 숫자, need: 선택, screens: [STR-MENU-FORM]}
+
+  - name: 옵션 그룹
+    table: option_group
+    desc: 메뉴에 붙이는 선택 묶음
+    fields:
+      - {label: 그룹명, column: group_name, type: 문자(30), need: 필수, screens: [STR-OPTG-LIST, STR-MENU-FORM]}
+      - {label: 필수, column: is_required, type: 여부, need: 필수,
+         rule: 필수 그룹은 최소 선택 수가 1 이상이다, screens: [STR-OPTG-LIST, STR-MENU-FORM]}
+      - {label: 최소 선택 수, column: min_select, type: 숫자, need: 필수, also: [선택 수],
+         rule: 필수 그룹은 1 이상이다, screens: [STR-OPTG-FORM, STR-OPTG-LIST, STR-MENU-FORM]}
+      - {label: 최대 선택 수, column: max_select, type: 숫자, need: 필수,
+         rule: 최소 선택 수 이상이다, screens: [STR-OPTG-FORM, STR-OPTG-LIST, STR-MENU-FORM]}
+      - {label: 순서, column: sort_order, type: 숫자, need: 선택, screens: [STR-OPTG-FORM]}
+
+  - name: 옵션 항목
+    table: option_item
+    desc: 옵션 그룹 안의 개별 선택지
+    fields:
+      - {label: 항목명, column: item_name, type: 문자(30), need: 필수, screens: [STR-OPTG-FORM]}
+      - {label: 추가금, column: extra_price, type: 금액, need: 필수,
+         rule: 0원을 넣을 수 있다. 메뉴 매출에서는 그 옵션을 붙인 메뉴에 넣는다, screens: [STR-OPTG-FORM]}
+
+  - name: 매장별 메뉴 설정
+    table: store_menu
+    desc: 매장과 메뉴를 잇는다. 매장마다 다른 값을 갖는다
+    fields:
+      - {label: 매장, column: store_id, type: 문자(20), need: 필수}
+      - {label: 메뉴, column: menu_id, type: 문자(20), need: 필수}
+      - {label: 바꿀 판매가, column: store_price, type: 금액, need: 선택,
+         rule: 비우면 브랜드 판매가를 그대로 쓴다, screens: [STR-PRIC-FORM]}
+      - {label: 상태, column: sale_status, type: 코드, need: 자동, code: 메뉴 상태,
+         rule: 표시 정보가 없으면 판매 불가로 둔다, screens: [STR-MENU-LIST, KSK-ADMN-SOUT]}
+      - {label: 재개 시각, column: resume_at, type: 일시, need: 선택,
+         rule: 비우면 수동으로 풀 때까지 품절로 둔다, screens: [STR-SOUT-FORM]}
+
+  - name: 주문
+    table: order
+    desc: 고객이 매장에 넣은 주문 한 건
+    fields:
+      - {label: 주문번호, column: order_no, type: 문자(20), need: 자동,
+         rule: 매장별로 날짜와 일련번호로 만든다,
+         screens: [STR-ORDR-LIST, ADM-SALE-DETAIL, ADM-SALE-ORDR, WEB-ORDR-FIND]}
+      - {label: 호출 순번, column: call_no, type: 숫자, need: 자동, also: [호출 번호],
+         rule: 매장별로 매일 1번부터 다시 시작한다. 고객 화면에서는 호출 번호로 부른다,
+         screens: [STR-ORDR-LIST, KSK-ORDR-DONE, WEB-ORDR-STAT]}
+      - {label: 매장, column: store_id, type: 문자(20), need: 자동, screens: [ADM-SALE-ORDR]}
+      - {label: 채널, column: order_channel, type: 코드, need: 자동, code: 주문 채널,
+         screens: [STR-ORDR-LIST, ADM-SALE-DETAIL, ADM-SALE-ORDR]}
+      - {label: 취식유형, column: dine_type, type: 코드, need: 필수, code: 취식유형,
+         rule: 수령 방식 선택 화면에서 정한다. 두 유형을 다 쓰지 않는 매장은 자동으로 정한다,
+         screens: [ADM-SALE-ORDR]}
+      - {label: 주문 시각, column: ordered_at, type: 일시, need: 자동, screens: [ADM-SALE-DETAIL, ADM-SALE-ORDR]}
+      - {label: 상태, column: order_status, type: 코드, need: 자동, code: 주문 상태,
+         rule: 5분 안에 접수하지 않으면 자동 취소한다. 접수 완료 1분 뒤 조리 중으로 넘어간다,
+         screens: [STR-ORDR-LIST, WEB-ORDR-STAT, ADM-SALE-DETAIL]}
+      - {label: 예상 준비 시간, column: prep_minutes, type: 숫자, need: 자동, code: 준비 시간, also: [준비 시간],
+         rule: 매장이 접수할 때 고른다. 기본값은 매장의 기본 준비 시간이다,
+         screens: [STR-ORDR-ACPT, WEB-ORDR-STAT, KSK-ORDR-DONE]}
+      - {label: 이름, column: orderer_name, type: 문자(30), need: 필수,
+         rule: 개인정보다. 전자상거래법에 따라 5년 보관하고 그 뒤 지운다, screens: [WEB-ORDR-FORM]}
+      - {label: 휴대폰번호, column: orderer_phone, type: 문자(20), need: 필수, also: [주문자],
+         rule: 개인정보다. 화면에는 가운데를 가려서 표시한다. 키오스크 주문은 받지 않을 수 있다.
+           주문 상세에서는 이름과 번호를 주문자 한 줄로 함께 보여 준다,
+         screens: [WEB-ORDR-FORM, KSK-CALL-FORM, ADM-SALE-ORDR]}
+      - {label: 요청사항, column: request_note, type: 문자(50), need: 선택, screens: [WEB-ORDR-FORM]}
+      - {label: 취소 사유, column: cancel_reason, type: 코드, need: 선택, code: 거절 사유, also: [거절 사유],
+         rule: 매장이 거절하거나 시간이 지나 자동 취소될 때 남긴다, screens: [STR-ORDR-RJCT, ADM-SALE-ORDR]}
+      - {label: 집계, column: aggregate_status, type: 코드, need: 자동, code: 집계 상태,
+         rule: 당일 구간은 잠정이다. 다음 날 집계가 끝나면 확정으로 바뀐다, screens: [ADM-SALE-LIST]}
+
+  - name: 주문 항목
+    table: order_item
+    desc: 주문 한 건에 담긴 메뉴
+    fields:
+      - {label: 메뉴, column: menu_name, type: 문자(50), need: 자동,
+         rule: 주문 시점의 이름을 그대로 남긴다, screens: [ADM-SALE-ORDR, STR-ORDR-DETAIL, KSK-CART-LIST]}
+      - {label: 옵션, column: option_names, type: 문자(100), need: 선택,
+         screens: [ADM-SALE-ORDR, STR-ORDR-DETAIL, KSK-CART-LIST]}
+      - {label: 수량, column: quantity, type: 숫자, need: 필수,
+         rule: 1 이상이다, screens: [ADM-SALE-ORDR, STR-ORDR-DETAIL, KSK-CART-LIST]}
+      - {label: 금액, column: line_amount, type: 금액, need: 자동,
+         rule: 판매가와 옵션 추가금을 더해 수량을 곱한다, screens: [ADM-SALE-ORDR, KSK-CART-LIST]}
+
+  - name: 결제
+    table: payment
+    desc: 결제대행사가 처리한 승인과 취소
+    fields:
+      - {label: 결제수단, column: pay_method, type: 코드, need: 자동, code: 결제수단,
+         screens: [ADM-SALE-DETAIL, ADM-SALE-ORDR, KSK-PAY-TYPE]}
+      - {label: 승인번호, column: approval_no, type: 문자(20), need: 자동, screens: [ADM-SALE-ORDR]}
+      - {label: 승인 시각, column: approved_at, type: 일시, need: 자동, screens: [ADM-SALE-ORDR]}
+      - {label: 결제 금액, column: pay_amount, type: 금액, need: 자동, screens: [ADM-SALE-ORDR, KSK-PAY-PROC]}
+      - {label: 취소 구분, column: cancel_type, type: 코드, need: 선택, code: 취소 구분,
+         rule: 매입 후 취소는 취소한 날짜에 별도 거래로 기록한다, screens: [ADM-SALE-ORDR]}
+      - {label: 취소 시각, column: canceled_at, type: 일시, need: 선택, screens: [ADM-SALE-ORDR]}
+      - {label: 정산 상태, column: settle_status, type: 코드, need: 자동, code: 정산 상태,
+         screens: [ADM-SALE-ORDR, ADM-RECN-STOR]}
+
+  - name: 정산
+    table: settlement
+    desc: 결제대행사가 매장에 지급한 내역
+    fields:
+      - {label: 기준일, column: base_date, type: 날짜, need: 자동, screens: [ADM-RECN-LIST, ADM-HOME-MAIN]}
+      - {label: 결제대행사, column: pg_code, type: 코드, need: 자동, code: 결제대행사,
+         rule: 대사 대상 결제대행사다, screens: [ADM-RECN-LIST]}
+      - {label: 단계, column: recon_step, type: 코드, need: 자동, code: 대사 단계, screens: [ADM-RECN-LIST]}
+      - {label: 거래 금액, column: trade_amount, type: 금액, need: 자동, screens: [ADM-RECN-STOR]}
+      - {label: 정산 금액, column: settle_amount, type: 금액, need: 자동,
+         rule: 결제대행사가 보낸 값을 그대로 쓴다. 플랫폼이 계산하지 않는다, screens: [ADM-RECN-STOR]}
+      - {label: 미정산, column: unsettled_amount, type: 금액, need: 자동, screens: [ADM-RECN-STOR, ADM-HOME-MAIN]}
+      - {label: 최종 지급일, column: paid_at, type: 날짜, need: 자동, screens: [ADM-RECN-STOR]}
+      - {label: 유형, column: diff_type, type: 코드, need: 자동, code: 불일치 유형, screens: [ADM-RECN-DIFF]}
+      - {label: 처리 상태, column: diff_status, type: 코드, need: 자동, code: 불일치 처리, screens: [ADM-RECN-DIFF]}
+
+  - name: 단말
+    table: device
+    desc: 매장에 설치한 키오스크와 카드 단말, 주문서 프린터
+    fields:
+      - {label: 종류, column: device_type, type: 코드, need: 필수, code: 단말 종류, screens: [STR-DEVC-LIST, STR-DEVC-FORM]}
+      - {label: 단말명, column: device_name, type: 문자(30), need: 필수, screens: [STR-DEVC-FORM]}
+      - {label: 연결 코드, column: pair_code, type: 문자(20), need: 자동,
+         rule: 등록 다음 단계에서 발급한다. 단말에 입력하면 매장에 붙는다, screens: [STR-DEVC-FORM]}
+      - {label: 상태, column: device_status, type: 코드, need: 자동, code: 단말 상태,
+         rule: 마지막 통신 후 30분이 지나면 연결 끊김으로 본다, screens: [STR-DEVC-LIST]}
+      - {label: 설치 위치, column: install_place, type: 문자(60), need: 선택,
+         rule: 매장 안 어디에 두었는지 적는다, screens: [STR-DEVC-FORM]}
+      - {label: 비고, column: device_memo, type: 문자(100), need: 선택, screens: [STR-DEVC-FORM]}
+      - {label: 마지막 통신, column: last_seen_at, type: 일시, need: 자동, screens: [STR-DEVC-LIST]}
+
+  - name: 계정
+    table: account
+    desc: 어드민에 로그인하는 사용자
+    fields:
+      - {label: 이메일, column: email, type: 문자(100), need: 필수,
+         rule: 로그인 아이디다. 등록한 뒤 바꿀 수 없다, screens: [ADM-USER-FORM, ADM-ZONE-FORM, ADM-AUTH-LOGIN]}
+      - {label: 이름, column: user_name, type: 문자(30), need: 필수, screens: [ADM-USER-FORM, ADM-ZONE-FORM]}
+      - {label: 휴대폰번호, column: user_phone, type: 문자(20), need: 필수,
+         rule: 2차 인증에 쓴다, screens: [ADM-USER-FORM, ADM-ZONE-FORM]}
+      - {label: 비밀번호, column: password_hash, type: 문자(200), need: 필수,
+         rule: 영문·숫자·특수문자를 섞어 10자 이상. 직전 비밀번호를 다시 쓸 수 없다,
+         screens: [ADM-USER-FORM, ADM-AUTH-LOGIN, STR-AUTH-RESET]}
+      - {label: 역할, column: role_code, type: 코드, need: 필수, code: 역할, screens: [ADM-USER-FORM, ADM-USER-LIST]}
+      - {label: 담당 범위, column: scope_id, type: 문자(20), need: 필수,
+         rule: 가맹 관리자는 담당 상권으로 고정한다, screens: [ADM-USER-FORM]}
+      - {label: 대행 사유, column: proxy_reason, type: 문자(100), need: 필수,
+         rule: 대행 접속마다 받는다. 조작자와 대상 계정을 함께 접속기록에 남긴다, screens: [ADM-USER-PROXY]}
+      - {label: 상태, column: account_status, type: 코드, need: 자동, code: 계정 상태,
+         rule: 로그인을 5회 실패하면 잠금으로 바꾼다, screens: [ADM-USER-LIST]}
+      - {label: 마지막 접속, column: last_login_at, type: 일시, need: 자동, screens: [ADM-USER-LIST]}
+      - {label: 담당 매장, column: store_count, type: 숫자, need: 자동,
+         rule: 담당 범위에 속한 매장 수다, screens: [ADM-USER-LIST]}
+
+  - name: 알림 발송
+    table: notification
+    desc: 고객에게 보낸 주문 안내
+    fields:
+      - {label: 종류, column: noti_type, type: 코드, need: 자동, code: 알림 종류, screens: [ADM-SALE-ORDR]}
+      - {label: 경로, column: noti_channel, type: 코드, need: 자동, code: 알림 경로,
+         rule: 알림톡이 실패하면 문자로 다시 보낸다, screens: [STR-NOTI-LIST]}
+      - {label: 주문번호, column: order_no, type: 문자(20), need: 자동, screens: [STR-NOTI-LIST]}
+      - {label: 수신번호, column: to_phone, type: 문자(20), need: 자동,
+         rule: 화면에는 가운데를 가려서 표시한다, screens: [STR-NOTI-LIST]}
+      - {label: 시각, column: sent_at, type: 일시, need: 자동, also: [발송 시각],
+         screens: [STR-NOTI-LIST, ADM-SALE-ORDR]}
+      - {label: 결과, column: send_result, type: 코드, need: 자동, code: 발송 결과,
+         rule: 알림톡이 실패하면 문자로 다시 보낸다, screens: [STR-NOTI-LIST, ADM-SALE-ORDR]}
+
+  - name: 접속기록
+    table: access_log
+    desc: 개인정보를 다룬 기록. 1년 이상 보관한다
+    fields:
+      - {label: 계정, column: email, type: 문자(100), need: 자동, screens: [ADM-ALOG-LIST]}
+      - {label: 시각, column: accessed_at, type: 일시, need: 자동, also: [일시], screens: [ADM-ALOG-LIST]}
+      - {label: 접속지, column: ip_address, type: 문자(45), need: 자동, screens: [ADM-ALOG-LIST]}
+      - {label: 수행업무, column: action_code, type: 코드, need: 자동, code: 수행업무, screens: [ADM-ALOG-LIST]}
+      - {label: 대상, column: subject_key, type: 문자(40), need: 자동, also: [처리한 정보주체],
+         rule: 개인정보 보호법이 말하는 처리한 정보주체다. 대행 접속은 조작자와 대상 계정을 함께 남긴다,
+         screens: [ADM-ALOG-LIST]}
+
+  - name: 연동 계정
+    table: api_client
+    desc: 외부 POS가 쓰는 접근 키
+    fields:
+      - {label: 연동처명, column: client_name, type: 문자(50), need: 필수, screens: [ADM-APIK-FORM, ADM-APIK-LIST]}
+      - {label: 담당자, column: manager_name, type: 문자(30), need: 선택, screens: [ADM-APIK-FORM]}
+      - {label: 연락처, column: manager_phone, type: 문자(20), need: 필수, screens: [ADM-APIK-FORM]}
+      - {label: 허용 매장, column: allowed_store_ids, type: 문자(200), need: 필수,
+         rule: 전체이거나 고른 매장만이다, screens: [ADM-APIK-FORM, ADM-APIK-LIST]}
+      - {label: 접근 키, column: access_key, type: 문자(40), need: 자동,
+         rule: 목록에는 앞자리만 보인다, screens: [ADM-APIK-FORM, ADM-APIK-LIST]}
+      - {label: 비밀 키, column: secret_key, type: 문자(200), need: 자동,
+         rule: 발급 화면에서 한 번만 보여 준다. 다시 볼 수 없다, screens: [ADM-APIK-FORM]}
+      - {label: 상태, column: client_status, type: 코드, need: 자동, code: 연동 계정 상태,
+         rule: 사용 중지한 키는 되살리지 않는다, screens: [ADM-APIK-LIST]}
+      - {label: 마지막 사용, column: last_used_at, type: 일시, need: 자동, screens: [ADM-APIK-LIST]}
+
+  - name: 오류 로그
+    table: error_log
+    desc: 배치와 알림 발송, 외부 연동에서 난 오류
+    fields:
+      - {label: 유형, column: error_kind, type: 코드, need: 자동, code: 오류 구분, also: [구분], screens: [ADM-ERRL-LIST]}
+      - {label: 대상, column: target_key, type: 문자(60), need: 자동, screens: [ADM-ERRL-LIST]}
+      - {label: 내용, column: error_message, type: 문자(200), need: 자동, screens: [ADM-ERRL-LIST]}
+      - {label: 발생, column: occurred_at, type: 일시, need: 자동, screens: [ADM-ERRL-LIST]}
+      - {label: 확인 상태, column: check_status, type: 코드, need: 필수, code: 오류 확인,
+         rule: 확인한 사람과 시각을 함께 남긴다, screens: [ADM-ERRL-LIST]}
+
+  - name: 배치 실행 이력
+    table: batch_run
+    desc: 집계와 파기 같은 정기 작업의 실행 결과
+    fields:
+      - {label: 배치 종류, column: batch_type, type: 코드, need: 자동, code: 배치 종류, screens: [ADM-BATC-LIST]}
+      - {label: 실행 시각, column: run_at, type: 일시, need: 자동, screens: [ADM-BATC-LIST, ADM-PRIV-LIST]}
+      - {label: 대상 건수, column: target_count, type: 숫자, need: 자동, screens: [ADM-BATC-LIST, ADM-PRIV-LIST]}
+      - {label: 결과, column: run_result, type: 코드, need: 자동, code: 배치 결과,
+         rule: 실패한 배치는 다시 실행할 수 있다, screens: [ADM-BATC-LIST, ADM-PRIV-LIST]}
+
+  - name: 개인정보 파기
+    table: privacy_purge
+    desc: 보유 기간이 지난 개인정보를 지운 기록
+    fields:
+      - {label: 파기 건수, column: purged_count, type: 숫자, need: 자동, screens: [ADM-PRIV-LIST]}
+      - {label: 파기 항목, column: purged_fields, type: 문자(100), need: 자동,
+         rule: 주문번호와 금액은 남기고 개인 식별 항목만 지운다, screens: [ADM-PRIV-LIST]}
+
+  - name: 계정 변경 이력
+    table: account_log
+    desc: 권한과 담당 범위가 바뀐 기록
+    fields:
+      - {label: 항목, column: changed_field, type: 코드, need: 자동, code: 계정 변경 항목, also: [변경 항목],
+         screens: [ADM-ULOG-LIST]}
+      - {label: 변경 전, column: before_value, type: 문자(100), need: 자동, also: [이전 → 이후],
+         rule: 화면에서는 변경 후와 한 열에 함께 보여 준다, screens: [ADM-ULOG-LIST]}
+      - {label: 변경 후, column: after_value, type: 문자(100), need: 자동, also: [이전 → 이후],
+         screens: [ADM-ULOG-LIST]}
+      - {label: 처리자, column: actor_email, type: 문자(100), need: 자동, screens: [ADM-ULOG-LIST]}
+
+codes:
+  행사 상태: [진행 전, 진행 중, 종료]
+  매장 상태: [개설 준비, 영업, 일시중지, 종료, 폐점]
+  주문 상태: [접수 대기, 접수 완료, 조리 중, 조리 완료, 수령 완료, 취소]
+  메뉴 상태: [판매중, 품절, 미노출, 판매 불가]
+  표시 정보: [완료, 미비]
+  주문 채널: [하이브리드 웹앱, 키오스크, 외부 POS]
+  취식유형: [매장 식사, 포장]
+  준비 시간: [5분, 10분, 15분, 20분, 30분]
+  거절 사유: [품절, 재료 소진, 마감, 기타, 미응답]
+  결제수단: [카드, 간편결제]
+  취소 구분: [승인취소, 매입 후 취소]
+  정산 상태: [미정산, 정산 완료, 취소 반영]
+  대사 단계: [거래, 정산, 입금]
+  불일치 유형: [우리에만, 상대에만, 금액 불일치, 매입 지연]
+  불일치 처리: [미처리, 처리 완료]
+  단말 종류: [키오스크, 카드 단말, 주문서 프린터]
+  단말 상태: [연결, 연결 끊김, 사용 중지]
+  역할: [본사 운영자, 가맹 관리자]
+  계정 상태: [사용, 잠금, 사용 중지]
+  알림 종류: [접수 안내, 거절 안내, 준비 완료 안내, 미수령 마감 안내]
+  발송 결과: [성공, 실패]
+  수행업무: [조회, 등록, 수정, 삭제, 대행 접속, 내려받기]
+  하위가맹점 심사: [심사 대기, 심사 완료, 심사 거절]
+  집계 상태: [잠정, 확정]
+  배치 결과: [성공, 부분 실패, 실패]
+  배치 종류: [매출 집계, 개인정보 파기, 미수령 마감, 알림 재발송]
+  오류 구분: [배치, 알림 발송, 외부 연동, 결제]
+  오류 확인: [확인 전, 확인]
+  연동 계정 상태: [사용, 사용 중지]
+  계정 변경 항목: [역할, 담당 범위, 상태, 비밀번호]
+  단말 점검: [정상, 오류]
+  알림 경로: [알림톡, 문자]
+  결제대행사: [등록 결제대행사 목록을 따른다]
+  은행: [코드 목록은 금융결제원 은행코드를 따른다]
+  알레르기: [식품표시광고법이 정한 표시 대상 품목을 따른다]

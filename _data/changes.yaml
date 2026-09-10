@@ -3461,3 +3461,30 @@ changes:
     affects: []
     status: 완료
     requested_by: 기획 담당
+  - id: CH-375
+    date: 2026-09-10
+    type: 추가
+    source: 사용자 요청
+    document: DOC-03
+    summary: 데이터 사전을 만든다. 개체 22개, 항목 158개, 코드 집합 35개를 _data/fields.yaml에 정하고 03 문서 12절에 싣는다. 화면 이름과 저장 이름, 형식, 필수, 규칙, 나오는 화면을 함께 적는다
+    affects: [DOC-05, DOC-06, DOC-07, DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-376
+    date: 2026-09-10
+    type: 추가
+    source: 사용자 요청
+    document: DOC-00
+    summary: 데이터 점검 도구(tools/check_fields.py)를 만든다. 화면 이름과 사전, 화면 배지와 코드 집합을 대조한다. check_all에 등록한다
+    affects: [DOC-08]
+    status: 완료
+    requested_by: 기획 담당
+  - id: CH-377
+    date: 2026-09-10
+    type: 수정
+    source: 검토 반영
+    document: DOC-06
+    summary: 사전과 어긋난 화면을 고친다. 매장 정보의 변경 이력 구조, 계정 상태 표기와 사용 중지 행, 주문 상태의 예상 준비 시간, 주문 상세의 취식유형, 계정 변경 이력의 값이다
+    affects: [DOC-05, DOC-07]
+    status: 완료
+    requested_by: 기획 담당
